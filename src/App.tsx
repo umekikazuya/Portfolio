@@ -1,7 +1,11 @@
+import MainLayout from './components/Layout/MainLayout'
 import './index.css'
+import { Outlet } from 'react-router'
 
-function App() {
-  return <>Hello world.</>
+export default function Index() {
+  return (
+    <MainLayout>
+      <Outlet />
+    </MainLayout>
+  )
 }
-
-export default App
