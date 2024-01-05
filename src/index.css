@@ -1,11 +1,107 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset css. */
+*,
+::after,
+::before {
+  background-repeat: no-repeat;
+  box-sizing: inherit;
+}
 
+::after,
+::before {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+::selection {
+  background: rgba(245, 184, 61, 0.25);
+}
+
+html,
 body {
-  font-size: 1.4rem;
-  font-family: 'Lato', 'Noto Sans JP', Quicksand, 游ゴシック体, yu gothic, YuGothic, ヒラギノ角ゴシック pro, hiragino kaku gothic pro, メイリオ, Meiryo, Osaka, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  cursor: default;
+  color: rgb(46, 68, 78);
+  line-height: 1.6;
+  font-family:
+    Karla,
+    'Lato',
+    'Noto Sans JP',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  font-size: 16px;
+  font-variant-ligatures: common-ligatures;
+  font-style: normal;
+  text-size-adjust: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
-  letter-spacing: .1em;
-  color: #6a696c;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+
+div {
+  display: block;
+}
+
+ul,
+ol {
+  padding-left: 0px;
+}
+
+ul li,
+ol li {
+  margin-bottom: 0.75em;
+  margin-left: 1em;
+  line-height: 1.6;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+code {
+  background: rgba(10, 10, 12, 0.1);
+  border-radius: 2px;
+  font-family:
+    Karla,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    monospace;
+  padding: 0px 0.1em;
+}
+
+/* Base css. */
+#root {
+  position: relative;
+  overflow: auto;
 }
