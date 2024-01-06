@@ -18,11 +18,11 @@ const App = styled.div`
 
 const Wrapper = styled.div`
   margin: 0px auto;
-  max-width: 120ch;
-  padding: 5rem 3.33333rem 0px;
+  max-width: 1920px;
+  padding: 80px 52px 0px;
 
   /* media queries are no problem */
-  @media (max-width: 62.5em) {
-    padding: 5.55556rem 2rem 1.66667rem;
+  @media (max-width: 1000px) {
+    padding: 88px 32px 28px;
   }
 `

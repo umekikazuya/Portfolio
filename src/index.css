@@ -23,7 +23,7 @@ body {
   padding: 0px;
   box-sizing: border-box;
   cursor: default;
-  color: rgb(46, 68, 78);
+  color: #2e444e;
   line-height: 1.6;
   font-family:
     Karla,
@@ -62,14 +62,15 @@ div {
 
 ul,
 ol {
-  padding-left: 0px;
+  padding: 0;
 }
 
 ul li,
 ol li {
-  margin-bottom: 0.75em;
-  margin-left: 1em;
+  margin: 0;
+  padding: 0;
   line-height: 1.6;
+  list-style: none;
 }
 
 b,
@@ -98,6 +99,16 @@ code {
     'Segoe UI Symbol',
     monospace;
   padding: 0px 0.1em;
+}
+
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle;
+}
+
+img {
+  border-style: none;
+  width: 100%;
+  height: auto;
 }
 
 /* Base css. */
