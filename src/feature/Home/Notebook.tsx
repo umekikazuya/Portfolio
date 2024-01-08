@@ -1,7 +1,7 @@
 import { BsBook } from "react-icons/bs";
 import styled from "styled-components";
 
-export default function Monologue(): JSX.Element {
+export default function Notebook(): JSX.Element {
   return (
     <>
       <TitleArea>
@@ -11,7 +11,7 @@ export default function Monologue(): JSX.Element {
             color={"#2e444e"}
           />
         </TitleLogo>
-        <TitleText>ひとりごと</TitleText>
+        <TitleText>自由帳</TitleText>
       </TitleArea>
       <GalleryArea>
         <GalleryListItem>
