@@ -1,13 +1,9 @@
-import MainVisual from "@/feature/Home/MainVisual";
-import Monologue from "@/feature/Home/Monologue";
-import Notebook from "@/feature/Home/Notebook";
+import Index from "@/feature/Home/Index";
 
 export default function Home(): JSX.Element {
   return (
     <>
-      <MainVisual />
-      <Monologue />
-      <Notebook />
+      <Index />
     </>
     
   )
