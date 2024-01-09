@@ -1,37 +1,38 @@
-import { BsBook } from "react-icons/bs";
-import styled from "styled-components";
+import { BsBook } from 'react-icons/bs'
+import styled from 'styled-components'
 
 export default function Notebook(): JSX.Element {
   return (
     <>
-      <TitleArea>
-        <TitleLogo>
-          <BsBook
-            size={74}
-            color={"#2e444e"}
-          />
-        </TitleLogo>
-        <TitleText>自由帳</TitleText>
-      </TitleArea>
-      <GalleryArea>
-        <GalleryListItem>
-          <img src="https://placehold.jp/640x360.png" alt="" />
-        </GalleryListItem>
-        <GalleryListItem>
-          <img src="https://placehold.jp/640x360.png" alt="" />
-        </GalleryListItem>
-        <GalleryListItem>
-          <img src="https://placehold.jp/640x360.png" alt="" />
-        </GalleryListItem>
-        <GalleryMore>
-          <a href="#">
-            View More...
-          </a>
-        </GalleryMore>
-      </GalleryArea>
+      <Section>
+        <TitleArea>
+          <TitleLogo>
+            <BsBook size={74} color={'#2e444e'} />
+          </TitleLogo>
+          <TitleText>自由帳</TitleText>
+        </TitleArea>
+        <GalleryArea>
+          <GalleryListItem>
+            <img src="https://placehold.jp/640x360.png" alt="" />
+          </GalleryListItem>
+          <GalleryListItem>
+            <img src="https://placehold.jp/640x360.png" alt="" />
+          </GalleryListItem>
+          <GalleryListItem>
+            <img src="https://placehold.jp/640x360.png" alt="" />
+          </GalleryListItem>
+          <GalleryMore>
+            <a href="#">View More...</a>
+          </GalleryMore>
+        </GalleryArea>
+      </Section>
     </>
   )
 }
+
+const Section = styled.section`
+  margin-top: 84px;
+`
 
 const TitleArea = styled.div`
   margin-left: auto;
@@ -67,7 +68,7 @@ const GalleryListItem = styled.li`
   max-width: 480px;
 `
 const GalleryMore = styled.div`
-  margin-top: 16px;
+  margin-top: 24px;
   margin-left: auto;
   margin-right: auto;
   max-width: 480px;
@@ -76,6 +77,5 @@ const GalleryMore = styled.div`
   &:hover,
   &:focus {
     color: #2e444eb9;
-    font-size: 14px;
   }
 `
