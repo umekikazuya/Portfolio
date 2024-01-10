@@ -7,7 +7,10 @@ export default function Notebook(): JSX.Element {
       <Section>
         <TitleArea>
           <TitleLogo>
-            <BsBook size={74} color={'#2e444e'} />
+            <BsBook
+              size={64}
+              color={'#2e444e'} 
+            />
           </TitleLogo>
           <TitleText>自由帳</TitleText>
         </TitleArea>
@@ -43,6 +46,7 @@ const TitleArea = styled.div`
 const TitleLogo = styled.div`
   margin-left: auto;
   margin-right: auto;
+  max-width: 64px;
   text-align: center;
 `
 
@@ -51,10 +55,9 @@ const TitleText = styled.div`
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
 `
-
 const GalleryArea = styled.ul`
   margin-top: 84px;
   margin-left: auto;
