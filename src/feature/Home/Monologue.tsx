@@ -1,5 +1,5 @@
-import { BsBook } from "react-icons/bs";
-import styled from "styled-components";
+import { FaRegPenToSquare } from 'react-icons/fa6'
+import styled from 'styled-components'
 
 export default function Monologue(): JSX.Element {
   return (
@@ -7,38 +7,37 @@ export default function Monologue(): JSX.Element {
       <section>
         <TitleArea>
           <TitleLogo>
-            <BsBook
-              size={64}
-              color={"#2e444e"}
-            />
+            <FaRegPenToSquare size={56} color={'#2e444e'} />
           </TitleLogo>
           <TitleText>ひとりごと</TitleText>
         </TitleArea>
         <GalleryArea>
           <GalleryListItem>
             <Link>
-              <Text>ダミーテキスト。ダミーテキスト。</Text>
-              <Time dateTime="">2024/01/01</Time>
+              <Text>
+                雨に濡れそうでフードを被って通勤したんだけど、エントロピーの増大もいいことあるなって...
+              </Text>
+              <Time dateTime="">2024/01/10</Time>
             </Link>
           </GalleryListItem>
-            <GalleryListItem>
-          <Link>
-            <Text>dummy text. dummy text. dummy text. dummy text.</Text>
-              <Time dateTime="">2024/01/01</Time>
-          </Link>
-            </GalleryListItem>
-            <GalleryListItem>
-          <Link>
-            <Text>dummy text. dummy text. dummy text. dummy text.</Text>
-              <Time dateTime="">2024/01/01</Time>
-          </Link>
-            </GalleryListItem>
-          <GalleryMore>
-            <a href="#">
-              View More...
-            </a>
-          </GalleryMore>
+          <GalleryListItem>
+            <Link>
+              <Text>
+                昔バイトの後輩が言ってたんだけど、やっぱり冬のBacknumberっていいよね。
+              </Text>
+              <Time dateTime="">2024/01/08</Time>
+            </Link>
+          </GalleryListItem>
+          <GalleryListItem>
+            <Link>
+              <Text>今年は読書をちょこちょこします。</Text>
+              <Time dateTime="">2024/01/07</Time>
+            </Link>
+          </GalleryListItem>
         </GalleryArea>
+        <GalleryMore>
+          <a href="#">View More...</a>
+        </GalleryMore>
       </section>
     </>
   )
@@ -53,7 +52,7 @@ const TitleArea = styled.div`
 const TitleLogo = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: 64px;
+  max-width: 56px;
   text-align: center;
 `
 
@@ -76,7 +75,7 @@ const GalleryListItem = styled.li`
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 480px;
+  max-width: 600px;
   &:first-of-type {
     margin-top: 0;
   }
@@ -88,22 +87,21 @@ const Link = styled.a`
   align-items: flex-end;
 `
 
-
 const Text = styled.span`
-  
+  font-size: 13px;
 `
 
 const Time = styled.time`
+  padding-left: 8px;
   color: #2e444eb9;
   font-size: 12px;
 `
-
 
 const GalleryMore = styled.div`
   margin-top: 24px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 480px;
+  max-width: 600px;
   text-align: right;
   font-size: 12px;
   &:hover,
