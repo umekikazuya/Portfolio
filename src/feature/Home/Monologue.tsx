@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export default function Monologue(): JSX.Element {
   return (
     <>
-      <section>
+      <Section>
         <TitleArea>
           <TitleLogo>
             <FaRegPenToSquare size={56} color={'#2e444e'} />
@@ -38,10 +38,14 @@ export default function Monologue(): JSX.Element {
         <GalleryMore>
           <a href="#">View More...</a>
         </GalleryMore>
-      </section>
+      </Section>
     </>
   )
 }
+
+const Section = styled.section`
+  margin-top: 84px;
+`
 
 const TitleArea = styled.div`
   margin-left: auto;
