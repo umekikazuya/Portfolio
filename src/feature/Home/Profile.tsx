@@ -1,6 +1,7 @@
 import { FaDrupal } from 'react-icons/fa6'
 import { FaRegUser } from 'react-icons/fa6'
 import { FaLink } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export default function Profile(): JSX.Element {
@@ -21,28 +22,28 @@ export default function Profile(): JSX.Element {
         </ProfileText>
         <GalleryArea>
           <GalleryListItem>
-            <Link href="#">
+            <StyledLink to="/profile">
               <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Profile</LinkText>
-            </Link>
+              <StyledLinkText>Profile</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
-            <Link href="#">
+            <StyledLink to="https://github.com/kazuya-u">
               <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Github</LinkText>
-            </Link>
+              <StyledLinkText>Github</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
-            <Link href="#">
+            <StyledLink to="https://zenn.dev/kazu_u">
               <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Zenn</LinkText>
-            </Link>
+              <StyledLinkText>Zenn</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
-            <Link href="#">
+            <StyledLink to="https://qiita.com/umekikazuya">
               <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Qiita</LinkText>
-            </Link>
+              <StyledLinkText>Qiita</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
         </GalleryArea>
       </section>
@@ -106,7 +107,7 @@ const GalleryListItem = styled.li`
   }
 `
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -119,6 +120,6 @@ const Link = styled.a`
   }
 `
 
-const LinkText = styled.span`
+const StyledLinkText = styled.span`
   padding-left: 8px;
 `

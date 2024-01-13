@@ -4,7 +4,7 @@ export default function Footer(): JSX.Element {
   return (
     <>
       <FooterArea>
-        <Copylight>@copy japankazuya</Copylight>
+        <Copylight>Copyright じゃぱかず. All Rights Reserved.</Copylight>
       </FooterArea>
     </>
   )
@@ -19,4 +19,5 @@ const FooterArea = styled.div`
 const Copylight = styled.small`
   line-height: 48px;
   color: #fff;
+  font-size: 8px;
 `
