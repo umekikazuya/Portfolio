@@ -88,7 +88,7 @@ const GalleryListItem = styled.li`
 const Link = styled.a`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 `
 
 const Text = styled.span`
@@ -96,7 +96,7 @@ const Text = styled.span`
 `
 
 const Time = styled.time`
-  padding-left: 8px;
+  padding-left: 24px;
   color: #2e444eb9;
   font-size: 12px;
 `

@@ -1,6 +1,10 @@
 import { FaDrupal } from 'react-icons/fa6'
+import { FaGithub } from "react-icons/fa6";
 import { FaRegUser } from 'react-icons/fa6'
 import { FaLink } from 'react-icons/fa6'
+import { SiQiita } from "react-icons/si";
+import { SiZenn } from "react-icons/si"
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export default function Profile(): JSX.Element {
@@ -14,35 +18,37 @@ export default function Profile(): JSX.Element {
           <TitleText>Profile</TitleText>
         </TitleArea>
         <ProfileText>
-          <span>My name is JapanKazuya. I do Drupal Engineering.</span>
-          <ProfileIcon>
-            <FaDrupal size={16} />
-          </ProfileIcon>
+          <span>
+            My name is JapanKazuya. I do Drupal Engineering.
+            <ProfileIcon>
+              <FaDrupal size={16} />
+            </ProfileIcon>
+          </span>
         </ProfileText>
         <GalleryArea>
           <GalleryListItem>
-            <Link href="#">
+            <StyledLink to="/profile">
               <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Profile</LinkText>
-            </Link>
+              <StyledLinkText>Profile</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
-            <Link href="#">
-              <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Github</LinkText>
-            </Link>
+            <StyledLink to="https://github.com/kazuya-u">
+              <FaGithub size={16} color={'#2e444e'} />
+              <StyledLinkText>Github</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
-            <Link href="#">
-              <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Zenn</LinkText>
-            </Link>
+            <StyledLink to="https://zenn.dev/kazu_u">
+              <SiZenn size={16} color={'#2e444e'} />
+              <StyledLinkText>Zenn</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
-            <Link href="#">
-              <FaLink size={16} color={'#2e444e'} />
-              <LinkText>Qiita</LinkText>
-            </Link>
+            <StyledLink to="https://qiita.com/umekikazuya">
+              <SiQiita size={16} color={'#2e444e'} />
+              <StyledLinkText>Qiita</StyledLinkText>
+            </StyledLink>
           </GalleryListItem>
         </GalleryArea>
       </section>
@@ -106,7 +112,7 @@ const GalleryListItem = styled.li`
   }
 `
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -119,6 +125,6 @@ const Link = styled.a`
   }
 `
 
-const LinkText = styled.span`
+const StyledLinkText = styled.span`
   padding-left: 8px;
 `

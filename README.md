@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# My Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project will serve as my personal portfolio of Drupal developer skills, projects, and experiences, as well as an introduction to my private life.
 
-Currently, two official plugins are available:
+## Public Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Link to Portfolio](#)
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Frontend Stack
 
-- Configure the top-level `parserOptions` property like this:
+- React
+- TypeScript
+- ReactRouter
+- Styled-components
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Backend Stack
+
+- [Drupal](https://www.drupal.org/)
+
+## Getting Started
+
+### 001. Clone the repository
+
+```shell
+git clone https://github.com/kazuya-u/Portfolio.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 002. Install dependencies.
+
+```shell
+npm install
+```
+
+### 003. Start the development server.
+
+```shell
+npm run dev
+```
+
+## Project Structure
+
+- `src/`: Main source code folder
+  - `components/`: React component. For example, layout, button, and card-item, etc...
+  - `pages/`: Each page.
+  - `routes/`: About Routing with ReactRouter.
+  - `feature/`: Source code for each function.
+- `public/`: Static assets
+
+## License
+
+In preparation...

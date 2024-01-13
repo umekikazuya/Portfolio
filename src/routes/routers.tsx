@@ -4,6 +4,7 @@ import App from '@/App'
 import Error from '@/pages/Error'
 import Home from '@/pages/Home'
 import News from '@/pages/News'
+import Profile from '@/pages/Profile'
 
 const routers: Router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const routers: Router = createBrowserRouter([
       {
         path: 'news',
         element: <News />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
       },
     ],
   },
