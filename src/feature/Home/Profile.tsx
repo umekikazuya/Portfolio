@@ -1,6 +1,9 @@
 import { FaDrupal } from 'react-icons/fa6'
+import { FaGithub } from "react-icons/fa6";
 import { FaRegUser } from 'react-icons/fa6'
 import { FaLink } from 'react-icons/fa6'
+import { SiQiita } from "react-icons/si";
+import { SiZenn } from "react-icons/si"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -15,10 +18,12 @@ export default function Profile(): JSX.Element {
           <TitleText>Profile</TitleText>
         </TitleArea>
         <ProfileText>
-          <span>My name is JapanKazuya. I do Drupal Engineering.</span>
-          <ProfileIcon>
-            <FaDrupal size={16} />
-          </ProfileIcon>
+          <span>
+            My name is JapanKazuya. I do Drupal Engineering.
+            <ProfileIcon>
+              <FaDrupal size={16} />
+            </ProfileIcon>
+          </span>
         </ProfileText>
         <GalleryArea>
           <GalleryListItem>
@@ -29,19 +34,19 @@ export default function Profile(): JSX.Element {
           </GalleryListItem>
           <GalleryListItem>
             <StyledLink to="https://github.com/kazuya-u">
-              <FaLink size={16} color={'#2e444e'} />
+              <FaGithub size={16} color={'#2e444e'} />
               <StyledLinkText>Github</StyledLinkText>
             </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
             <StyledLink to="https://zenn.dev/kazu_u">
-              <FaLink size={16} color={'#2e444e'} />
+              <SiZenn size={16} color={'#2e444e'} />
               <StyledLinkText>Zenn</StyledLinkText>
             </StyledLink>
           </GalleryListItem>
           <GalleryListItem>
             <StyledLink to="https://qiita.com/umekikazuya">
-              <FaLink size={16} color={'#2e444e'} />
+              <SiQiita size={16} color={'#2e444e'} />
               <StyledLinkText>Qiita</StyledLinkText>
             </StyledLink>
           </GalleryListItem>
