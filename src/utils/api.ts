@@ -3,7 +3,6 @@ export async function fetchData<T>(url: string): Promise<T | null> {
 
   const headers = {
     'Content-Type': 'application/json',
-    'Accept': 'application/vnd.api+json',
   };
 
   try {
