@@ -1,7 +1,11 @@
 import styled from 'styled-components'
-import { NodeData } from './List'
+import { NodeData } from './Index'
 
-export default function ListItem({ data }: NodeData): JSX.Element {
+interface ListItemProps {
+  data: NodeData
+}
+
+export default function ListItem({ data }: ListItemProps): JSX.Element {
   return (
     <>
       <Link>

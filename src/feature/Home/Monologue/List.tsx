@@ -1,48 +1,16 @@
-import { fetchData } from '@/utils/api'
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import ListItem from './ListItem'
+import { NodeData } from './Index'
 
-interface NodesData {
-  data: Array<NodeData>
+interface ListProps {
+  Data: Array<NodeData>
 }
 
-export type NodeData = {
-  attributes: {
-    created: string | null
-    field_body: string | null
-    title: string | null
-  }
-  id: string
-}
-
-export default function List(): JSX.Element {
-  // Set useState.
-  const [nodes, setNodes] = useState<NodesData | null>(null)
-
-  // User's Endpoint.
-  const ENDPOINT_MONOLOGUE_LIST = `${
-    import.meta.env.VITE_DRUPAL_API
-  }/jsonapi/node/monologue`
-
-  // Fetch.
-  useEffect(() => {
-    fetchData<NodesData>(ENDPOINT_MONOLOGUE_LIST)
-      .then((data) => {
-        setNodes(data)
-      })
-      .catch(() => {
-        // No script.
-      })
-  }, [])
-
-  // No render when is loading.
-  if (!nodes) return <></>
-
+export default function List({ Data }: ListProps): JSX.Element {
   return (
     <>
       <StyledList>
-        {nodes.data.map((node) => (
+        {Data.map((node) => (
           <ListItem key={node.id} data={node} />
         ))}
       </StyledList>
