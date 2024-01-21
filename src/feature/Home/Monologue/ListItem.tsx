@@ -7,12 +7,10 @@ interface ListItemProps {
 
 export default function ListItem({ data }: ListItemProps): JSX.Element {
   return (
-    <>
-      <Link>
-        <Text>{data.attributes.title}</Text>
-        <Time dateTime="">{data.attributes.created}</Time>
-      </Link>
-    </>
+    <Link>
+      <Text>{data.attributes.title}</Text>
+      <Time dateTime="">{data.attributes.created}</Time>
+    </Link>
   )
 }
 

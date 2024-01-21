@@ -44,12 +44,10 @@ export default function Index(): JSX.Element {
   if (!nodes) return <></>
 
   return (
-    <>
-      <Section>
-        <SectionTitle Icon={TitleIcon} Text="ひとりごと" />
-        <List Data={nodes.data} />
-      </Section>
-    </>
+    <Section>
+      <SectionTitle Icon={TitleIcon} Text="ひとりごと" />
+      <List Data={nodes.data} />
+    </Section>
   )
 }
 
