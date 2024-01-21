@@ -1,4 +1,4 @@
-import Monologue from "./Monologue";
+import Monologue from "./Monologue/Index";
 import Notebook from "./Notebook";
 import Profile from "./Profile/Index";
 

@@ -1,6 +1,6 @@
 import { FaRegUser } from 'react-icons/fa6'
 import { fetchData } from '@/utils/api'
-import { PageTitle } from '@/components/Parts/Title'
+import { SectionTitle } from '@/components/Parts/Title'
 import { useEffect, useState } from 'react'
 import Links from './Links'
 import Introduction from './Introduction'
@@ -44,7 +44,7 @@ export default function Index(): JSX.Element {
   return (
     <>
       <section>
-        <PageTitle Icon={TitleIcon} Text="Profile" />
+        <SectionTitle Icon={TitleIcon} Text='Profile' />
         <Introduction Text={user?.data.attributes.field_summary_introduction} />
         <Links
           Github={user?.data.attributes.field_github}

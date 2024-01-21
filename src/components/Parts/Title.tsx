@@ -1,12 +1,12 @@
 import { IconType } from 'react-icons'
 import styled from 'styled-components'
 
-interface PageTitleProps {
+interface SectionTitleProps {
   Icon: IconType
   Text: string
 }
 
-export function PageTitle({ Icon, Text }: PageTitleProps): JSX.Element {
+export function SectionTitle({ Icon, Text }: SectionTitleProps): JSX.Element {
   return (
     <>
       <TitleArea>
