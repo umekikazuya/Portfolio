@@ -46,7 +46,7 @@ export default function Index(): JSX.Element {
   // User's Endpoint.
   const ENDPOINT_NOTEBOOK_LIST = `${
     import.meta.env.VITE_DRUPAL_API
-  }/jsonapi/node/notebook/?include=field_image`
+  }/jsonapi/node/notebook/?include=field_image&sort[sort-created][path]=created&sort[sort-created][direction]=DESC`
 
   // Fetch.
   useEffect(() => {
