@@ -12,7 +12,7 @@ export default function Introduction({ Text }: IntroductionProps): JSX.Element {
     <>
       <ProfileText>
         <span>
-          {Text ? Text : 'Loading...'}
+          {Text}
           <ProfileIcon>
             <FaDrupal size={16} />
           </ProfileIcon>
