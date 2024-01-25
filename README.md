@@ -46,6 +46,7 @@ npm run dev
   - `pages/`: Each page.
   - `routes/`: About Routing with ReactRouter.
   - `feature/`: Source code for each function.
+  - `assets/`: Assets.
 - `public/`: Static assets
 
 ## License
