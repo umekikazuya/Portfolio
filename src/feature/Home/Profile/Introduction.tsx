@@ -1,11 +1,11 @@
-import { FaDrupal } from 'react-icons/fa6'
-import styled from 'styled-components'
+import {FaDrupal} from 'react-icons/fa6';
+import styled from 'styled-components';
 
 interface IntroductionProps {
-  Text: string | undefined
+  Text: string | undefined;
 }
 
-export default function Introduction({ Text }: IntroductionProps): JSX.Element {
+export default function Introduction({Text}: IntroductionProps): JSX.Element {
   if (!Text) return <></>;
 
   return (
@@ -19,7 +19,7 @@ export default function Introduction({ Text }: IntroductionProps): JSX.Element {
         </span>
       </ProfileText>
     </>
-  )
+  );
 }
 
 const ProfileText = styled.div`
@@ -28,8 +28,8 @@ const ProfileText = styled.div`
   justify-content: center;
   align-content: center;
   text-align: center;
-`
+`;
 
 const ProfileIcon = styled.span`
   padding-left: 8px;
-`
+`;

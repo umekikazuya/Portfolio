@@ -1,13 +1,13 @@
-import styled from 'styled-components'
-import ListItem from './ListItem'
-import { NodeNoteBookData } from './Index'
+import styled from 'styled-components';
+import ListItem from './ListItem';
+import {NodeNoteBookData} from './Index';
 
 interface ListProps {
-  Data: Array<NodeNoteBookData>
-  FileData: Record<string, string>
+  Data: Array<NodeNoteBookData>;
+  FileData: Record<string, string>;
 }
 
-export default function List({ Data, FileData }: ListProps): JSX.Element {
+export default function List({Data, FileData}: ListProps): JSX.Element {
   return (
     <>
       <StyledList>
@@ -23,7 +23,7 @@ export default function List({ Data, FileData }: ListProps): JSX.Element {
         <a href="#">View More...</a>
       </MoreLink>
     </>
-  )
+  );
 }
 
 const StyledList = styled.ul`
@@ -38,7 +38,7 @@ const StyledList = styled.ul`
   @media (min-width: 768px) {
     /* columns: 3; */
   }
-`
+`;
 
 const MoreLink = styled.div`
   margin-top: 24px;
@@ -52,4 +52,4 @@ const MoreLink = styled.div`
   &:focus {
     color: #2e444eb9;
   }
-`
+`;

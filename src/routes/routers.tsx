@@ -1,10 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom'
-import { Router } from '@remix-run/router'
-import App from '@/App'
-import Error from '@/pages/Error'
-import Home from '@/pages/Home'
-import News from '@/pages/News'
-import Profile from '@/pages/Profile'
+import {createBrowserRouter} from 'react-router-dom';
+import {Router} from '@remix-run/router';
+import App from '@/App';
+import Error from '@/pages/Error';
+import Home from '@/pages/Home';
+import News from '@/pages/News';
+import Profile from '@/pages/Profile';
 
 const routers: Router = createBrowserRouter([
   {
@@ -26,6 +26,6 @@ const routers: Router = createBrowserRouter([
       },
     ],
   },
-])
+]);
 
-export default routers
+export default routers;

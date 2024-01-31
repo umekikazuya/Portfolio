@@ -101,7 +101,12 @@ code {
   padding: 0px 0.1em;
 }
 
-audio, canvas, iframe, img, svg, video {
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
   vertical-align: middle;
 }
 
