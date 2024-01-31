@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface ListItemProps {
   Text: string | null;
-  FileSrc: string | null;
+  FileSrc: string | undefined;
 }
 
 interface FilterProps {
