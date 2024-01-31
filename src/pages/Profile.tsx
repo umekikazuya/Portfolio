@@ -1,5 +1,5 @@
-import Index from '@/feature/Profile/Index'
+import Index from '@/feature/Profile/Index';
 
 export default function Profile(): JSX.Element {
-  return <Index />
+  return <Index />;
 }

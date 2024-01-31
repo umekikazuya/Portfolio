@@ -1,32 +1,31 @@
-import { useState } from 'react'
-import styled from 'styled-components'
+import {useState} from 'react';
+import styled from 'styled-components';
 
 interface ListItemProps {
-  Text: string | null
-  FileSrc: string | null
+  Text: string | null;
+  FileSrc: string | undefined;
 }
 
 interface FilterProps {
-  isHovered: boolean
+  isHovered: boolean;
 }
 
-export default function ListItem({
-  Text,
-  FileSrc,
-}: ListItemProps): JSX.Element {
+export default function ListItem({Text, FileSrc}: ListItemProps): JSX.Element {
   // Set useState.
-  const [isHover, setIsHover] = useState<boolean>(false)
-  const srcPath = `${import.meta.env.VITE_DRUPAL_API}/${FileSrc}`
+  const [isHover, setIsHover] = useState<boolean>(false);
+  const srcPath = `${import.meta.env.VITE_DRUPAL_API}/${FileSrc}`;
 
   return (
     <StyledListItem
       onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
-      <img src={srcPath} alt="" />
+      onMouseLeave={() => setIsHover(false)}>
+      <img
+        src={srcPath}
+        alt=""
+      />
       <Filter isHovered={isHover}>{Text}</Filter>
     </StyledListItem>
-  )
+  );
 }
 
 const StyledListItem = styled.li`
@@ -41,7 +40,7 @@ const StyledListItem = styled.li`
   &:first-of-type {
     margin-top: 0;
   }
-`
+`;
 const Filter = styled.div<FilterProps>`
   position: absolute;
   z-index: 1;
@@ -56,4 +55,4 @@ const Filter = styled.div<FilterProps>`
   color: #f2f2f2;
   opacity: ${(props) => (props.isHovered ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
-`
+`;

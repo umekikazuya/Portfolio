@@ -1,7 +1,7 @@
-import { Analytics } from '@vercel/analytics/react'
-import MainLayout from './components/Layout/MainLayout'
-import './index.css'
-import { Outlet } from 'react-router'
+import {Analytics} from '@vercel/analytics/react';
+import MainLayout from './components/Layout/MainLayout';
+import './index.css';
+import {Outlet} from 'react-router';
 
 export default function Index() {
   return (
@@ -11,5 +11,5 @@ export default function Index() {
       </MainLayout>
       <Analytics />
     </>
-  )
+  );
 }

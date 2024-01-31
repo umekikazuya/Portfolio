@@ -1,31 +1,34 @@
-import styled from 'styled-components'
-import ListItem from './ListItem'
-import { NodeData } from './Index'
+import styled from 'styled-components';
+import ListItem from './ListItem';
+import {NodeData} from './Index';
 
 interface ListProps {
-  Data: Array<NodeData>
+  Data: Array<NodeData>;
 }
 
-export default function List({ Data }: ListProps): JSX.Element {
+export default function List({Data}: ListProps): JSX.Element {
   return (
     <>
       <StyledList>
         {Data.map((node) => (
-          <ListItem key={node.id} data={node} />
+          <ListItem
+            key={node.id}
+            data={node}
+          />
         ))}
       </StyledList>
       <MoreLink>
         <a href="#">View More...</a>
       </MoreLink>
     </>
-  )
+  );
 }
 
 const StyledList = styled.ul`
   margin-top: 64px;
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
 const MoreLink = styled.div`
   margin-top: 24px;
@@ -38,4 +41,4 @@ const MoreLink = styled.div`
   &:focus {
     color: #2e444eb9;
   }
-`
+`;
