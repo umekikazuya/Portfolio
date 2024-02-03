@@ -28,7 +28,7 @@ export default function Index(): JSX.Element {
   // User's Endpoint.
   const ENDPOINT_MONOLOGUE_LIST = `${
     import.meta.env.VITE_DRUPAL_API
-  }/jsonapi/node/monologue`;
+  }/jsonapi/node/monologue?sort[sort-created][path]=created&sort[sort-created][direction]=DESC`;
 
   // Fetch.
   useEffect(() => {
