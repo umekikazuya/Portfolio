@@ -6,10 +6,6 @@ interface ListItemProps {
   FileSrc: string | undefined;
 }
 
-interface FilterProps {
-  isHovered: boolean;
-}
-
 export default function ListItem({Text, FileSrc}: ListItemProps): JSX.Element {
   // Set useState.
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -23,7 +19,7 @@ export default function ListItem({Text, FileSrc}: ListItemProps): JSX.Element {
         src={srcPath}
         alt=""
       />
-      <Filter isHovered={isHover}>{Text}</Filter>
+      <Filter ishovered={isHover}>{Text}</Filter>
     </StyledListItem>
   );
 }
@@ -41,7 +37,8 @@ const StyledListItem = styled.li`
     margin-top: 0;
   }
 `;
-const Filter = styled.div<FilterProps>`
+
+const Filter = styled.div<{ ishovered ?: boolean; }>`
   position: absolute;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
@@ -53,6 +50,6 @@ const Filter = styled.div<FilterProps>`
   align-items: center;
   justify-content: center;
   color: #f2f2f2;
-  opacity: ${(props) => (props.isHovered ? 1 : 0)};
+  opacity: ${(props) => ((props.ishovered) ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
 `;
