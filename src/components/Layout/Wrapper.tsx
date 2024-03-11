@@ -20,7 +20,6 @@ export default function Wrapper({children}: WrapperProps): JSX.Element {
 
 const App = styled.div`
   position: relative;
-  overflow-x: hidden;
   padding: 32px;
 `;
 
@@ -32,18 +31,22 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  padding: 48px 100px;
+  padding: 48px 24px;
   box-shadow: 0 2px 4px #7a7a7a;
+  background-color: rgb(255, 255, 255, 10%);
+  backdrop-filter: blur(10px);
 
   @media (min-width: 992px) {
-    // No script.
+    padding: 48px 100px;
+    background-color: transparent;
+    backdrop-filter: unset;
   }
 `;
 
 const Circle = styled.div`
-  position: absolute;
+  position: fixed;
   left: -20%;
-  bottom: -60%;
+  top: 60%;
   background-image: linear-gradient(#F2E0FF, #EFDEFB, #F2F2F2);
   border-radius: 50%;
   width: 560px;
@@ -51,11 +54,11 @@ const Circle = styled.div`
 `;
 
 const Circle02 = styled.div`
-  position: absolute;
+  position: fixed;
   right: -10%;
   top: -20%;
   background-image: linear-gradient(#FAE5AF, #F9E8BD, #F6F2E7);
   border-radius: 50%;
-  width: 560px;
-  height: 560px;
+  width: 480px;
+  height: 480px;
 `;

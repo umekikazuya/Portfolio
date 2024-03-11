@@ -22,6 +22,7 @@ body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  height: 100%;
   cursor: default;
   color: #2e444e;
   line-height: 1.6;
@@ -119,4 +120,5 @@ img {
 #root {
   position: relative;
   overflow: auto;
+  height: 100%;
 }

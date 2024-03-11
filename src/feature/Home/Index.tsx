@@ -27,19 +27,32 @@ export default function Index(): JSX.Element {
           </Item>
           <Item>
             <ItemLabel>
+              From
+            </ItemLabel>
+            <ItemText>Fukuoka, Japan.</ItemText>
+          </Item>
+          <Item>
+            <ItemLabel>
               Skill
             </ItemLabel>
             <ItemValues>
               <ItemValue>PHP</ItemValue>
               <ItemValue>Drupal</ItemValue>
+              <ItemValue>Symfony</ItemValue>
               <ItemValue>JavaScript</ItemValue>
+              <ItemValue>TypeScript</ItemValue>
+              <ItemValue>React</ItemValue>
+              <ItemValue>Vite</ItemValue>
             </ItemValues>
           </Item>
           <Item>
             <ItemLabel>
-              Likes
+              Like
             </ItemLabel>
-            <ItemText>Okayama, Japan.</ItemText>
+            <ItemValues>
+              <ItemValue>Fruite Zipper</ItemValue>
+              <ItemValue>Coffee</ItemValue>
+            </ItemValues>
           </Item>
         </Profile>
         <ComingSoon>
@@ -64,6 +77,7 @@ const Profile = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+  max-width: 270px;
 `;
 
 const ComingSoon = styled.div`
@@ -76,7 +90,8 @@ const ComingSoon = styled.div`
   background-color: rgba(255, 255, 255, 10%);
   border-radius: 100px;
   box-shadow: 0px 1px 4px 1px#B8B8B8;
-  backdrop-filter: blur(40px);  
+  backdrop-filter: blur(8px);
+  
   @media (min-width: 992px) {
     display: flex;
   }
@@ -103,10 +118,10 @@ const Name = styled.div`
 `;
 
 const NameEn = styled.div`
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 500;
   color: #868C9B;
-  text-shadow: 0 2px 4px #B8B8B8;
+  text-shadow: 0 4px 4px #B8B8B8;
 `;
 
 const NameJa = styled.div`

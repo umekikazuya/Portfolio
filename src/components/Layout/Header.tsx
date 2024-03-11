@@ -7,15 +7,15 @@ type NavLink = {
 
 const NavLinks: NavLink[] = [
   {
-    title: 'Works',
+    title: 'Works（準備中）',
     href: '#',
   },
   {
-    title: 'Profile',
+    title: 'Profile（準備中）',
     href: '#',
   },
   {
-    title: 'TechBlog',
+    title: 'TechBlog（準備中）',
     href: '#',
   }
 ];
@@ -36,13 +36,17 @@ export default function Header() {
 
 const Nav = styled.nav`
   margin-left: auto;
-  display: flex;
+  display: none;
   column-gap: 24px;
+  
+  @media (min-width: 992px) {
+    display: flex;
+  }
 `;
 
 const Link = styled.a`
-  color: #868C9B;
   font-size: 16px;
-  font-weight: 600;
-  text-shadow: 0 1px 2px #9CA1AD;
+  /* font-weight: 600; */
+  color: #868C9B;
+  text-shadow: 0 4px 4px #B8B8B8;
 `;
