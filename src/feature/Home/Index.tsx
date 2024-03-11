@@ -1,7 +1,3 @@
-// import Monologue from './Monologue/Index';
-// import Notebook from './Notebook/Index';
-// import Profile from './Profile/Index';
-
 import {fetchData} from '@/utils/api';
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
@@ -210,22 +206,4 @@ const ItemValue = styled.div`
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 50%);
   backdrop-filter: blur(10px);
   color: #868c9b;
-`;
-
-const ItemLinks = styled.div`
-  display: flex;
-  column-gap: 8px;
-  padding: 0 20px;
-`;
-
-const Link = styled.a`
-  display: flex;
-  column-gap: 8px;
-  padding: 0 20px;
-`;
-
-const Logo = styled.img`
-  width: 12px;
-  height: auto;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 50%);
 `;
