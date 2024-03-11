@@ -14,27 +14,19 @@ export default function Index(): JSX.Element {
             <NameJa>うめきかずや</NameJa>
           </Name>
           <Item>
-            <ItemLabel>
-              Job
-            </ItemLabel>
+            <ItemLabel>Job</ItemLabel>
             <ItemText>Web Creator</ItemText>
           </Item>
           <Item>
-            <ItemLabel>
-              Address
-            </ItemLabel>
+            <ItemLabel>Address</ItemLabel>
             <ItemText>Okayama, Japan.</ItemText>
           </Item>
           <Item>
-            <ItemLabel>
-              From
-            </ItemLabel>
+            <ItemLabel>From</ItemLabel>
             <ItemText>Fukuoka, Japan.</ItemText>
           </Item>
           <Item>
-            <ItemLabel>
-              Skill
-            </ItemLabel>
+            <ItemLabel>Skill</ItemLabel>
             <ItemValues>
               <ItemValue>PHP</ItemValue>
               <ItemValue>Drupal</ItemValue>
@@ -46,9 +38,7 @@ export default function Index(): JSX.Element {
             </ItemValues>
           </Item>
           <Item>
-            <ItemLabel>
-              Like
-            </ItemLabel>
+            <ItemLabel>Like</ItemLabel>
             <ItemValues>
               <ItemValue>Fruite Zipper</ItemValue>
               <ItemValue>Coffee</ItemValue>
@@ -91,7 +81,7 @@ const ComingSoon = styled.div`
   border-radius: 100px;
   box-shadow: 0px 1px 4px 1px#B8B8B8;
   backdrop-filter: blur(8px);
-  
+
   @media (min-width: 992px) {
     display: flex;
   }
@@ -120,14 +110,14 @@ const Name = styled.div`
 const NameEn = styled.div`
   font-size: 28px;
   font-weight: 500;
-  color: #868C9B;
-  text-shadow: 0 4px 4px #B8B8B8;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
 `;
 
 const NameJa = styled.div`
   font-size: 16px;
-  color: #868C9B;
-  text-shadow: 0 4px 4px #B8B8B8;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
 `;
 
 const Item = styled.div`
@@ -139,15 +129,15 @@ const Item = styled.div`
 const ItemLabel = styled.div`
   font-size: 20px;
   font-weight: 600;
-  color: #868C9B;
-  text-shadow: 0 4px 4px #B8B8B8;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
 `;
 
 const ItemText = styled.div`
   padding-left: 8px;
   font-size: 16px;
-  color: #868C9B;
-  text-shadow: 0 4px 4px #B8B8B8;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
 `;
 
 const ItemValues = styled.div`
@@ -165,5 +155,5 @@ const ItemValue = styled.div`
   background-color: rgba(255, 255, 255, 30%);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 50%);
   backdrop-filter: blur(10px);
-  color: #868C9B;
+  color: #868c9b;
 `;

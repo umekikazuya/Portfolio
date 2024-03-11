@@ -38,7 +38,7 @@ const StyledListItem = styled.li`
   }
 `;
 
-const Filter = styled.div<{ ishovered ?: boolean; }>`
+const Filter = styled.div<{ishovered?: boolean}>`
   position: absolute;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
@@ -50,6 +50,6 @@ const Filter = styled.div<{ ishovered ?: boolean; }>`
   align-items: center;
   justify-content: center;
   color: #f2f2f2;
-  opacity: ${(props) => ((props.ishovered) ? 1 : 0)};
+  opacity: ${(props) => (props.ishovered ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
 `;

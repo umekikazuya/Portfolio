@@ -47,7 +47,7 @@ const Circle = styled.div`
   position: fixed;
   left: -20%;
   top: 60%;
-  background-image: linear-gradient(#F2E0FF, #EFDEFB, #F2F2F2);
+  background-image: linear-gradient(#f2e0ff, #efdefb, #f2f2f2);
   border-radius: 50%;
   width: 560px;
   height: 560px;
@@ -57,7 +57,7 @@ const Circle02 = styled.div`
   position: fixed;
   right: -10%;
   top: -20%;
-  background-image: linear-gradient(#FAE5AF, #F9E8BD, #F6F2E7);
+  background-image: linear-gradient(#fae5af, #f9e8bd, #f6f2e7);
   border-radius: 50%;
   width: 480px;
   height: 480px;
