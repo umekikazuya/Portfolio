@@ -1,16 +1,22 @@
-import {fetchData} from '@/utils/api';
-import {useEffect, useState} from 'react';
+import { fetchData } from '@/utils/api';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface UserData {
   data: {
     attributes: {
-      field_display_name: string | undefined;
-      field_github: string | undefined;
-      field_introduction: string | undefined;
-      field_qiita: string | undefined;
-      field_summary_introduction: string | undefined;
-      field_zenn: string | undefined;
+      field_address: string | null;
+      field_display_name: string | null;
+      field_display_short_name: string | null;
+      field_from: string | null;
+      field_github: string | null;
+      field_introduction: string | null;
+      field_job: string | null;
+      field_like: Array<string>;
+      field_qiita: string | null;
+      field_skill: Array<string>;
+      field_summary_introduction: string | null;
+      field_zenn: string | null;
     };
   };
 }
@@ -20,9 +26,8 @@ export default function Index(): JSX.Element {
   const [user, setUser] = useState<UserData | null>(null);
 
   // User's Endpoint.
-  const ENDPOINT_USERDATA = `${
-    import.meta.env.VITE_DRUPAL_API
-  }/jsonapi/user/user/${import.meta.env.VITE_DRUPAL_USER_UUID}`;
+  const ENDPOINT_USERDATA = `${import.meta.env.VITE_DRUPAL_API
+    }/jsonapi/user/user/${import.meta.env.VITE_DRUPAL_USER_UUID}`;
 
   // Fetch.
   useEffect(() => {
@@ -41,59 +46,56 @@ export default function Index(): JSX.Element {
         <Profile>
           <Name>
             <NameEn>{user?.data.attributes.field_display_name}</NameEn>
-            <NameJa>うめきかずや</NameJa>
+            <NameJa>{user?.data.attributes.field_display_short_name}</NameJa>
           </Name>
-          <Item>
-            <ItemLabel>Job</ItemLabel>
-            <ItemText>Web Creator</ItemText>
-          </Item>
-          <Item>
-            <ItemLabel>Address</ItemLabel>
-            <ItemText>Okayama, Japan.</ItemText>
-          </Item>
-          <Item>
-            <ItemLabel>From</ItemLabel>
-            <ItemText>Fukuoka, Japan.</ItemText>
-          </Item>
-          <Item>
-            <ItemLabel>Skill</ItemLabel>
-            <ItemValues>
-              <ItemValue>PHP</ItemValue>
-              <ItemValue>Drupal</ItemValue>
-              <ItemValue>Symfony</ItemValue>
-              <ItemValue>JavaScript</ItemValue>
-              <ItemValue>TypeScript</ItemValue>
-              <ItemValue>React</ItemValue>
-              <ItemValue>Vite</ItemValue>
-            </ItemValues>
-          </Item>
-          <Item>
-            <ItemLabel>Like</ItemLabel>
-            <ItemValues>
-              <ItemValue>Fruite Zipper</ItemValue>
-              <ItemValue>Coffee</ItemValue>
-            </ItemValues>
-          </Item>
-          {/* <Item>
-            <ItemLabel>Contact</ItemLabel>
-            <ItemLinks>
-              {user?.data.attributes.field_github ? (
-                <Link href={user?.data.attributes.field_github}><Logo src="./src/assets/github.svg" alt="Github" /></Link>
-              ) : (
-                ''
-              )}
-              {user?.data.attributes.field_qiita ? (
-                <Link href={user?.data.attributes.field_qiita}><Logo src="./src/assets/github.svg" alt="Github" /></Link>
-              ) : (
-                ''
-              )}
-              {user?.data.attributes.field_zenn ? (
-                <Link href={user?.data.attributes.field_zenn}><Logo src="./src/assets/github.svg" alt="Github" /></Link>
-              ) : (
-                ''
-              )}
-            </ItemLinks>
-          </Item> */}
+          {user?.data.attributes.field_job ? (
+            <Item>
+              <ItemLabel>Job</ItemLabel>
+              <ItemText>{user?.data.attributes.field_job}</ItemText>
+            </Item>
+          ) : (
+            ''
+          )}
+          {user?.data.attributes.field_address ? (
+            <Item>
+              <ItemLabel>Address</ItemLabel>
+              <ItemText>{user?.data.attributes.field_address}</ItemText>
+            </Item>
+          ) : (
+            ''
+          )}
+          {user?.data.attributes.field_from ? (
+            <Item>
+              <ItemLabel>From</ItemLabel>
+              <ItemText>{user?.data.attributes.field_from}</ItemText>
+            </Item>
+          ) : (
+            ''
+          )}
+          {user?.data.attributes.field_skill?.length ? (
+            <Item>
+              <ItemLabel>Skill</ItemLabel>
+              <ItemValues>
+                {user?.data.attributes.field_skill.map((o, i) => (
+                  <ItemValue key={i}>{o}</ItemValue>
+                ))}
+              </ItemValues>
+            </Item>
+          ) : (
+            ''
+          )}
+          {user?.data.attributes.field_like?.length ? (
+            <Item>
+              <ItemLabel>Like</ItemLabel>
+              <ItemValues>
+                {user?.data.attributes.field_like.map((o, i) => (
+                  <ItemValue key={i}>{o}</ItemValue>
+                ))}
+              </ItemValues>
+            </Item>
+          ) : (
+            ''
+          )}
         </Profile>
         <ComingSoon>
           <CSHeading>Comming soon...</CSHeading>
