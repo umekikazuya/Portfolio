@@ -1,5 +1,5 @@
-import {fetchData} from '@/utils/api';
-import {useEffect, useState} from 'react';
+import { fetchData } from '@/utils/api';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface UserData {
@@ -14,7 +14,7 @@ interface UserData {
       field_job: string | null;
       field_like: Array<string>;
       field_qiita: string | null;
-      field_skill: [];
+      field_skill: Array<string>;
       field_summary_introduction: string | null;
       field_zenn: string | null;
     };
@@ -26,9 +26,8 @@ export default function Index(): JSX.Element {
   const [user, setUser] = useState<UserData | null>(null);
 
   // User's Endpoint.
-  const ENDPOINT_USERDATA = `${
-    import.meta.env.VITE_DRUPAL_API
-  }/jsonapi/user/user/${import.meta.env.VITE_DRUPAL_USER_UUID}`;
+  const ENDPOINT_USERDATA = `${import.meta.env.VITE_DRUPAL_API
+    }/jsonapi/user/user/${import.meta.env.VITE_DRUPAL_USER_UUID}`;
 
   // Fetch.
   useEffect(() => {
@@ -77,8 +76,8 @@ export default function Index(): JSX.Element {
             <Item>
               <ItemLabel>Skill</ItemLabel>
               <ItemValues>
-                {user?.data.attributes.field_skill.map((o) => (
-                  <ItemValue key={o}>{o}</ItemValue>
+                {user?.data.attributes.field_skill.map((o, i) => (
+                  <ItemValue key={i}>{o}</ItemValue>
                 ))}
               </ItemValues>
             </Item>
@@ -89,8 +88,8 @@ export default function Index(): JSX.Element {
             <Item>
               <ItemLabel>Like</ItemLabel>
               <ItemValues>
-                {user?.data.attributes.field_like.map((o) => (
-                  <ItemValue key="index">{o}</ItemValue>
+                {user?.data.attributes.field_like.map((o, i) => (
+                  <ItemValue key={i}>{o}</ItemValue>
                 ))}
               </ItemValues>
             </Item>
