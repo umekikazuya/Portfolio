@@ -44,6 +44,7 @@ export default function Index(): JSX.Element {
     <>
       <Container>
         <Profile>
+          <img src="/src/assets/profile.jpg" alt="" width={80} height={80} />
           <Name>
             <NameEn>{user?.data.attributes.field_display_name}</NameEn>
             <NameJa>{user?.data.attributes.field_display_short_name}</NameJa>
