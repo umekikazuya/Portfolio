@@ -1,0 +1,98 @@
+.container {
+  height: 100%;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  height: 100%;
+}
+
+.comingSoon {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  flex: auto;
+  background-color: rgba(255, 255, 255, 10%);
+  border-radius: 100px;
+  box-shadow: 0px 1px 4px 1px #B8B8B8;
+  backdrop-filter: blur(8px);
+}
+
+@media (min-width: 992px) {
+  .comingSoon {
+    display: flex;
+  }
+}
+
+.csHeading {
+  font-size: 30px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 100%);
+}
+
+.csBody {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 100%);
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.nameEn {
+  font-size: 28px;
+  font-weight: 500;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
+}
+
+.nameJa {
+  font-size: 16px;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.itemLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
+}
+
+.itemText {
+  padding-left: 8px;
+  font-size: 16px;
+  color: #868c9b;
+  text-shadow: 0 4px 4px #b8b8b8;
+}
+
+.itemValues {
+  padding-left: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 6px;
+  row-gap: 4px;
+}
+
+.itemValue {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 30%);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 50%);
+  backdrop-filter: blur(10px);
+  color: #868c9b;
+}
