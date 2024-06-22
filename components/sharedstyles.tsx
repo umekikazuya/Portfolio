@@ -11,6 +11,7 @@ const Container = styled.div`
   height: 100vh;
   min-height: 100vh;
 `;
+
 const Main = styled.main`
   padding: 5rem 0;
   flex: 1;
