@@ -1,3 +1,6 @@
+'use client';
+
+import { Analytics } from '@vercel/analytics/react';
 import '@/components/global.css';
 import Header from "@/components/layouts/header";
 import { Container, Main } from '@/components/sharedstyles';
@@ -25,6 +28,7 @@ export default function RootLayout({
             <MovingCircle color="#fae5af, #f9e8bd, #f6f2e7" /> */}
           </Main>
         </Container>
+        <Analytics mode={'production'} />;
       </body>
     </html>
   );
