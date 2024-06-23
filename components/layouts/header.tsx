@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import style from "./header.module.css";
 
@@ -10,15 +8,15 @@ type NavLink = {
 
 const NavLinks: NavLink[] = [
   {
+    title: "Contact",
+    href: process.env.NEXT_CONTACT_URL ?? "",
+  },
+  {
     title: "Works（準備中）",
     href: "#",
   },
   {
-    title: "Profile（準備中）",
-    href: "#",
-  },
-  {
-    title: "TechBlog（準備中）",
+    title: "Blog（準備中）",
     href: "#",
   },
 ];

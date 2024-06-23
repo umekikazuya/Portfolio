@@ -1,23 +1,11 @@
 export async function fetchData<T>(url: string): Promise<T | null> {
-  let data: T | null = null;
-
-  const headers = {
-    'Content-Type': 'application/json',
-  };
-
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: headers,
-    });
-    if (!response.ok) {
-      throw new Error('Network error: ' + response.statusText);
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error("No profile data.");
     }
-
-    data = await response.json();
-  } catch (err) {
-    // No script.
+    return res.json();
+  } catch (error) {
+    return null;
   }
-
-  return data;
 }
