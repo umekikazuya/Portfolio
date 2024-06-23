@@ -2,7 +2,6 @@ import Profile from "@/features/circle/profile";
 import style from "@/components/tmp.module.css";
 
 export default async function Page() {
-
   return (
     <div className={style.container}>
       <Profile />

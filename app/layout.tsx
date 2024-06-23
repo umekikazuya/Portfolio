@@ -25,7 +25,7 @@ export default function RootLayout({
             <MovingCircle color="#fae5af, #f9e8bd, #f6f2e7" /> */}
           </main>
         </div>
-        <Analytics mode={"production"} />;
+        <Analytics mode={"production"} />
       </body>
     </html>
   );
