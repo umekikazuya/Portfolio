@@ -1,10 +1,7 @@
-'use client';
-
-import { Analytics } from '@vercel/analytics/react';
-import '@/components/global.css';
+import { Analytics } from "@vercel/analytics/react";
+import "@/components/global.css";
 import Header from "@/components/layouts/header";
-import { Container, Main } from '@/components/sharedstyles';
-import MovingCircle from "@/features/circle/MovingCircle";
+import { Container, Main } from "@/components/sharedstyles";
 import Head from "next/head";
 
 export default function RootLayout({
@@ -28,7 +25,7 @@ export default function RootLayout({
             <MovingCircle color="#fae5af, #f9e8bd, #f6f2e7" /> */}
           </Main>
         </Container>
-        <Analytics mode={'production'} />;
+        <Analytics mode={"production"} />;
       </body>
     </html>
   );
