@@ -1,7 +1,8 @@
-'use client'
+"use client";
 
 import styled from "styled-components";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 const FlexContainer = styled.div`
   display: flex;
@@ -18,9 +19,7 @@ const Card = styled.div`
   text-decoration: none;
   border: 1px solid black;
   border-radius: 10px;
-  transition:
-    color 0.15s ease,
-    border-color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
   width: 100%;
 
   &:hover,
@@ -36,11 +35,16 @@ const StyledLink = styled(Link)`
   font-size: 1.5rem;
 `;
 
-export default function Cards() {
+interface CardsProps {
+  children: ReactNode;
+  url: string;
+}
+
+export default function Cards({ children, url }: CardsProps) {
   return (
     <FlexContainer>
       <Card>
-        <StyledLink href="/about">About Page &rarr;</StyledLink>
+        <StyledLink href={url}>{children}</StyledLink>
       </Card>
     </FlexContainer>
   );
