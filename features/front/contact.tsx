@@ -19,7 +19,7 @@ export default function Contact() {
       <div className={style.contact_wrapper}>
         <div className={style.contact_title}>Get In Touch</div>
         <p className={style.contact_description}>開発・制作についてや、とりあえず話したい方、興味あればご連絡ください！！</p>
-        <button className={style.contact_button} onClick={handleClick}>
+        <button type="button" className={style.contact_button} onClick={handleClick}>
             Say Hello
           <div className={style.contact_button_cover} />
         </button>
