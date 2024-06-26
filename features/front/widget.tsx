@@ -1,29 +1,11 @@
-"use client";
-
-import { fetchData } from "@/utils/api";
 import style from "@/components/tmp.module.css";
-import { useEffect, useState } from "react";
 import { Feed } from "@/model/feed.model";
 
-const ENDPOINT = `https://momenture.jp/api/qiita/feed/umekikazuya`;
-
-export default function Widget() {
-  const [feed, setFeed] = useState<Feed | null>(null);
-
-  useEffect(() => {
-    async function loadFeed() {
-      const feed = await fetchData<Feed>(
-        ENDPOINT
-      );
-      setFeed(feed);
-    }
-    loadFeed();
-  }, []);
-
+export default function Widget({ feed }: { feed: Feed }) {
   return (
     <div className={style.widget_wrapper}>
       <div className={style.widget_header}>
-        <h3 className={style.widget_header_title}>Qiita更新情報</h3>
+        <h3 className={style.widget_header_title}>Qiita</h3>
         <button type="button" className={style.widget_button}>
           <span className={style.widget_button_inner}>Qiitaへ</span>
           <div className={style.widget_button_cover}></div>
