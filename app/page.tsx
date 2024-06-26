@@ -7,8 +7,8 @@ export default function Page() {
   return (
     <div className={style.container}>
       <Profile />
-      <Contact />
       <Widget />
+      <Contact />
       {/* <ComingSoon>
         <CSHeading>Comming soon...</CSHeading>
         <CSBody>もう少し待ってね</CSBody>
