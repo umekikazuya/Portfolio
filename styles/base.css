@@ -23,7 +23,14 @@ main {
   }
 }
 
+h1,
+h2,
+h3 {
+  font-size: 14px;
+}
+
 a {
+  font-size: 14px;
   color: inherit;
   text-decoration: none;
 }
