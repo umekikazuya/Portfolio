@@ -17,7 +17,7 @@ export default async function Page() {
   );
 }
 
-export async function loader() {
+async function loader() {
   const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/qiita/feed/${process.env.NEXT_PUBLIC_QITIA_ID}`;
   const feed = await fetchData<Feed>(ENDPOINT);
   return feed;
