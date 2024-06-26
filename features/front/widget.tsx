@@ -19,7 +19,7 @@ export default function Widget({ feed }: { feed: Feed }) {
                 <a
                   className={style.widget_content_li_a}
                   href={item.link}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <span className={style.widget_content_li_title}>
                     {item.title}
