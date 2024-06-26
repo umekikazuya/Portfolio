@@ -1,28 +1,39 @@
-"use client"
+"use client";
 
-import style from "@/components/tmp.module.css";
 import { useRouter } from "next/navigation";
+import style from "@/components/tmp.module.css";
 
-const contactURL = process.env.NEXT_PUBLIC_CONTACT_URL ?? '';
+const contactURL = process.env.NEXT_PUBLIC_CONTACT_URL ?? "";
 
 export default function Contact() {
   const router = useRouter();
-  
-  console.log(process.env.NEXT_PUBLIC_CONTACT_URL);
-
   const handleClick = () => {
     router.push(contactURL);
-  }
+  };
 
   return (
     <>
-      <div className={style.contact_wrapper}>
-        <div className={style.contact_title}>Get In Touch</div>
-        <p className={style.contact_description}>開発・制作についてや、とりあえず話したい方、興味あればご連絡ください！！</p>
-        <button type="button" className={style.contact_button} onClick={handleClick}>
-            Say Hello
-          <div className={style.contact_button_cover} />
-        </button>
+      <div className={style.widget_wrapper}>
+        <div className={style.widget_header}>
+          <h3 className={style.widget_header_title}>Get In Touch</h3>
+        </div>
+        <div className={style.widget_content}>
+          <div className={style.widget_content_list}>
+            <p className={style.contact_description}>
+              開発・制作についてや、とりあえず話したい方、興味あればご連絡ください！！
+            </p>
+            <div className={style.button_wrapper}>
+              <button
+                type="button"
+                className={style.widget_button}
+                onClick={handleClick}
+              >
+                <span className={style.widget_button_inner}>Say Hello</span>
+                <div className={style.widget_button_cover}></div>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
