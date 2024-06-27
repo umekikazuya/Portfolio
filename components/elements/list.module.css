@@ -1,0 +1,26 @@
+.li {
+  border-bottom: 1px solid #eee;
+  padding: 12px 8px;
+}
+
+.li_link {
+  text-decoration: none;
+  color: #868c9b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.li_link__title {
+  font-size: 12px;
+  color: #868c9b;
+}
+
+.li_link__time {
+  display: block;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #868c9b;
+  line-height: 1.2;
+}

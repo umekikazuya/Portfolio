@@ -1,4 +1,4 @@
-interface FeedElement {
+export interface FeedElement {
   title: string;
   link: string;
   published: string;
@@ -6,6 +6,6 @@ interface FeedElement {
 
 export interface Feed {
   title: string;
-  url: string;
+  link: string;
   data: FeedElement[];
 }
