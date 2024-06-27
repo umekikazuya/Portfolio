@@ -1,16 +1,9 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import { NavigateButton } from "@/components/elements/button/button";
 import style from "@/components/tmp.module.css";
 
 const contactURL = process.env.NEXT_PUBLIC_CONTACT_URL ?? "";
 
 export default function Contact() {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(contactURL);
-  };
-
   return (
     <>
       <div className={style.widget_wrapper}>
@@ -23,14 +16,7 @@ export default function Contact() {
               開発・制作についてや、とりあえず話したい方、興味あればご連絡ください！！
             </p>
             <div className={style.button_wrapper}>
-              <button
-                type="button"
-                className={style.widget_button}
-                onClick={handleClick}
-              >
-                <span className={style.widget_button_inner}>Say Hello</span>
-                <div className={style.widget_button_cover}></div>
-              </button>
+              <NavigateButton label="Say Hello" url={contactURL} size="m" />
             </div>
           </div>
         </div>
