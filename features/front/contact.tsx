@@ -1,4 +1,4 @@
-import { NavigateButton } from "@/components/elements/button/button";
+import { NavigateButton } from "@/components/elements/button";
 import style from "@/components/tmp.module.css";
 
 const contactURL = process.env.NEXT_PUBLIC_CONTACT_URL ?? "";
