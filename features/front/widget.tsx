@@ -1,42 +1,31 @@
+import { Feed } from "@/model/feed.model";
 import { NavigateButton } from "@/components/elements/button";
 import style from "@/components/tmp.module.css";
-import { Feed } from "@/model/feed.model";
+import { ListItem } from "@/components/elements/list";
 
 export default function Widget({ feed }: { feed: Feed }) {
   return (
-    <div className={style.widget_wrapper}>
-      <div className={style.widget_header}>
-        <h3 className={style.widget_header_title}>Qiita</h3>
+    <div className={style.subcontent_wrapper}>
+      <div className={style.subcontent_header}>
+        <h3 className={style.subcontent_header__title}>Qiita</h3>
         <NavigateButton label="Qiitaへ" url={feed.url} size="s" />
       </div>
-      <div className={style.widget_content}>
+      <ul className={style.subcontent_body}>
         {feed ? (
-          <ul className={style.widget_content_list}>
+          <>
             {feed.data.map((item, index) => (
-              <li key={index} className={style.widget_content_li}>
-                <a
-                  className={style.widget_content_li_a}
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className={style.widget_content_li_title}>
-                    {item.title}
-                  </span>
-                  <time
-                    dateTime={item.published}
-                    className={style.widget_content_li_time}
-                  >
-                    {new Date(item.published).toLocaleDateString("ja-JP")}
-                  </time>
-                </a>
-              </li>
+              <ListItem
+                key={index}
+                title={item.title}
+                link={item.link}
+                published={item.published}
+              />
             ))}
-          </ul>
+          </>
         ) : (
-          <>Loading...</>
+          <><li className={style.subcontent_body__empty}>現在取得できません。</li></>
         )}
-      </div>
+      </ul>
     </div>
   );
 }
