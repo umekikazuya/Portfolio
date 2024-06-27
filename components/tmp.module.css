@@ -74,30 +74,6 @@
 }
 
 /* サブコンテンツ */
-.subcontent_wrapper {
-  box-shadow: 2px 2px 16px #95959d4d;
-  margin-top: 100px;
-  padding: 40px;
-}
-
-.subcontent_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: -15px;
-  margin-bottom: 10px;
-}
-
-.subcontent_header__title {
-  font-size: 16px;
-  color: #868c9b;
-}
-
-.subcontent_body {
-  border-top: 1px solid #868c9b;
-  padding-top: 4px;
-}
-
 .subcontent_body__empty {
   min-height: 150px;
   display: flex;
