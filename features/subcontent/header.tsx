@@ -9,7 +9,7 @@ export default function Header({ title, subTitle }: HeaderProps) {
   return (
     <div className={style.header}>
       <h3 className={style.header__title}>{title}</h3>
-      {subTitle && <>{subTitle}</>}
+      {subTitle}
     </div>
   );
 }
