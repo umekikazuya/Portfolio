@@ -60,4 +60,8 @@ const StyledNavigateButtonCover = styled.div`
   background-image: linear-gradient(to right, #58a6ff, #c258ff);
   filter: blur(12px);
   z-index: 1;
+  
+  ${StyledNavigateButton}:hover & {
+    background-image: linear-gradient(to right, #9198e5, #e66465);
+  }
 `;
