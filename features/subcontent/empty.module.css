@@ -1,0 +1,18 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.empty_image {
+  width: 100%;
+}
+
+.empty_message {
+  padding-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #868c9b;
+}
