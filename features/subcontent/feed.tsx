@@ -4,23 +4,32 @@ import { NavigateButton } from "@/components/elements/button";
 import Header from "./header";
 import Layout from "./layout";
 
-interface FeedProps {
-  feed: FeedType;
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/qiita/feed/${process.env.NEXT_PUBLIC_QITIA_ID}`;
+
+async function fetchData() {
+  const response = await fetch(ENDPOINT);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await response.json();
+  return data;
 }
 
-export default function Feed({ feed }: FeedProps) {
+export default async function Feed() {
+  const data: FeedType = await fetchData();
+
   return (
     <Layout
       header={
         <Header
-          title={feed.title}
-          subTitle={<NavigateButton label="Qiitaへ" url={feed.link} size="s" />}
+          title={data.title}
+          subTitle={<NavigateButton label="Qiitaへ" url={data.link} size="s" />}
         />
       }
       body={
         <>
           <ul>
-            {feed.data.map((item, index) => (
+            {data.data.map((item, index) => (
               <ListItem
                 key={index}
                 title={item.title}
