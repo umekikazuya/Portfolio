@@ -1,12 +1,20 @@
-import { fetchData } from "@/utils/api";
 import { User } from "@/model/user.model";
 import style from "@/components/tmp.module.css";
 
-const ENDPOINT_USERDATA = `${process.env.NEXT_DRUPAL_API}/jsonapi/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/jsonapi/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
+
+async function fetchData() {
+  const response = await fetch(ENDPOINT);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await response.json();
+  return data;
+}
 
 export default async function Profile() {
-  const user = await fetchData<User>(ENDPOINT_USERDATA);
-  if (!user) return <p>No profile data</p>;
+  const user: User = await fetchData();
+
   return (
     <>
       <div className={style.profile}>
