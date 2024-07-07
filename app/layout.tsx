@@ -1,8 +1,28 @@
 import "@/styles/base.css";
 import "@/styles/reset.css";
 import { Analytics } from "@vercel/analytics/react";
-import Head from "next/head";
+import { Metadata } from "next";
 import Header from "@/components/layouts/header";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  description: "umekikazuyaのPortfolioです。",
+  title: "umekikazuya - Portfolio",
+  openGraph: {
+    title: "umekikazuya",
+    type: "website",
+    url: "https://umekikazuya.vercel.app/",
+    locale: "ja_JP",
+  },
+  keywords: [
+    "Portfolio",
+    "umekikazuya",
+    "Web",
+    "Development",
+    "Projects",
+    "Skills",
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -11,20 +31,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <Head>
-        <title>Portfolio - umekikazuya</title>
-        <meta name="description" content="Portfolio - umekikazuya" />
-        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-      </Head>
       <body>
         <div className="container">
           <Header />
-          <main>
-            {children}
-            {/* <MovingCircle color="#f2e0ff, #efdefb, #f2f2f2" />
-            <MovingCircle color="#fae5af, #f9e8bd, #f6f2e7" /> */}
-          </main>
+          <main>{children}</main>
         </div>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "umekikazuya",
+            url: "https://umekikazuya.vercel.app/",
+            sameAs: [
+              "https://twitter.com/umekikazuya",
+              "https://github.com/kazuya_um_k_",
+            ],
+            jobTitle: "Web Developer",
+          })}
+        </Script>
         <Analytics mode={"production"} />
       </body>
     </html>
