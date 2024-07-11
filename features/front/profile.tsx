@@ -6,7 +6,7 @@ const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/jsonapi/user/user/${process.env
 async function fetchData() {
   const response = await fetch(ENDPOINT);
   if (!response.ok) {
-    throw new Error("Failed to fetch data");
+    return false;
   }
   const data = await response.json();
   return data;
