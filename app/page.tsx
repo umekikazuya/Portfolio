@@ -8,7 +8,9 @@ import style from "@/components/tmp.module.css";
 export default async function Page() {
   return (
     <div className={style.container}>
-      <Profile />
+      <Suspense fallback={<Empty label="Profile" />}>
+        <Profile />
+      </Suspense>
       <Suspense fallback={<Empty label="Qiita" />}>
         <Feed />
       </Suspense>
