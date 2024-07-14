@@ -55,28 +55,31 @@ export default async function Profile() {
         ) : (
           ""
         )}
-        <ul className={style.link}>
-          <li className={style.link__item}>
-            <a href="https://www.drupal.org/u/umekikazuya" className={style.links_list__item_inner}>
-              <SiDrupal size={16} color={"#757575"} />
-            </a>
-          </li>
-          <li className={style.link__item}>
-            <a href="https://github.com/umekikazuya" className={style.links_list__item_inner}>
-              <FaGithub size={16} color={"#757575"} />
-            </a>
-          </li>
-          <li className={style.link__item}>
-            <a href="https://qiita.com/umekikazuya" className={style.links_list__item_inner}>
-              <SiQiita size={16} color={"#757575"} />
-            </a>
-          </li>
-          <li className={style.link__item}>
-            <a href="https://zenn.dev/kazu_u" className={style.links_list__item_inner}>
-              <SiZenn size={16} color={"#757575"} />
-            </a>
-          </li>
-        </ul>
+        <span className={style.item}>
+          <span className={style.itemLabel}>Links</span>
+          <ul className={style.itemText}>
+            <li className={style.link__item}>
+              <a href="https://www.drupal.org/u/umekikazuya" className={style.links_list__item_inner}>
+                <SiDrupal size={16} color={"#757575"} />
+              </a>
+            </li>
+            <li className={style.link__item}>
+              <a href="https://github.com/umekikazuya" className={style.links_list__item_inner}>
+                <FaGithub size={16} color={"#757575"} />
+              </a>
+            </li>
+            <li className={style.link__item}>
+              <a href="https://qiita.com/umekikazuya" className={style.links_list__item_inner}>
+                <SiQiita size={16} color={"#757575"} />
+              </a>
+            </li>
+            <li className={style.link__item}>
+              <a href="https://zenn.dev/kazu_u" className={style.links_list__item_inner}>
+                <SiZenn size={16} color={"#757575"} />
+              </a>
+            </li>
+          </ul>
+        </span>
       </div>
     </>
   );

@@ -33,7 +33,22 @@
   color: #868c9b;
 }
 
-.link {
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.itemLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: #868c9b;
+}
+
+.itemText {
+  padding-left: 8px;
+  font-size: 16px;
+  color: #868c9b;
   display: flex;
   flex: wrap;
   align-items: center;
@@ -47,7 +62,7 @@
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: #f2f2f2;
