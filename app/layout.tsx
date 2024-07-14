@@ -34,7 +34,9 @@ export default function RootLayout({
       <body>
         <div className="container">
           <Header />
-          <main>{children}</main>
+          <main>
+            <div className="container__inner">{children}</div>
+          </main>
         </div>
         <Script
           id="structured-data"
@@ -47,8 +49,8 @@ export default function RootLayout({
             name: "umekikazuya",
             url: "https://umekikazuya.vercel.app/",
             sameAs: [
-              "https://twitter.com/umekikazuya",
-              "https://github.com/kazuya_um_k_",
+              "https://twitter.com/kazuya_um_k_",
+              "https://github.com/umekikazuya",
             ],
             jobTitle: "Web Developer",
           })}

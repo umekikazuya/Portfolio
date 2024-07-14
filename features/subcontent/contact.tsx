@@ -1,5 +1,5 @@
 import { NavigateButton } from "@/components/elements/button";
-import style from "@/components/tmp.module.css";
+import style from "@/features/subcontent/contact.module.css";
 import Layout from "./layout";
 import Header from "./header";
 
