@@ -7,7 +7,7 @@ import Layout from "./layout";
 const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/qiita/feed/${process.env.NEXT_PUBLIC_QITIA_ID}`;
 
 async function fetchData() {
-  const response = await fetch(ENDPOINT);
+  const response = await fetch(ENDPOINT, { cache: "no-store" });
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }

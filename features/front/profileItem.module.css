@@ -1,0 +1,35 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.itemLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: #868c9b;
+}
+
+.itemText {
+  padding-left: 8px;
+  font-size: 16px;
+  color: #868c9b;
+}
+
+.itemValues {
+  padding-left: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 6px;
+  row-gap: 4px;
+}
+
+.itemValue {
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 0.5px solid #ddd;
+  /* box-shadow: 2px 2px 16px #95959d4d; */
+  color: #868c9b;
+}

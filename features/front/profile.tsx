@@ -1,10 +1,13 @@
 import { User } from "@/model/user.model";
-import style from "@/components/tmp.module.css";
+import style from "@/features/front/profile.module.css";
+import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
+import { FaGithub } from "react-icons/fa";
+import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 
 const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/jsonapi/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
 
 async function fetchData() {
-  const response = await fetch(ENDPOINT);
+  const response = await fetch(ENDPOINT, { cache: "no-store" });
   if (!response.ok) {
     return false;
   }
@@ -28,63 +31,52 @@ export default async function Profile() {
           </span>
         </div>
         {user?.data.attributes.field_job ? (
-          <span className={style.item}>
-            <span className={style.itemLabel}>Job</span>
-            <span className={style.itemText}>
-              {user?.data.attributes.field_job}
-            </span>
-          </span>
+          <ProfileSingleItem label="Job" data={user?.data.attributes.field_job} />
         ) : (
           ""
         )}
         {user?.data.attributes.field_address ? (
-          <span className={style.item}>
-            <span className={style.itemLabel}>Address</span>
-            <span className={style.itemText}>
-              {user?.data.attributes.field_address}
-            </span>
-          </span>
+          <ProfileSingleItem label="Address" data={user?.data.attributes.field_address} />
         ) : (
           ""
         )}
         {user?.data.attributes.field_from ? (
-          <span className={style.item}>
-            <span className={style.itemLabel}>From</span>
-            <span className={style.itemText}>
-              {user?.data.attributes.field_from}
-            </span>
-          </span>
+          <ProfileSingleItem label="From" data={user?.data.attributes.field_from} />
         ) : (
           ""
         )}
         {user?.data.attributes.field_skill?.length ? (
-          <span className={style.item}>
-            <span className={style.itemLabel}>Skill</span>
-            <span className={style.itemValues}>
-              {user?.data.attributes.field_skill.map((o, i) => (
-                <span className={style.itemValue} key={i}>
-                  {o}
-                </span>
-              ))}
-            </span>
-          </span>
+          <ProfileMultipleItems label="Skill" data={user?.data.attributes.field_skill} />
         ) : (
           ""
         )}
         {user?.data.attributes.field_like?.length ? (
-          <span className={style.item}>
-            <span className={style.itemLabel}>Like</span>
-            <span className={style.itemValues}>
-              {user?.data.attributes.field_like.map((o, i) => (
-                <span className={style.itemValue} key={i}>
-                  {o}
-                </span>
-              ))}
-            </span>
-          </span>
+          <ProfileMultipleItems label="Like" data={user?.data.attributes.field_like} />
         ) : (
           ""
         )}
+        <ul className={style.link}>
+          <li className={style.link__item}>
+            <a href="https://www.drupal.org/u/umekikazuya" className={style.links_list__item_inner}>
+              <SiDrupal size={16} color={"#757575"} />
+            </a>
+          </li>
+          <li className={style.link__item}>
+            <a href="https://github.com/umekikazuya" className={style.links_list__item_inner}>
+              <FaGithub size={16} color={"#757575"} />
+            </a>
+          </li>
+          <li className={style.link__item}>
+            <a href="https://qiita.com/umekikazuya" className={style.links_list__item_inner}>
+              <SiQiita size={16} color={"#757575"} />
+            </a>
+          </li>
+          <li className={style.link__item}>
+            <a href="https://zenn.dev/kazu_u" className={style.links_list__item_inner}>
+              <SiZenn size={16} color={"#757575"} />
+            </a>
+          </li>
+        </ul>
       </div>
     </>
   );
