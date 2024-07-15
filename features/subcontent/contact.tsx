@@ -1,7 +1,7 @@
 import { NavigateButton } from "@/components/elements/button";
-import style from "@/features/subcontent/contact.module.css";
-import Layout from "./layout";
 import Header from "./header";
+import Layout from "./layout";
+import style from "@/features/subcontent/contact.module.css";
 
 const contactURL = process.env.NEXT_PUBLIC_CONTACT_URL ?? "";
 

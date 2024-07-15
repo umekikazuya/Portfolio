@@ -1,16 +1,8 @@
 export async function fetchData<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        "Cache-Control": "no-cache",
-      },
-      next: { revalidate: 0 },
-    });
-    if (!res.ok) {
-      throw new Error("No profile data.");
-    }
-    return res.json();
-  } catch (error) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) {
     return null;
   }
+  const data = await response.json();
+  return data as T;
 }

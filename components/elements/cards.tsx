@@ -1,8 +1,8 @@
 "use client";
 
-import styled from "styled-components";
-import Link from "next/link";
 import { ReactNode } from "react";
+import Link from "next/link";
+import styled from "styled-components";
 
 const FlexContainer = styled.div`
   display: flex;

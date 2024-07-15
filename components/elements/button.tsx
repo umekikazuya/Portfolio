@@ -1,7 +1,7 @@
 "use client";
 
-import styled, { css } from "styled-components";
 import { useRouter } from "next/navigation";
+import styled, { css } from "styled-components";
 
 type ButtonProps = {
   label: string;
@@ -60,7 +60,7 @@ const StyledNavigateButtonCover = styled.div`
   background-image: linear-gradient(to right, #58a6ff, #c258ff);
   filter: blur(12px);
   z-index: 1;
-  
+
   ${StyledNavigateButton}:hover & {
     background-image: linear-gradient(to right, #9198e5, #e66465);
   }

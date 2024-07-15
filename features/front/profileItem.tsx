@@ -21,7 +21,10 @@ export function ProfileSingleItem({ label, data }: ProfileSingleItemProps) {
   );
 }
 
-export function ProfileMultipleItems({ label, data }: ProfileMultipleItemsProps) {
+export function ProfileMultipleItems({
+  label,
+  data,
+}: ProfileMultipleItemsProps) {
   return (
     <>
       <span className={style.item}>

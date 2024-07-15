@@ -1,12 +1,11 @@
 import style from "./layout.module.css";
 
-export default function Layout({
-  header,
-  body,
-}: {
+interface LayoutProps {
   header: React.ReactNode;
   body: React.ReactNode;
-}) {
+}
+
+export default function Layout({ header, body }: LayoutProps) {
   return (
     <div className={style.layout}>
       {header}

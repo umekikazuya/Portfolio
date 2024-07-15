@@ -1,10 +1,10 @@
 import Link from "next/link";
 import style from "./header.module.css";
 
-type NavLink = {
+interface NavLink {
   title: string;
   href: string;
-};
+}
 
 const NavLinks: NavLink[] = [
   {
