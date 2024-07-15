@@ -14,16 +14,16 @@ export default function Empty({ label }: EmptyProps) {
         header={<Header title={label} />}
         body={
           <>
-          <div className={style.empty}>
-            <Image
-              src="/no_data.svg"
-              width={110}
-              height={98}
-              alt="No data."
-              className={style.empty_image}
-            />
-            <span className={style.empty_message}>Loading...</span>
-          </div>
+            <div className={style.empty}>
+              <Image
+                src="/no_data.svg"
+                width={110}
+                height={98}
+                alt="No data."
+                className={style.empty_image}
+              />
+              <span className={style.empty_message}>Loading...</span>
+            </div>
           </>
         }
       />

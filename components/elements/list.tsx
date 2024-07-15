@@ -1,7 +1,12 @@
-import { FeedElement } from "@/model/feed.model";
 import style from "@/components/elements/list.module.css";
 
-export function ListItem({ title, link, published }: FeedElement) {
+interface ListItemProps {
+  title: string;
+  link: string;
+  published: string;
+}
+
+export function ListItem({ title, link, published }: ListItemProps) {
   return (
     <li className={style.li}>
       <a className={style.li_link} href={link} target="_blank" rel="noreferrer">
