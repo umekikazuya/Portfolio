@@ -5,7 +5,7 @@ import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
 
-const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/jsonapi/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
 
 export default async function Profile() {
   const user = await fetchData<User>(ENDPOINT);
