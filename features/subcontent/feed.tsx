@@ -5,7 +5,7 @@ import { NavigateButton } from "@/components/elements/button";
 import Header from "./header";
 import Layout from "./layout";
 
-const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/qiita/feed/${process.env.NEXT_PUBLIC_QITIA_ID}`;
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/qiita/${process.env.NEXT_PUBLIC_QITIA_ID}`;
 
 export default async function Feed() {
   const data = await fetchData<FeedType>(ENDPOINT);

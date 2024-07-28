@@ -1,5 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import { fetchData } from "@/utils/api";
+import { JsonApi } from "@/model/JsonApi";
 import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
@@ -8,7 +9,7 @@ import style from "@/features/front/profile.module.css";
 const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
 
 export default async function Profile() {
-  const user = await fetchData<User>(ENDPOINT);
+  const user = await fetchData<JsonApi<User>>(ENDPOINT);
 
   return (
     <>
