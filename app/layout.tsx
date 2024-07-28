@@ -2,7 +2,6 @@ import "@/styles/base.css";
 import "@/styles/reset.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
-import Header from "@/components/layouts/header";
 import Script from "next/script";
 
 export const metadata: Metadata = {
