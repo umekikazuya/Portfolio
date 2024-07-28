@@ -2,7 +2,7 @@ import { Article } from "@/model/article.model";
 import { CategorizedListItem } from "@/components/elements/list";
 import { Cp } from "@/model/cp.model";
 import { fetchData } from "@/utils/api";
-import { JsonApiRef } from "@/model/JsonApi";
+import { JsonApiRef } from "@/model/jsonApi.model";
 import { NavigateButton } from "@/components/elements/button";
 import Header from "./header";
 import Layout from "./layout";

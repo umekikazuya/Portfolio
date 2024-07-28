@@ -1,6 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import { fetchData } from "@/utils/api";
-import { JsonApi } from "@/model/JsonApi";
+import { JsonApi } from "@/model/jsonApi.model";
 import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
