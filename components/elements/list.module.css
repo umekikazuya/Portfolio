@@ -24,3 +24,14 @@
   color: #868c9b;
   line-height: 1.2;
 }
+
+.li_link__category {
+  margin-left: auto;
+  display: block;
+  width: max-content;
+  background-color: #f0f0f0;
+  color: #868c9b;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+}

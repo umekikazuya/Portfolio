@@ -3,6 +3,7 @@ import Contact from "@/features/subcontent/contact";
 import Empty from "@/features/subcontent/empty";
 import Feed from "@/features/subcontent/feed";
 import Profile from "@/features/front/profile";
+import FeatureArticle from "@/features/subcontent/featureArticle";
 
 export default async function Page() {
   return (
@@ -11,7 +12,7 @@ export default async function Page() {
         <Profile />
       </Suspense>
       <Suspense fallback={<Empty label="Qiita" />}>
-        <Feed />
+        <FeatureArticle />
       </Suspense>
       <Contact />
     </>
