@@ -20,7 +20,7 @@ export default async function FeatureArticle() {
       header={
         <Header
           title="おすすめ記事"
-          subTitle={<NavigateButton label="記事一覧へ" url="" size="s" />}
+          subTitle={<NavigateButton label="記事一覧へ" url='/article' size="s" />}
         />
       }
       body={

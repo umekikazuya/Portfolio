@@ -1,0 +1,17 @@
+.title {
+  border-bottom: 2px solid #eee;
+  text-align: center;
+  color: #868c9b;
+  line-height: 1.6;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.content {
+  padding-top: 4px;
+  margin-top: 24px;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #868c9b;
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import style from "@/components/elements/list.module.css";
 
 interface ListItemProps {
@@ -14,7 +15,7 @@ const getServiceName = (type: string): string => {
   const serviceMap: { [key: string]: string } = {
     "article--qiita": "Qiita",
     "article--zenn": "Zenn",
-    "article--mochiya": "Mochiya",
+    "article--mochiya": "モチヤ",
   };
   return serviceMap[type] || "Unknown";
 };
@@ -41,7 +42,7 @@ export function CategorizedListItem({
   const serviceName = getServiceName(type);
   return (
     <li className={style.li}>
-      <a className={style.li_link} href={link} target="_blank" rel="noreferrer">
+      <Link className={style.li_link} href={link} target="_blank" rel="noreferrer">
         <span className={style.li_link__title}>{title}</span>
         <span>
           <span className={style.li_link__category}>{serviceName}</span>
@@ -49,7 +50,7 @@ export function CategorizedListItem({
             {new Date(published).toLocaleDateString("ja-JP")}
           </time>
         </span>
-      </a>
+      </Link>
     </li>
   );
 }
