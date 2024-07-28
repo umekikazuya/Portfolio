@@ -13,7 +13,7 @@ export function NavigateButton({ label, url, size }: ButtonProps) {
   }`;
 
   return (
-    <Link href={url} passHref className={styles.button}>
+    <Link href={url} className={styles.button}>
       <span className={innerClassName}>{label}</span>
       <div className={styles.buttonCover}></div>
     </Link>
