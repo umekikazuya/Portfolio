@@ -5,9 +5,9 @@ import { NavigateButton } from "@/components/elements/button";
 import Header from "./header";
 import Layout from "./layout";
 
-const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/qiita/${process.env.NEXT_PUBLIC_QITIA_ID}`;
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/zenn/${process.env.NEXT_PUBLIC_ZENN_ID}`;
 
-export default async function Feed() {
+export default async function Zenn() {
   const data = await fetchData<FeedType>(ENDPOINT);
   if (!data) {
     return <></>;
@@ -17,10 +17,8 @@ export default async function Feed() {
     <Layout
       header={
         <Header
-          title={data?.title}
-          subTitle={
-            <NavigateButton label="Qiitaへ" url={data?.link} size="s" />
-          }
+          title="Zenn"
+          subTitle={<NavigateButton label="Zennへ" url={data?.link} size="s" />}
         />
       }
       body={
@@ -31,7 +29,7 @@ export default async function Feed() {
                 key={index}
                 title={item.title}
                 link={item.link}
-                published={item.published}
+                published={item.published.replace(/^\+/, "")}
               />
             ))}
           </ul>
