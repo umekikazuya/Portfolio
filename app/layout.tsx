@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <div className="container">
-          <Header />
+          {/* <Header /> */}
           <main>
             <div className="container__inner">{children}</div>
           </main>
