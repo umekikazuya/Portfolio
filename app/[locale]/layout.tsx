@@ -1,9 +1,10 @@
 import "@/styles/base.css";
 import "@/styles/reset.css";
+import { Analytics } from "@vercel/analytics/react";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import Script from "next/script";
 import LanguageSwitcher from "@/features/languageSwitcher/languageSwitcher";
+import Script from "next/script";
 
 export default async function LocaleLayout({
   children,
@@ -32,18 +33,18 @@ export default async function LocaleLayout({
             strategy="beforeInteractive"
           >
             {JSON.stringify({
-              "@context": "https:schema.org",
+              "@context": "https://schema.org",
               "@type": "Person",
               name: "umekikazuya",
-              url: "https:umekikazuya.vercel.app/",
+              url: "https://www.umekikazuya.me/",
               sameAs: [
-                "https:twitter.com/kazuya_um_k_",
-                "https:github.com/umekikazuya",
+                "https://twitter.com/kazuya_um_k_",
+                "https://github.com/umekikazuya",
               ],
               jobTitle: "Web Developer",
             })}
           </Script>
-          {/* <Analytics mode={"production"} /> */}
+          <Analytics mode={"production"} />
         </NextIntlClientProvider>
       </body>
     </html>
