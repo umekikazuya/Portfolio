@@ -5,10 +5,14 @@ import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
-
-const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
+import { getTranslations } from "next-intl/server";
 
 export default async function Profile() {
+  const t = await getTranslations("Profile");
+  const t_api = await getTranslations("Endpoint");
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/${t_api(
+    "prefix"
+  )}/api/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
   const user = await fetchData<JsonApi<User>>(ENDPOINT);
 
   return (
@@ -25,7 +29,7 @@ export default async function Profile() {
         </div>
         {user?.data.attributes.field_job ? (
           <ProfileSingleItem
-            label="Job"
+            label={t("job")}
             data={user?.data.attributes.field_job}
           />
         ) : (
@@ -33,7 +37,7 @@ export default async function Profile() {
         )}
         {user?.data.attributes.field_address ? (
           <ProfileSingleItem
-            label="Address"
+            label={t("address")}
             data={user?.data.attributes.field_address}
           />
         ) : (
@@ -41,7 +45,7 @@ export default async function Profile() {
         )}
         {user?.data.attributes.field_from ? (
           <ProfileSingleItem
-            label="From"
+            label={t("from")}
             data={user?.data.attributes.field_from}
           />
         ) : (
@@ -49,7 +53,7 @@ export default async function Profile() {
         )}
         {user?.data.attributes.field_skill?.length ? (
           <ProfileMultipleItems
-            label="Skill"
+            label={t("skill")}
             data={user?.data.attributes.field_skill}
           />
         ) : (
@@ -57,7 +61,7 @@ export default async function Profile() {
         )}
         {user?.data.attributes.field_like?.length ? (
           <ProfileMultipleItems
-            label="Like"
+            label={t("links")}
             data={user?.data.attributes.field_like}
           />
         ) : (

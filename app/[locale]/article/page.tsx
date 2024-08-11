@@ -5,6 +5,7 @@ import Empty from "@/features/subcontent/empty";
 import Qiita from "@/features/subcontent/qiita";
 import Zenn from "@/features/subcontent/zenn";
 import { Breadcrumb } from "@/components/elements/breadcrumb";
+import { getTranslations } from "next-intl/server";
 
 const links = [
   { label: "Home", url: "/" },
@@ -13,13 +14,13 @@ const links = [
 
 
 export default async function Page() {
+  const t = await getTranslations("Article");
   return (
     <>
       <Breadcrumb links={links} />
-      <PageTitle title="記事一覧" subTitle={
+      <PageTitle title={t('title')} subTitle={
         <>
-          各サービスで執筆している記事をまとめました。<br />
-          お時間が許すのであれば、覗いていただければ幸いです。
+          {t('description')}
         </>
       } />
       <Suspense fallback={<Empty label="Qiita" />}>
