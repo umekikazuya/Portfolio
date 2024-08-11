@@ -1,6 +1,7 @@
 {
-  "Endpoint": {
-    "prefix": ""
+  "LanguageSettings": {
+    "api": "/ja",
+    "lang": "ja"
   },
   "Profile": {
     "title": "Hello world!",
@@ -18,6 +19,8 @@
   },
   "Article": {
     "title": "記事一覧",
-    "description": "各サービスで執筆している記事をまとめました。覗いていただければ幸いです。"
+    "description": "各サービスで執筆している記事をまとめました。覗いていただければ幸いです。",
+    "subcontent_label": "おすすめ記事",
+    "subcontent_link": "記事一覧へ"
   }
 }

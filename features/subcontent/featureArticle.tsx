@@ -6,10 +6,13 @@ import { JsonApiRef } from "@/model/jsonApi.model";
 import { NavigateButton } from "@/components/elements/button";
 import Header from "./header";
 import Layout from "./layout";
+import { getTranslations } from "next-intl/server";
 
 const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/cp/feature-article?include=field_ref_article&fields[]config_pages--feature_ar[]=changed&fields[]article--mochiya[]=title,field_link,field_created&fields[]article--qiita[]=title,field_link,field_created&fields[]article--zenn[]=title,field_link,field_created`;
 
 export default async function FeatureArticle() {
+  const t_1 = await getTranslations("LanguageSettings");
+  const t_2 = await getTranslations("Article");
   const data = await fetchData<JsonApiRef<Cp, Article>>(ENDPOINT);
   if (!data) {
     return <></>;
@@ -19,8 +22,8 @@ export default async function FeatureArticle() {
     <Layout
       header={
         <Header
-          title="おすすめ記事"
-          subTitle={<NavigateButton label="記事一覧へ" url='/article' size="s" />}
+          title={t_2('subcontent_label')}
+          subTitle={<NavigateButton label={t_2('subcontent_link')} url={`/${t_1('lang')}/article`} size="s" />}
         />
       }
       body={

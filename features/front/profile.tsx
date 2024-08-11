@@ -9,9 +9,9 @@ import { getTranslations } from "next-intl/server";
 
 export default async function Profile() {
   const t = await getTranslations("Profile");
-  const t_api = await getTranslations("Endpoint");
-  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/${t_api(
-    "prefix"
+  const t_api = await getTranslations("LanguageSettings");
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}${t_api(
+    "api"
   )}/api/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
   const user = await fetchData<JsonApi<User>>(ENDPOINT);
 
