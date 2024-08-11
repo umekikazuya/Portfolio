@@ -1,0 +1,38 @@
+.wrapper {
+  margin-left: auto;
+}
+
+.switcher {
+  display: inline-flex;
+  gap: 8px;
+  background-color: #fff;
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 16px #95959d4d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease,
+    border-color 0.3s ease;
+  border-radius: 6px;
+}
+
+.button:hover {
+  color: #0070f3;
+  background-color: #fafafa;
+  border-color: #0070f3;
+}
+
+.active {
+  background-color: #0070f3;
+  color: #fff;
+}
