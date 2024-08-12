@@ -1,39 +1,34 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./languageSwitcher.module.css";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 
 export default function LanguageSwitcher() {
-  const router = useRouter();
+  const pathname = usePathname();
   const locale = useLocale();
-  const changeLanguage = (newLocale: string) => {
-    if (newLocale === locale) return;
-    const currentUrl = new URL(window.location.href);
-    const newPathname = currentUrl.pathname.replace(
-      new RegExp(`^/${locale}`),
-      `/${newLocale}`
-    );
-    router.replace(
-      new URL(newPathname + currentUrl.search, currentUrl.origin).toString()
-    );
+  const getNewPathname = (newLocale: string) => {
+    return pathname.replace(new RegExp(`^/${locale}`), `/${newLocale}`);
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.switcher}>
-        <button
+        <Link
+          href={getNewPathname("en")}
+          locale="en"
           className={`${styles.button} ${locale === "en" ? styles.active : ""}`}
-          onClick={() => changeLanguage("en")}
         >
           EN
-        </button>
-        <button
+        </Link>
+        <Link
+          href={getNewPathname("ja")}
+          locale="ja"
           className={`${styles.button} ${locale === "ja" ? styles.active : ""}`}
-          onClick={() => changeLanguage("ja")}
         >
           JA
-        </button>
+        </Link>
       </div>
     </div>
   );
