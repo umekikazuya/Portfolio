@@ -38,6 +38,7 @@ export default async function LocaleLayout({
               name: "umekikazuya",
               url: "https://www.umekikazuya.me/",
               sameAs: [
+                'https://www.drupal.org/u/umekikazuya',
                 "https://twitter.com/kazuya_um_k_",
                 "https://github.com/umekikazuya",
               ],
