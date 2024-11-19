@@ -1,16 +1,16 @@
 export interface User {
-  attributes: {
-    field_address: string | null;
-    field_display_name: string | null;
-    field_display_short_name: string | null;
-    field_from: string | null;
-    field_github: string | null;
-    field_introduction: string | null;
-    field_job: string | null;
-    field_like: Array<string>;
-    field_qiita: string | null;
-    field_skill: Array<string>;
-    field_summary_introduction: string | null;
-    field_zenn: string | null;
-  };
+  id: string;
+  displayName: string | null;
+  displayShortName: string | null;
+  address: string | null;
+  from: string | null;
+  github: string | null;
+  introduction: string | null;
+  job: string | null;
+  likes: Array<string>;
+  qiita: string | null;
+  skills: Array<string>;
+  summaryIntroduction: string | null;
+  zenn: string | null;
+  updatedAt: string;
 }

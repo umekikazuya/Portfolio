@@ -1,19 +1,13 @@
 import { FaGithub } from "react-icons/fa";
 import { fetchData } from "@/utils/api";
-import { JsonApi } from "@/model/jsonApi.model";
 import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
-import { getTranslations } from "next-intl/server";
 
 export default async function Profile() {
-  const t = await getTranslations("Profile");
-  const t_api = await getTranslations("LanguageSettings");
-  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}${t_api(
-    "api"
-  )}/api/user/user/${process.env.NEXT_DRUPAL_USER_UUID}`;
-  const user = await fetchData<JsonApi<User>>(ENDPOINT);
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}profile.json`;
+  const user = await fetchData<User>(ENDPOINT);
 
   return (
     <>
@@ -21,48 +15,48 @@ export default async function Profile() {
         {/* <img src="/src/assets/profile.jpg" alt="" width={80} height={80} /> */}
         <div className={style.name}>
           <span className={style.nameEn}>
-            {user?.data.attributes.field_display_name}
+            {user?.displayName}
           </span>
           <span className={style.nameJa}>
-            {user?.data.attributes.field_display_short_name}
+            {user?.displayShortName}
           </span>
         </div>
-        {user?.data.attributes.field_job ? (
+        {user?.job ? (
           <ProfileSingleItem
-            label={t("job")}
-            data={user?.data.attributes.field_job}
+            label={("job")}
+            data={user?.job}
           />
         ) : (
           ""
         )}
-        {user?.data.attributes.field_address ? (
+        {user?.address ? (
           <ProfileSingleItem
-            label={t("address")}
-            data={user?.data.attributes.field_address}
+            label={("address")}
+            data={user?.address}
           />
         ) : (
           ""
         )}
-        {user?.data.attributes.field_from ? (
+        {user?.from ? (
           <ProfileSingleItem
-            label={t("from")}
-            data={user?.data.attributes.field_from}
+            label={("from")}
+            data={user?.from}
           />
         ) : (
           ""
         )}
-        {user?.data.attributes.field_skill?.length ? (
+        {user?.skills?.length ? (
           <ProfileMultipleItems
-            label={t("skill")}
-            data={user?.data.attributes.field_skill}
+            label={("skill")}
+            data={user?.skills}
           />
         ) : (
           ""
         )}
-        {user?.data.attributes.field_like?.length ? (
+        {user?.likes?.length ? (
           <ProfileMultipleItems
-            label={t("links")}
-            data={user?.data.attributes.field_like}
+            label={("links")}
+            data={user?.likes}
           />
         ) : (
           ""
