@@ -6,7 +6,7 @@ import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
 
 export default async function Profile() {
-  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}profile.json`;
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}`;
   const user = await fetchData<User>(ENDPOINT);
 
   return (
