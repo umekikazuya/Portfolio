@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import Contact from "@/features/subcontent/contact";
 import Empty from "@/features/subcontent/empty";
 import Profile from "@/features/front/profile";
-import Qiita from "@/features/subcontent/qiita";
+import FeatureArticle from "@/features/subcontent/featureArticle";
 
 export default async function Page() {
 
@@ -12,7 +12,7 @@ export default async function Page() {
         <Profile />
       </Suspense>
       <Suspense fallback={<Empty label="Qiita" />}>
-        <Qiita />
+        <FeatureArticle />
       </Suspense>
       <Contact />
     </>

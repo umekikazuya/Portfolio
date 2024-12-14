@@ -1,10 +1,3 @@
-export interface Cp {
-  type: string;
-  id: string;
-  attributes: CpAttributes;
+export interface Cp<T> {
+  data: T[];
 }
-
-interface CpAttributes {
-  changed: string;
-}
- 
