@@ -13,11 +13,11 @@ export default async function FeatureArticle() {
   const t_1 = await getTranslations("LanguageSettings");
   const t_2 = await getTranslations("Article");
   const data = await fetchData<Cp<Article>>(ENDPOINT);
-
+  
   if (!data?.data) {
     return <></>;
   }
-
+  
   return (
     <Layout
       header={
@@ -41,7 +41,7 @@ export default async function FeatureArticle() {
                 title={item.title}
                 link={item.link}
                 published={item.published}
-                type="Qiita"
+                type={item.service || ''}
               />
             ))}
           </ul>
