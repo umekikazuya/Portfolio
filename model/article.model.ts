@@ -4,4 +4,5 @@ export interface Article {
   link: string;
   is_pickup: boolean;
   published: string;
+  service: string|null;
 }
