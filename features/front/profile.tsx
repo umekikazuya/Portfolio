@@ -4,10 +4,14 @@ import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
+import { JsonApi } from "@/model/jsonApi.model";
 
 export default async function Profile() {
-  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile`;
-  const user = await fetchData<User>(ENDPOINT);
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile/${process.env.NEXT_DRUPAL_USER_UUID}`;
+  const user = await fetchData<JsonApi<User>>(ENDPOINT);
+  if (!user?.data) {
+    return <></>;
+  }
 
   return (
     <>
@@ -15,48 +19,48 @@ export default async function Profile() {
         {/* <img src="/src/assets/profile.jpg" alt="" width={80} height={80} /> */}
         <div className={style.name}>
           <span className={style.nameEn}>
-            {user?.displayName}
+            {user?.data.displayName}
           </span>
           <span className={style.nameJa}>
-            {user?.displayShortName}
+            {user?.data.displayShortName}
           </span>
         </div>
-        {user?.job ? (
+        {user?.data.job ? (
           <ProfileSingleItem
             label={("job")}
-            data={user?.job}
+            data={user?.data.job}
           />
         ) : (
           ""
         )}
-        {user?.address ? (
+        {user?.data.address ? (
           <ProfileSingleItem
             label={("address")}
-            data={user?.address}
+            data={user?.data.address}
           />
         ) : (
           ""
         )}
-        {user?.from ? (
+        {user?.data.from ? (
           <ProfileSingleItem
             label={("from")}
-            data={user?.from}
+            data={user?.data.from}
           />
         ) : (
           ""
         )}
-        {user?.skills?.length ? (
+        {user?.data.skills?.length ? (
           <ProfileMultipleItems
             label={("skill")}
-            data={user?.skills}
+            data={user?.data.skills}
           />
         ) : (
           ""
         )}
-        {user?.likes?.length ? (
+        {user?.data.likes?.length ? (
           <ProfileMultipleItems
             label={("links")}
-            data={user?.likes}
+            data={user?.data.likes}
           />
         ) : (
           ""
