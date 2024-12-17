@@ -7,9 +7,9 @@ export interface User {
   github: string | null;
   introduction: string | null;
   job: string | null;
-  likes: Array<string>;
+  likes: string[] | null;
   qiita: string | null;
-  skills: Array<string>;
+  skills: string[] | null;
   summaryIntroduction: string | null;
   zenn: string | null;
   updatedAt: string;
