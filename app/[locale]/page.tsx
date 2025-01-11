@@ -8,7 +8,7 @@ export default async function Page() {
 
   return (
     <>
-      <Suspense fallback={<Empty label="Profile" />}>
+      <Suspense fallback={<Empty size="l" />}>
         <Profile />
       </Suspense>
       <Suspense fallback={<Empty label="Qiita" />}>

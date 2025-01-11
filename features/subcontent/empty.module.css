@@ -6,6 +6,10 @@
   padding: 40px 0;
 }
 
+.large {
+  height: 600px;
+}
+
 .empty_image {
   width: 100%;
 }

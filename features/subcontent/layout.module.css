@@ -1,10 +1,12 @@
 .layout {
   box-shadow: 2px 2px 16px #95959d4d;
-  margin-top: 100px;
   padding: 40px;
 }
 
 .layout_body {
-  border-top: 1px solid #868c9b;
   padding-top: 4px;
+}
+
+.layout_body.has_header {
+  border-top: 1px solid #868c9b;
 }
