@@ -6,15 +6,14 @@ import { NextIntlClientProvider } from "next-intl";
 import LanguageSwitcher from "@/features/languageSwitcher/languageSwitcher";
 import Script from "next/script";
 
-export default async function LocaleLayout({
-  children,
-  params: { locale },
-}: {
+type Props = Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
-}) {
-  // Providing all messages to the client
-  // side is the easiest way to get started
+  params: Promise<{ locale?: string }>;
+}>;
+
+export default async function Layout({ children, params }: Props) {
+  // メッセージの取得
+  const { locale } = await params;
   const messages = await getMessages();
 
   return (
