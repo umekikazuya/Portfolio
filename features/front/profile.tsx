@@ -1,13 +1,15 @@
 import { FaGithub } from "react-icons/fa";
 import { fetchData } from "@/utils/api";
+import { getTranslations } from "next-intl/server";
+import { JsonApi } from "@/model/jsonApi.model";
 import { ProfileMultipleItems, ProfileSingleItem } from "./profileItem";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
-import { JsonApi } from "@/model/jsonApi.model";
 
 export default async function Profile() {
   const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile/${process.env.NEXT_DRUPAL_USER_UUID}`;
+  const t = await getTranslations("Profile");
   const user = await fetchData<JsonApi<User>>(ENDPOINT);
   if (!user?.data) {
     return <></>;
@@ -18,55 +20,36 @@ export default async function Profile() {
       <div className={style.profile}>
         {/* <img src="/src/assets/profile.jpg" alt="" width={80} height={80} /> */}
         <div className={style.name}>
-          <span className={style.nameEn}>
-            {user?.data.displayName}
-          </span>
-          <span className={style.nameJa}>
-            {user?.data.displayShortName}
-          </span>
+          <span className={style.nameEn}>{user?.data.displayName}</span>
+          <span className={style.nameJa}>{user?.data.displayShortName}</span>
         </div>
         {user?.data.job ? (
-          <ProfileSingleItem
-            label={("job")}
-            data={user?.data.job}
-          />
+          <ProfileSingleItem label={t("job")} data={user?.data.job} />
         ) : (
           ""
         )}
         {user?.data.address ? (
-          <ProfileSingleItem
-            label={("address")}
-            data={user?.data.address}
-          />
+          <ProfileSingleItem label={t("address")} data={user?.data.address} />
         ) : (
           ""
         )}
         {user?.data.from ? (
-          <ProfileSingleItem
-            label={("from")}
-            data={user?.data.from}
-          />
+          <ProfileSingleItem label={t("from")} data={user?.data.from} />
         ) : (
           ""
         )}
         {user?.data.skills?.length ? (
-          <ProfileMultipleItems
-            label={("skill")}
-            data={user?.data.skills}
-          />
+          <ProfileMultipleItems label={t("skill")} data={user?.data.skills} />
         ) : (
           ""
         )}
         {user?.data.likes?.length ? (
-          <ProfileMultipleItems
-            label={("links")}
-            data={user?.data.likes}
-          />
+          <ProfileMultipleItems label={t("like")} data={user?.data.likes} />
         ) : (
           ""
         )}
         <span className={style.item}>
-          <span className={style.itemLabel}>Links</span>
+          <span className={style.itemLabel}>{t("links")}</span>
           <ul className={style.itemText}>
             <li className={style.link__item}>
               <a
