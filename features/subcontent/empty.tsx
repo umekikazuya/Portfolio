@@ -4,17 +4,22 @@ import Layout from "./layout";
 import style from "@/features/subcontent/empty.module.css";
 
 interface EmptyProps {
-  label: string;
+  label?: string;
+  size?: Size;
 }
 
-export default function Empty({ label }: EmptyProps) {
+type Size = "m" | "l";
+
+export default function Empty({ label, size }: EmptyProps) {
   return (
     <>
       <Layout
-        header={<Header title={label} />}
+        header={label ? <Header title={label} /> : null}
         body={
           <>
-            <div className={style.empty}>
+            <div
+              className={style.empty + (size === "l" ? " " + style.large : "")}
+            >
               <Image
                 src="/no_data.svg"
                 width={110}

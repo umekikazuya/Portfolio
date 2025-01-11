@@ -32,7 +32,12 @@ export function CategorizedListItem({
 }: CategorizedListItemProps) {
   return (
     <li className={style.li}>
-      <Link className={style.li_link} href={link} target="_blank" rel="noreferrer">
+      <Link
+        className={style.li_link}
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+      >
         <span className={style.li_link__title}>{title}</span>
         <span>
           <span className={style.li_link__category}>{type}</span>

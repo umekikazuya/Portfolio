@@ -11,7 +11,11 @@
 }
 
 .container__inner {
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
 }
 
 main {
@@ -24,7 +28,7 @@ main {
 
   @media (min-width: 992px) {
     padding: 40px 0 80px;
-    max-width: 600px;
+    width: 600px;
   }
 }
 

@@ -38,7 +38,7 @@ export default async function LocaleLayout({
               name: "umekikazuya",
               url: "https://www.umekikazuya.me/",
               sameAs: [
-                'https://www.drupal.org/u/umekikazuya',
+                "https://www.drupal.org/u/umekikazuya",
                 "https://twitter.com/kazuya_um_k_",
                 "https://github.com/umekikazuya",
               ],
@@ -54,11 +54,20 @@ export default async function LocaleLayout({
 
 export const metadata = {
   title: "umekikazuya | Web Creator Portfolio",
-  description: "umekikazuya's portfolio showcasing expertise in web development, Drupal, and Symfony.",
-  keywords: ["umekikazuya", "Web Creator", "Portfolio", "Drupal", "Symfony", "PHP"],
+  description:
+    "umekikazuya's portfolio showcasing expertise in web development, Drupal, and Symfony.",
+  keywords: [
+    "umekikazuya",
+    "Web Creator",
+    "Portfolio",
+    "Drupal",
+    "Symfony",
+    "PHP",
+  ],
   openGraph: {
     title: "umekikazuya | Web Creator Portfolio",
-    description: "Explore umekikazuya's web development projects, focusing on Drupal, Symfony, and PHP.",
+    description:
+      "Explore umekikazuya's web development projects, focusing on Drupal, Symfony, and PHP.",
     url: "https://www.umekikazuya.me/",
     siteName: "umekikazuya Portfolio",
     locale: "ja_JP",
