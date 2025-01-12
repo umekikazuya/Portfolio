@@ -20,14 +20,9 @@ export default function Empty({ label, size }: EmptyProps) {
             <div
               className={style.empty + (size === "l" ? " " + style.large : "")}
             >
-              <Image
-                src="/no_data.svg"
-                width={110}
-                height={98}
-                alt="No data."
-                className={style.empty_image}
-              />
-              <span className={style.empty_message}>Loading...</span>
+              <div className={style.inner}>
+                <div className={style.dot} />
+              </div>
             </div>
           </>
         }
