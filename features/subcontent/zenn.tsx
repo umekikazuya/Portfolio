@@ -5,7 +5,7 @@ import { NavigateButton } from "@/components/elements/button";
 import Header from "./header";
 import Layout from "./layout";
 
-const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/api/zenn/${process.env.NEXT_PUBLIC_ZENN_ID}`;
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/zenn/${process.env.NEXT_PUBLIC_ZENN_ID}`;
 
 export default async function Zenn() {
   const data = await fetchData<FeedType>(ENDPOINT);
