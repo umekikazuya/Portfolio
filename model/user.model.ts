@@ -1,7 +1,7 @@
 export interface User {
   id: string;
-  displayName: string | null;
-  displayShortName: string | null;
+  display_name: string | null;
+  display_short_name: string | null;
   address: string | null;
   from: string | null;
   github: string | null;
