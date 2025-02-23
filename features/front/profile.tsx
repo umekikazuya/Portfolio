@@ -8,7 +8,7 @@ import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
 
 export default async function Profile() {
-  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile/${process.env.NEXT_DRUPAL_USER_UUID}`;
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile`;
   const t = await getTranslations("Profile");
   const user = await fetchData<JsonApi<User>>(ENDPOINT);
   if (!user?.data) {
@@ -20,8 +20,8 @@ export default async function Profile() {
       <div className={style.profile}>
         {/* <img src="/src/assets/profile.jpg" alt="" width={80} height={80} /> */}
         <div className={style.name}>
-          <span className={style.nameEn}>{user?.data.displayName}</span>
-          <span className={style.nameJa}>{user?.data.displayShortName}</span>
+          <span className={style.nameEn}>{user?.data.display_name}</span>
+          <span className={style.nameJa}>{user?.data.display_short_name}</span>
         </div>
         {user?.data.job ? (
           <ProfileSingleItem label={t("job")} data={user?.data.job} />
