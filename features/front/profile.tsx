@@ -8,7 +8,7 @@ import { User } from "@/model/user.model";
 import style from "@/features/front/profile.module.css";
 
 export default async function Profile() {
-  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile/${process.env.NEXT_DRUPAL_USER_UUID}`;
+  const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/profile`;
   const t = await getTranslations("Profile");
   const user = await fetchData<JsonApi<User>>(ENDPOINT);
   if (!user?.data) {
