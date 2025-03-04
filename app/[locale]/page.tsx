@@ -1,20 +1,32 @@
-import { Suspense } from "react";
+import { Article } from "@/model/article.model";
+import { Cp } from "@/model/cp.model";
+import { fetchData } from "@/utils/api";
 import Contact from "@/features/subcontent/contact";
-import Empty from "@/features/subcontent/empty";
-import Profile from "@/features/front/profile";
-import FeatureArticle from "@/features/subcontent/featureArticle";
+import FeatureArticle from "@/components/features/article/featureArticle";
+import Profile from "@/components/features/profile/profileBlock";
+import style from "./page.module.css";
+
+const ENDPOINT = `${process.env.NEXT_DRUPAL_API}/backend/article?is_pickup=1`;
 
 export default async function Page() {
+  const data = await fetchData<Cp<Article>>(ENDPOINT);
+
+  if (!data) {
+    return <></>;
+  }
+  if (!data.data) {
+    return <></>;
+  }
 
   return (
     <>
-      <Suspense fallback={<Empty size="l" />}>
-        <Profile />
-      </Suspense>
-      <Suspense fallback={<Empty label="Qiita" />}>
-        <FeatureArticle />
-      </Suspense>
-      <Contact />
+      <Profile />
+      <div className={style.article}>
+        <FeatureArticle articles={data.data} />
+      </div>
+      <div className={style.article}>
+        <Contact />
+      </div>
     </>
   );
 }

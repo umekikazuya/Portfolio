@@ -3,8 +3,8 @@ import "@/styles/reset.css";
 import { Analytics } from "@vercel/analytics/react";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import LanguageSwitcher from "@/features/languageSwitcher/languageSwitcher";
 import Script from "next/script";
+import StyledComponentsRegistry from "@/lib/registry";
 
 type Props = Readonly<{
   children: React.ReactNode;
@@ -20,12 +20,13 @@ export default async function Layout({ children, params }: Props) {
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <div className="container">
-            <main>
-              <LanguageSwitcher />
-              <div className="container__inner">{children}</div>
-            </main>
-          </div>
+          <main>
+            <div className="container">
+              <div className="container__inner">
+                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+              </div>
+            </div>
+          </main>
           <Script
             id="structured-data"
             type="application/ld+json"
@@ -44,7 +45,7 @@ export default async function Layout({ children, params }: Props) {
               jobTitle: "Web Creator",
             })}
           </Script>
-          <Analytics mode={"production"} />
+          {/* <Analytics mode={"production"} /> */}
         </NextIntlClientProvider>
       </body>
     </html>

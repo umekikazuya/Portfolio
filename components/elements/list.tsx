@@ -13,14 +13,12 @@ interface CategorizedListItemProps extends ListItemProps {
 
 export function ListItem({ title, link, published }: ListItemProps) {
   return (
-    <li className={style.li}>
-      <a className={style.li_link} href={link} target="_blank" rel="noreferrer">
-        <span className={style.li_link__title}>{title}</span>
-        <time dateTime={published} className={style.li_link__time}>
-          {new Date(published).toLocaleDateString("ja-JP")}
-        </time>
-      </a>
-    </li>
+    <a className={style.link} href={link} target="_blank" rel="noreferrer">
+      <span className={style.link__title}>{title}</span>
+      <time dateTime={published} className={style.link__time}>
+        {new Date(published).toLocaleDateString("ja-JP")}
+      </time>
+    </a>
   );
 }
 
@@ -32,16 +30,11 @@ export function CategorizedListItem({
 }: CategorizedListItemProps) {
   return (
     <li className={style.li}>
-      <Link
-        className={style.li_link}
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <span className={style.li_link__title}>{title}</span>
+      <Link className={style.link} href={link} target="_blank" rel="noreferrer">
+        <span className={style.link__title}>{title}</span>
         <span>
-          <span className={style.li_link__category}>{type}</span>
-          <time dateTime={published} className={style.li_link__time}>
+          <span className={style.link__category}>{type}</span>
+          <time dateTime={published} className={style.link__time}>
             {new Date(published).toLocaleDateString("ja-JP")}
           </time>
         </span>
