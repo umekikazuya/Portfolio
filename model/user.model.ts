@@ -9,7 +9,7 @@ export interface User {
   job: string | null;
   likes: string[] | null;
   qiita: string | null;
-  skills: string[] | null;
+  skill: string[] | null;
   summaryIntroduction: string | null;
   zenn: string | null;
   updatedAt: string;
