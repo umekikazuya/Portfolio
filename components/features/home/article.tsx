@@ -91,7 +91,7 @@ export function Articles() {
     <Section>
       <SectionHeader>
         <Title>Articles</Title>
-        <ViewAll href="/articles">
+        <ViewAll href="/article">
           View all
           <ArrowUpRight size={16} />
         </ViewAll>
