@@ -1,15 +1,16 @@
+import "destyle.css";
+import { Analytics } from "@vercel/analytics/react";
+import { Contact } from "@/components/features/contact/contact";
+import { Header } from "@/components/features/header/header";
 import Script from "next/script";
 import StyledComponentsRegistry from "@/lib/registry";
-import { Header } from "@/components/features/header/header";
-import "destyle.css";
-import { Contact } from "@/components/features/contact/contact";
+
 
 type Props = Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>;
 }>;
 
-export default async function RootLayout({ children, params }: Props) {
+export default async function RootLayout({ children }: Props) {
   return (
     <html>
       <body>
@@ -36,7 +37,7 @@ export default async function RootLayout({ children, params }: Props) {
             jobTitle: "Web Creator",
           })}
         </Script>
-        {/* <Analytics mode={"production"} /> */}
+        <Analytics />
       </body>
     </html>
   );
