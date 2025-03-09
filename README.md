@@ -1,6 +1,6 @@
 # My Portfolio
 
-This project will serve as my personal portfolio of Drupal developer skills, projects, and experiences, as well as an introduction to my private life.
+This project will serve as my personal portfolio of developer skills, projects, and experiences, as well as an introduction to my private life.
 
 ## Public Website
 
@@ -10,14 +10,13 @@ This project will serve as my personal portfolio of Drupal developer skills, pro
 
 ### Frontend Stack
 
-- React
+- Next.js(AppRouter)
 - TypeScript
-- ReactRouter
-- Styled-components
+- Styled Components
 
 ### Backend Stack
 
-- [Drupal](https://www.drupal.org/)
+- [Laravel](https://www.drupal.org/)
 
 ## Getting Started
 
@@ -30,7 +29,7 @@ git clone https://github.com/kazuya-u/Portfolio.git
 ### 002. Install dependencies.
 
 ```shell
-npm install
+npm ci
 ```
 
 ### 003. Start the development server.
@@ -41,13 +40,14 @@ npm run dev
 
 ## Project Structure
 
-- `src/`: Main source code folder
-  - `components/`: React component. For example, layout, button, and card-item, etc...
-  - `pages/`: Each page.
-  - `routes/`: About Routing with ReactRouter.
-  - `feature/`: Source code for each function.
-  - `assets/`: Assets.
-- `public/`: Static assets
+- `app/`: Routing
+- `components/`: React component. For example, layout, button, and card-item, etc...
+  - `ui/`: UI component.
+  - `feature/`: Feature component.
+- `model/`: Types.
+- `lib/`: Functions.
+- `styles/`: Base style.
+- `assets/`: Assets.
 
 ## License
 
