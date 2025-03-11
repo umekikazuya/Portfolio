@@ -1,6 +1,6 @@
 
 import { Article } from '@/domain/entities/article';
-import { createArticleContent, createArticleId, createArticleLink, createArticleSlug, createArticleTitle, createPublishDate } from '@/domain/valueObjects/article';
+import { createArticleContent, createArticleId, createArticleLink, createArticleTitle, createArticlePublished } from '@/domain/valueObjects/article';
 import { Result } from '@/types/result';
 
 export const parseArticle = (raw: unknown): Result<Article, Error> => {
@@ -11,23 +11,23 @@ export const parseArticle = (raw: unknown): Result<Article, Error> => {
   const { id, title, content, link, published } = raw as Record<string, unknown>;
 
   // ArticleIdを生成
-  const articleId = createArticleId(String(id));
+  const articleId = createArticleId(id);
   if (!articleId.ok) return articleId;
 
   // ArticleTitleを生成
-  const articleTitle = createArticleTitle(String(title));
+  const articleTitle = createArticleTitle(title);
   if (!articleTitle.ok) return articleTitle;
 
   // ArticleContentを生成
-  const articleContent = createArticleContent(String(content));
+  const articleContent = createArticleContent(content);
   if (!articleContent.ok) return articleContent;
   
   // ArticleLinkを生成
-  const articleLink = createArticleLink(String(link));
+  const articleLink = createArticleLink(link);
   if (!articleLink.ok) return articleLink;
 
   // PublishDateを生成
-  const articleDate = createPublishDate(String(published));
+  const articleDate = createArticlePublished(published);
   if (!articleDate.ok) return articleDate;
 
   // エンティティを返却

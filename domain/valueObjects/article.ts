@@ -2,62 +2,82 @@ import { Result } from "@/types/result";
 
 export type Branded<T, B> = T & { _brand: B };
 
-// ArticleId
-export type ArticleId = Branded<string, "ArticleId">;
-export const createArticleId = (id: string): Result<ArticleId, Error> => {
-  if (!/^[a-zA-Z0-9_-]+$/.test(id)) {
-    return { ok: false, error: new Error("無効なArticleIdです") };
-  }
-  return { ok: true, value: id as ArticleId };
-};
-
-// ArticleSlug
-export type ArticleSlug = Branded<string, "ArticleSlug">;
-export const createArticleSlug = (slug: string): Result<ArticleSlug, Error> => {
-  if (!/^[a-z0-9-]+$/.test(slug)) {
-    return { ok: false, error: new Error("無効なスラッグです") };
-  }
-  return { ok: true, value: slug as ArticleSlug };
-};
-
-// ArticleTitle
-export type ArticleTitle = Branded<string, "ArticleTitle">;
-export const createArticleTitle = (
-  title: string
-): Result<ArticleTitle, Error> => {
-  if (title.trim().length === 0) {
-    return { ok: false, error: new Error("タイトルが空です") };
-  }
-  return { ok: true, value: title as ArticleTitle };
-};
-
-// ArticleContent
+export type ArticleId = Branded<number, "ArticleId">;
 export type ArticleContent = Branded<string, "ArticleContent">;
-export const createArticleContent = (
-  content: string
-): Result<ArticleContent, Error> => {
-  if (content.trim().length === 0) {
-    return { ok: false, error: new Error("コンテンツが空です") };
-  }
-  return { ok: true, value: content as ArticleContent };
-};
-
-// ArticleLink
+export type ArticleTitle = Branded<string, "ArticleTitle">;
 export type ArticleLink = Branded<string, "ArticleLink">;
-export const createArticleLink = (link: string): Result<ArticleLink, Error> => {
-  if (!/^https?:\/\//.test(link)) {
-    return { ok: false, error: new Error("無効なURLです") };
-  }
-  return { ok: true, value: link as ArticleLink };
+export type ArticleService = Branded<string, "ArticleService">;
+export type ArticlePublished = Branded<Date, "ArticlePublished">;
+
+export function createArticleId(id: unknown): Result<ArticleId, Error> {
+  const parsed = typeof id === "string" ? parseInt(id, 10) : NaN;
+  return parsed > 0
+    ? { ok: true, value: parsed as ArticleId }
+    : { ok: false, error: new Error("無効なID") };
+}
+
+export const createArticleContent = (
+  content: unknown
+): Result<ArticleContent, Error> => {
+  const parsed = typeof content === "string" ? content : "";
+  return parsed.trim().length > 0
+    ? { ok: true, value: parsed as ArticleContent }
+    : { ok: false, error: new Error("コンテンツが空です") };
 };
 
-// PublishDate（ISO形式）
-export type ArticlePublishDate = Branded<string, "PublishDate">;
-export const createPublishDate = (
-  dateString: string
-): Result<ArticlePublishDate, Error> => {
-  if (isNaN(Date.parse(dateString))) {
-    return { ok: false, error: new Error("無効な日付形式です") };
+export function createArticleTitle(
+  title: unknown
+): Result<ArticleTitle, Error> {
+  const parsed = typeof title === "string" ? title : "";
+  return parsed.trim().length > 0
+    ? { ok: true, value: title as ArticleTitle }
+    : { ok: false, error: new Error("タイトルが空です") };
+}
+
+export function createArticleLink(link: unknown): Result<ArticleLink, Error> {
+  const parsed = typeof link === "string" ? link : "";
+  return /^https?:\/\/\S+$/.test(parsed)
+    ? { ok: true, value: parsed as ArticleLink }
+    : { ok: false, error: new Error("無効なリンク") };
+}
+
+export function createArticleService(
+  service: unknown
+): Result<ArticleService, Error> {
+  const parsed = typeof service === "string" ? service : "";
+  return parsed.trim().length > 0
+    ? { ok: true, value: parsed as ArticleService }
+    : { ok: false, error: new Error("無効なサービス名") };
+}
+
+export function createArticlePublished(
+  published: unknown
+): Result<ArticlePublished, Error> {
+  if (typeof published !== "string") {
+    return {
+      ok: false,
+      error: new Error("公開日は文字列である必要があります。"),
+    };
   }
-  return { ok: true, value: dateString as ArticlePublishDate };
-};
+
+  const isoDateString = published.replace(" ", "T");
+  const localDate = new Date(isoDateString);
+
+  if (isNaN(localDate.getTime())) {
+    return { ok: false, error: new Error("無効な公開日") };
+  }
+
+  // UTC に変換
+  const utcDate = new Date(
+    Date.UTC(
+      localDate.getFullYear(),
+      localDate.getMonth(),
+      localDate.getDate(),
+      localDate.getHours(),
+      localDate.getMinutes(),
+      localDate.getSeconds()
+    )
+  );
+
+  return { ok: true, value: utcDate as ArticlePublished };
+}

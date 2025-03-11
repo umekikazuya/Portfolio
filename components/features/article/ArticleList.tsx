@@ -20,10 +20,10 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             <article key={index}>
               <Heading level={3}>{article.title}</Heading>
               <time
-                dateTime={article.publishedAt}
+                dateTime={article.publishedAt.toLocaleDateString()}
                 className={style.article_time}
               >
-                {article.publishedAt}
+                {article.publishedAt.toLocaleDateString()}
               </time>
               <div key={index} className={style.article_border} />
             </article>
