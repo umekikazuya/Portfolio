@@ -19,9 +19,6 @@ export class ArticleApiRepository implements ArticleRepository {
       if (!Array.isArray(data)) {
         return { ok: false, error: new Error("APIレスポンスが不正です。") };
       }
-    console.log(data
-  .map(parseArticle)
-  .filter((r): r is { ok: true; value: Article } => r.ok));
 
       const articles = data
         .map(parseArticle)

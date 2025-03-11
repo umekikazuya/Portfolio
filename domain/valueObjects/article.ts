@@ -3,14 +3,15 @@ import { Result } from "@/types/result";
 export type Branded<T, B> = T & { _brand: B };
 
 export type ArticleId = Branded<number, "ArticleId">;
-export type ArticleContent = Branded<string, "ArticleContent">;
+export type ArticleContent = Branded<string | null, "ArticleContent">;
 export type ArticleTitle = Branded<string, "ArticleTitle">;
 export type ArticleLink = Branded<string, "ArticleLink">;
 export type ArticleService = Branded<string, "ArticleService">;
 export type ArticlePublished = Branded<Date, "ArticlePublished">;
 
 export function createArticleId(id: unknown): Result<ArticleId, Error> {
-  const parsed = typeof id === "string" ? parseInt(id, 10) : NaN;
+  const parsed = typeof id === "number" ? id : parseInt(id as string, 10);
+  
   return parsed > 0
     ? { ok: true, value: parsed as ArticleId }
     : { ok: false, error: new Error("無効なID") };
@@ -19,10 +20,10 @@ export function createArticleId(id: unknown): Result<ArticleId, Error> {
 export const createArticleContent = (
   content: unknown
 ): Result<ArticleContent, Error> => {
-  const parsed = typeof content === "string" ? content : "";
-  return parsed.trim().length > 0
+  const parsed = typeof content === "string" ? content : null;
+  return parsed === null || parsed.trim().length > 0
     ? { ok: true, value: parsed as ArticleContent }
-    : { ok: false, error: new Error("コンテンツが空です") };
+    : { ok: false, error: new Error("無効なタイトル") };
 };
 
 export function createArticleTitle(
