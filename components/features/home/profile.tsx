@@ -100,13 +100,30 @@ const ProfileImage = styled.div`
   }
 `;
 
+type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
+
+const fetchProfileData = async (): Promise<Result<JsonApi<User>, Error>> => {
+  try {
+    const data = await fetchData<JsonApi<User>>("/api/profile");
+    return { ok: true, value: data };
+  } catch (error) {
+    return { ok: false, error: error as Error };
+  }
+};
+
 export function Profile() {
   const [profile, setProfile] = useState<null | JsonApi<User>>(null);
 
   useEffect(() => {
-    fetchData<JsonApi<User>>("/api/profile").then((data) => {
-      setProfile(data);
-    });
+    const getProfileData = async () => {
+      const result = await fetchProfileData();
+      if (result.ok) {
+        setProfile(result.value);
+      } else {
+        console.error(result.error);
+      }
+    };
+    getProfileData();
   }, []);
 
   if (!profile) return <></>;

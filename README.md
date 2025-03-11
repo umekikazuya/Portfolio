@@ -39,15 +39,52 @@ npm run dev
 ```
 
 ## Project Structure
-
-- `app/`: Routing
-- `components/`: React component. For example, layout, button, and card-item, etc...
-  - `ui/`: UI component.
-  - `feature/`: Feature component.
-- `model/`: Types.
-- `lib/`: Functions.
-- `styles/`: Base style.
-- `assets/`: Assets.
+```
+app/
+│   ├── api/
+│   │   └── articles/
+│   │       └── route.ts (Next.js API Route)
+│   ├── articles/
+│   │   ├── page.tsx (記事一覧ページ)
+│   │   └── [slug]/
+│   │       └── page.tsx (記事詳細ページ)
+│   └── layout.tsx
+components/
+│   ├── ui/ (再利用可能なUIコンポーネント)
+│   │   ├── Button/
+│   │   └── Heading/
+│   └── features/ (機能単位コンポーネント)
+│       └── articles/
+│           ├── ArticleList.tsx
+│           └── ArticleDetail.tsx
+domain/
+│   ├── entities/
+│   │   └── Article.ts
+│   ├── valueObjects/
+│   │   └── Article.ts
+│   └── repositories/
+│       └── ArticleRepository.ts (interface定義)
+infrastructure/
+│   └── api/
+│       └── ArticleApiRepository.ts (API呼び出しの具体実装)
+lib/
+│   └── services/
+│       └── parseArticle.ts (純粋関数)
+hooks/
+│   └── useArticles.ts
+types/
+│   └── Result.ts
+styles/
+│   ├── reset.css
+│   └── base.css
+tests/
+│   ├── domain/
+│   │   └── entities/
+│   │       └── Article.test.ts
+│   └── lib/
+│       └── services/
+│           └── parseArticle.test.ts
+```
 
 ## License
 

@@ -1,13 +1,13 @@
 import Heading from "@/components/ui/heading/heading";
 import MoreLink from "@/components/ui/moreLink/moreLink";
-import { Article } from "@/model/article.model";
 import style from "./feature_article.module.css";
+import { Article } from "@/domain/entities/article";
 
-type Props = {
+type ArticleListProps = {
   articles: Article[];
 };
 
-const FeatureArticle: React.FC<Props> = ({ articles }) => {
+export const ArticleList = ({ articles }: ArticleListProps) => {
   return (
     <>
       <div className={style.heading}>
@@ -19,8 +19,11 @@ const FeatureArticle: React.FC<Props> = ({ articles }) => {
           <>
             <article key={index}>
               <Heading level={3}>{article.title}</Heading>
-              <time dateTime={article.published} className={style.article_time}>
-                {article.published}
+              <time
+                dateTime={article.publishedAt}
+                className={style.article_time}
+              >
+                {article.publishedAt}
               </time>
               <div key={index} className={style.article_border} />
             </article>
@@ -30,5 +33,3 @@ const FeatureArticle: React.FC<Props> = ({ articles }) => {
     </>
   );
 };
-
-export default FeatureArticle;
