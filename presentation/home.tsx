@@ -4,6 +4,15 @@ import { HeroSection } from "@/components/features/home/hero";
 import { Profile } from "@/components/features/home/profile";
 import styled from "styled-components";
 
+/**
+ * Renders the home page layout with a hero section, profile, and provided article content.
+ *
+ * The layout begins with a hero section, followed by a styled main content area that encapsulates
+ * a profile component and the custom article content passed to the component.
+ *
+ * @param articleComponent - The custom content to render within the content section.
+ * @returns A React element representing the home page layout.
+ */
 export function HomeLayout({
   articleComponent,
 }: {

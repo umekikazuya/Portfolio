@@ -114,6 +114,13 @@ const fetchProfileData = async (): Promise<Result<JsonApi<User>, Error>> => {
   }
 };
 
+/**
+ * Renders the Profile component that displays user profile information.
+ *
+ * This component fetches profile data asynchronously on mount using `fetchProfileData`. If the data is fetched successfully,
+ * it displays an animated profile section featuring the user's display name, username, job, location, and social media links.
+ * If no profile data is available, the component renders an empty fragment.
+ */
 export function Profile() {
   const [profile, setProfile] = useState<null | JsonApi<User>>(null);
 
