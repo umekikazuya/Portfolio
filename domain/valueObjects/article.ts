@@ -23,7 +23,7 @@ export const createArticleContent = (
   const parsed = typeof content === "string" ? content : null;
   return parsed === null || parsed.trim().length > 0
     ? { ok: true, value: parsed as ArticleContent }
-    : { ok: false, error: new Error("無効なタイトル") };
+    : { ok: false, error: new Error("無効な本文") };
 };
 
 export function createArticleTitle(
@@ -60,7 +60,6 @@ export function createArticlePublished(
       error: new Error("公開日は文字列である必要があります。"),
     };
   }
-
   const isoDateString = published.replace(" ", "T");
   const localDate = new Date(isoDateString);
 

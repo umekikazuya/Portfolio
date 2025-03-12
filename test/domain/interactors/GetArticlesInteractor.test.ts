@@ -1,7 +1,7 @@
 import { Article } from "@/domain/entities/article";
 import { ArticleRepository } from "@/domain/repositories/ArticleRepository";
 import { GetArticlesInteractor } from "@/domain/repositories/GetArticlesInteractor";
-import { ArticleContent, ArticleId, ArticleLink, ArticlePublishDate, ArticleSlug, ArticleTitle } from "@/domain/valueObjects/article";
+import { ArticleContent, ArticleId, ArticleLink,  ArticlePublished, ArticleTitle } from "@/domain/valueObjects/article";
 
 describe('GetArticlesInteractor', () => {
   let mockRepository: ArticleRepository;
@@ -15,12 +15,11 @@ describe('GetArticlesInteractor', () => {
   test('正常に記事を取得できること', async () => {
     const articles: Article[] = [
       {
-        id: 'id1' as ArticleId,
-        slug: 'article-1' as ArticleSlug,
+        id: 1 as ArticleId,
         title: '記事1' as ArticleTitle,
         content: 'コンテンツ' as ArticleContent,
         link: 'https://example.com/article-1' as ArticleLink,
-        publishedAt: '2025-03-01' as ArticlePublishDate
+        publishedAt: new Date() as ArticlePublished
       }
     ];
 
