@@ -104,7 +104,10 @@ type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
 
 const fetchProfileData = async (): Promise<Result<JsonApi<User>, Error>> => {
   try {
-    const data = await fetchData<JsonApi<User>>("/api/profile");
+    const data = await fetchData<JsonApi<User> | null>("/api/profile");
+    if (data === null) {
+      throw new Error("Profile data is null");
+    }
     return { ok: true, value: data };
   } catch (error) {
     return { ok: false, error: error as Error };
