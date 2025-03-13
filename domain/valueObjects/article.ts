@@ -70,12 +70,18 @@ export function createArticlePublished(
   // 日付と時間の間のスペースを 'T' に置き換える
   const parts = published.split(/\s+/);
   const isoDateString = parts.length >= 2
-    ? `${parts[0]}T${parts.slice(1).join(' ')}`
+    ? `${parts[0]}T${parts.slice(1).join('')}`
     : published;
   const localDate = new Date(isoDateString);
 
   if (isNaN(localDate.getTime())) {
     return { ok: false, error: new Error("無効な公開日") };
+  }
+
+  // タイムゾーン情報が含まれているか確認
+  if (published.includes('Z') || /[+-]\d{2}:\d{2}/.test(published)) {
+    // タイムゾーン情報があれば、それを尊重する
+    return { ok: true, value: localDate as ArticlePublished };
   }
 
   // UTC に変換

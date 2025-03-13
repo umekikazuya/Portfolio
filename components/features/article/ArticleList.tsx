@@ -15,8 +15,8 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
         <MoreLink href="/">View all</MoreLink>
       </div>
       <div className={style.articles}>
-        {articles.map((article, index) => (
-          <article key={index}>
+        {articles.map((article) => (
+          <article key={article.id}>
             <Heading level={3}>{article.title}</Heading>
             <time
               dateTime={article.publishedAt.toISOString().split('T')[0]}
@@ -24,7 +24,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
             >
               {article.publishedAt.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
-            <div key={index} className={style.article_border} />
+            <div key={article.id} className={style.article_border} />
           </article>
         ))}
       </div>
