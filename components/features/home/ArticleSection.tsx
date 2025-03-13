@@ -86,20 +86,24 @@ export const ArticleSection = ({ articles }: ArticlesProps) => {
       </SectionHeader>
 
       <ArticleList>
-        {articles.map((article, index) => (
-          <ArticleCard
-            key={article.title}
-            href={article.link}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <ArticleTitle>{article.title}</ArticleTitle>
-            <ArticleMeta>
-              <ArticleDate>{article.publishedAt.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</ArticleDate>
-            </ArticleMeta>
-          </ArticleCard>
-        ))}
+        {articles.length === 0 ? (
+          <div>現在表示できる記事がありません。</div>
+        ) : (
+          articles.map((article, index) => (
+            <ArticleCard
+              key={article.id || index}
+              href={article.link}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <ArticleTitle>{article.title}</ArticleTitle>
+              <ArticleMeta>
+                <ArticleDate>{article.publishedAt.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</ArticleDate>
+              </ArticleMeta>
+            </ArticleCard>
+          ))
+        )}
       </ArticleList>
     </Section>
   );
