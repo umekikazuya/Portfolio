@@ -96,7 +96,7 @@ export const ArticleSection = ({ articles }: ArticlesProps) => {
           >
             <ArticleTitle>{article.title}</ArticleTitle>
             <ArticleMeta>
-              <ArticleDate>{article.publishedAt.toLocaleDateString()}</ArticleDate>
+              <ArticleDate>{article.publishedAt.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</ArticleDate>
             </ArticleMeta>
           </ArticleCard>
         ))}

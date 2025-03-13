@@ -10,11 +10,18 @@ export type ArticleService = Branded<string, "ArticleService">;
 export type ArticlePublished = Branded<Date, "ArticlePublished">;
 
 export function createArticleId(id: unknown): Result<ArticleId, Error> {
-  const parsed = typeof id === "number" ? id : parseInt(id as string, 10);
-  
-  return parsed > 0
-    ? { ok: true, value: parsed as ArticleId }
-    : { ok: false, error: new Error("無効なID") };
+  if (typeof id === "number") {
+    return id > 0
+      ? { ok: true, value: id as ArticleId }
+      : { ok: false, error: new Error("無効なID") };
+  }
+  if (typeof id === "string" && /^\d+$/.test(id)) {
+    const parsed = parseInt(id, 10);
+    return parsed > 0
+      ? { ok: true, value: parsed as ArticleId }
+      : { ok: false, error: new Error("無効なID") };
+  }
+  return { ok: false, error: new Error("無効なID") };
 }
 
 export const createArticleContent = (
@@ -31,7 +38,7 @@ export function createArticleTitle(
 ): Result<ArticleTitle, Error> {
   const parsed = typeof title === "string" ? title : "";
   return parsed.trim().length > 0
-    ? { ok: true, value: title as ArticleTitle }
+    ? { ok: true, value: parsed as ArticleTitle }
     : { ok: false, error: new Error("タイトルが空です") };
 }
 
@@ -60,7 +67,11 @@ export function createArticlePublished(
       error: new Error("公開日は文字列である必要があります。"),
     };
   }
-  const isoDateString = published.replace(" ", "T");
+  // 日付と時間の間のスペースを 'T' に置き換える
+  const parts = published.split(/\s+/);
+  const isoDateString = parts.length >= 2
+    ? `${parts[0]}T${parts.slice(1).join(' ')}`
+    : published;
   const localDate = new Date(isoDateString);
 
   if (isNaN(localDate.getTime())) {

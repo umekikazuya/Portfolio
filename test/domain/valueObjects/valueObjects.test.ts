@@ -22,6 +22,8 @@ describe("Value Object Tests", () => {
   test("createArticleTitle should return valid Result for valid title", () => {
     const result = createArticleTitle("Next.jsの基本");
     expect(result.ok).toBe(true);
+    const emptyResult = createArticleTitle("");
+    expect(emptyResult.ok).toBe(false);
   });
 
   test("createArticlePublished should return valid Result for ISO date", () => {
@@ -52,5 +54,18 @@ describe("Result Type Tests", () => {
     };
     expect(failure.ok).toBe(false);
     expect(failure.error.message).toBe("Something went wrong");
+  });
+  
+  test("Result.ok should not contain error property", () => {
+    const success: Result<number, Error> = { ok: true, value: 42 };
+    expect(success).not.toHaveProperty('error');
+  });
+  
+  test("Result.error should not contain value property", () => {
+    const failure: Result<number, Error> = {
+      ok: false,
+      error: new Error("Something went wrong"),
+    };
+    expect(failure).not.toHaveProperty('value');
   });
 });

@@ -16,18 +16,16 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
       </div>
       <div className={style.articles}>
         {articles.map((article, index) => (
-          <>
-            <article key={index}>
-              <Heading level={3}>{article.title}</Heading>
-              <time
-                dateTime={article.publishedAt.toLocaleDateString()}
-                className={style.article_time}
-              >
-                {article.publishedAt.toLocaleDateString()}
-              </time>
-              <div key={index} className={style.article_border} />
-            </article>
-          </>
+          <article key={index}>
+            <Heading level={3}>{article.title}</Heading>
+            <time
+              dateTime={article.publishedAt.toISOString().split('T')[0]}
+              className={style.article_time}
+            >
+              {article.publishedAt.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+            <div key={index} className={style.article_border} />
+          </article>
         ))}
       </div>
     </>

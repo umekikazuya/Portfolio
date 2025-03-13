@@ -1,6 +1,6 @@
 import { Article } from "@/domain/entities/article";
 import { ArticleRepository } from "@/domain/repositories/ArticleRepository";
-import { GetArticlesInteractor } from "@/domain/repositories/GetArticlesInteractor";
+import { GetArticlesInteractor } from "@/domain/interactors/GetArticlesInteractor";
 import { ArticleContent, ArticleId, ArticleLink,  ArticlePublished, ArticleTitle } from "@/domain/valueObjects/article";
 
 describe('GetArticlesInteractor', () => {
@@ -29,6 +29,7 @@ describe('GetArticlesInteractor', () => {
     const result = await interactor.handle();
 
     expect(result).toEqual(articles);
+    expect(mockRepository.fetchAll).toHaveBeenCalledTimes(1);
   });
 
   test('記事の取得に失敗した場合、エラーをスローする', async () => {
@@ -39,5 +40,6 @@ describe('GetArticlesInteractor', () => {
     const interactor = new GetArticlesInteractor(mockRepository);
 
     await expect(interactor.handle()).rejects.toThrow('API通信エラー');
+    expect(mockRepository.fetchAll).toHaveBeenCalledTimes(1);
   });
 });

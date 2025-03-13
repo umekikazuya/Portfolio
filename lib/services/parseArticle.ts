@@ -5,7 +5,7 @@ import { Result } from '@/types/result';
 
 export const parseArticle = (raw: unknown): Result<Article, Error> => {
   if (typeof raw !== 'object' || raw === null) {
-    return { ok: false, error: new Error('記事データが無効です。') };
+    return { ok: false, error: new Error(`記事データが無効です。受け取った型: ${raw === null ? 'null' : typeof raw}`) };
   }
 
   const { id, title, content, link, published } = raw as Record<string, unknown>;
@@ -21,7 +21,7 @@ export const parseArticle = (raw: unknown): Result<Article, Error> => {
   // ArticleContentを生成
   const articleContent = createArticleContent(content);
   if (!articleContent.ok) return articleContent;
-  
+
   // ArticleLinkを生成
   const articleLink = createArticleLink(link);
   if (!articleLink.ok) return articleLink;

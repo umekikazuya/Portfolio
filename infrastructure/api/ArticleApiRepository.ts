@@ -27,7 +27,8 @@ export class ArticleApiRepository implements ArticleRepository {
 
       return { ok: true, value: articles };
     } catch (error) {
-      return { ok: false, error: new Error("通信エラーが発生しました。") };
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return { ok: false, error: new Error(`通信エラーが発生しました。詳細: ${errorMessage}`) };
     }
   }
 }

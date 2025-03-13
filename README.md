@@ -39,7 +39,7 @@ npm run dev
 ```
 
 ## Project Structure
-```
+```text
 app/
 │   ├── api/
 │   │   └── articles/
