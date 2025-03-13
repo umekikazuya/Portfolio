@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
-// import { useTheme } from "next-themes";
 
 const HeaderContainer = styled.header`
   position: fixed;
