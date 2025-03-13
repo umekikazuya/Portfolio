@@ -1,4 +1,10 @@
-import { ArticleContent, ArticleId, ArticleTitle, ArticleLink, ArticlePublished } from '../valueObjects/article';
+import {
+  ArticleContent,
+  ArticleId,
+  ArticleTitle,
+  ArticleLink,
+  ArticlePublished,
+} from "../valueObjects/article";
 
 export interface Article {
   id: ArticleId;

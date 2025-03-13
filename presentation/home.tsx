@@ -1,7 +1,6 @@
 "use client";
 
 import { HeroSection } from "@/components/features/home/hero";
-import { Profile } from "@/components/features/home/profile";
 import styled from "styled-components";
 
 /**
@@ -10,12 +9,15 @@ import styled from "styled-components";
  * The layout begins with a hero section, followed by a styled main content area that encapsulates
  * a profile component and the custom article content passed to the component.
  *
+ * @param profileComponent - The profile component to render within the content section.
  * @param articleComponent - The custom content to render within the content section.
  * @returns A React element representing the home page layout.
  */
 export function HomeLayout({
+  profileComponent,
   articleComponent,
 }: {
+  profileComponent: React.ReactNode;
   articleComponent: React.ReactNode;
 }) {
   return (
@@ -23,7 +25,7 @@ export function HomeLayout({
       <HeroSection />
       <MainContent>
         <ContentSection>
-          <Profile />
+          {profileComponent}
           {/* <SelectedWorks /> */}
           {articleComponent}
         </ContentSection>

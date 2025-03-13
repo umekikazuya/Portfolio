@@ -5,7 +5,6 @@ import { Header } from "@/components/features/header/header";
 import Script from "next/script";
 import StyledComponentsRegistry from "@/lib/registry";
 
-
 type Props = Readonly<{
   children: React.ReactNode;
 }>;
@@ -37,7 +36,7 @@ export default async function RootLayout({ children }: Props) {
             jobTitle: "Web Creator",
           })}
         </Script>
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

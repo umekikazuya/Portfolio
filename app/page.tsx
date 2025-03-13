@@ -1,4 +1,5 @@
 import { ArticleContainer } from "@/components/features/home/ArticleContainer";
+import { ProfileContainer } from "@/components/features/home/ProfileContainer";
 import { HomeLayout } from "@/presentation/home";
 
 /**
@@ -11,7 +12,10 @@ import { HomeLayout } from "@/presentation/home";
 export default async function Page() {
   return (
     <>
-      <HomeLayout articleComponent={<ArticleContainer />} />
+      <HomeLayout
+        profileComponent={<ProfileContainer />}
+        articleComponent={<ArticleContainer />}
+      />
     </>
   );
 }
