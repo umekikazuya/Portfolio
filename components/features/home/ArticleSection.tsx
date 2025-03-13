@@ -3,10 +3,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { fetchData } from "@/utils/api";
-import { Article } from "@/model/article.model";
-import { useEffect, useState } from "react";
-import { Cp } from "@/model/cp.model";
+import { Article } from "@/domain/entities/article";
 
 const Section = styled.section`
   margin-bottom: 120px;
@@ -73,20 +70,11 @@ const ArticleDate = styled.time`
   font-size: 0.875rem;
 `;
 
-export function Articles() {
-  const [articles, setArticles] = useState<null | Cp<Article>>(null);
-  
-  console.log(articles);
-  
+type ArticlesProps = {
+  articles: Article[];
+};
 
-  useEffect(() => {
-    fetchData<Cp<Article>>("/api/articles/pickup").then((data) => {
-      setArticles(data);
-    });
-  }, []);
-  if (!articles?.data) {
-    return <></>;
-  }
+export const ArticleSection = ({ articles }: ArticlesProps) => {
   return (
     <Section>
       <SectionHeader>
@@ -98,21 +86,25 @@ export function Articles() {
       </SectionHeader>
 
       <ArticleList>
-        {articles.data.map((article, index) => (
-          <ArticleCard
-            key={article.title}
-            href={article.link}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <ArticleTitle>{article.title}</ArticleTitle>
-            <ArticleMeta>
-              <ArticleDate>{article.published}</ArticleDate>
-            </ArticleMeta>
-          </ArticleCard>
-        ))}
+        {articles.length === 0 ? (
+          <div>現在表示できる記事がありません。</div>
+        ) : (
+          articles.map((article, index) => (
+            <ArticleCard
+              key={article.id || index}
+              href={article.link}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <ArticleTitle>{article.title}</ArticleTitle>
+              <ArticleMeta>
+                <ArticleDate>{article.publishedAt.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</ArticleDate>
+              </ArticleMeta>
+            </ArticleCard>
+          ))
+        )}
       </ArticleList>
     </Section>
   );
-}
+};
