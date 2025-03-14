@@ -9,6 +9,14 @@ type Props = Readonly<{
   children: React.ReactNode;
 }>;
 
+/**
+ * アプリケーションのルートレイアウトを生成する非同期関数。
+ *
+ * この関数は、HTMLの基本構造内にヘッダー、メインコンテンツ（StyledComponentsRegistryでラップされた子要素）および連絡先コンポーネントを含むレイアウトを返します。また、構造化データを含むJSON-LDスクリプトも埋め込んでいます。
+ *
+ * @param children - レイアウト内に描画される子要素
+ * @returns アプリケーションのルートレイアウトを表すReact要素
+ */
 export default async function RootLayout({ children }: Props) {
   return (
     <html>

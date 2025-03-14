@@ -26,6 +26,14 @@ const PageDescription = styled.p`
   line-height: 1.6;
 `;
 
+/**
+ * 「About」セクションのレイアウトを生成するReactコンポーネント。
+ *
+ * このコンポーネントは、フェードインおよびスライドアップするアニメーション付きのヘッダー（タイトルと説明文）を表示し、
+ * 渡されたプロファイルコンポーネントをレイアウト内に配置します。
+ *
+ * @param profileComponent - レイアウト内にレンダリングするカスタムプロファイル要素
+ */
 export default function AboutLayout({
   profileComponent,
 }: {

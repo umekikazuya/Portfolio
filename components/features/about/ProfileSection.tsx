@@ -380,6 +380,14 @@ type ProfileProps = {
   profile: Profile;
 };
 
+/**
+ * ユーザーのプロフィール情報を表示する React コンポーネント。
+ *
+ * このコンポーネントは、ユーザーが大切にしている価値観、趣味、スキル、資格・認定、職歴を各セクションごとに表示します。  
+ * プロファイルオブジェクト内のデータ（likes や skill など）の存在に応じて、該当するセクションを条件付きでレンダリングします。
+ *
+ * @param profile - ユーザーのプロフィール情報を含むオブジェクト。likes や skill などのプロパティは状況に応じて表示されます。
+ */
 export function ProfileSection({ profile }: ProfileProps) {
   return (
     <>

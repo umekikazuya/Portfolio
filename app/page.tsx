@@ -3,11 +3,12 @@ import { ProfileContainer } from "@/components/features/home/ProfileContainer";
 import { HomeLayout } from "@/presentation/home";
 
 /**
- * Renders the page layout.
+ * ページレイアウトをレンダリングする非同期コンポーネントです。
  *
- * This asynchronous component returns a JSX fragment that renders the HomeLayout component, which is configured with an ArticleContainer as its article content. The simplified structure reflects a streamlined layout approach.
+ * このコンポーネントは HomeLayout を返し、プロファイル情報と記事情報の両方を表示します。ProfileContainer は
+ * profileComponent として、ArticleContainer は articleComponent として HomeLayout に渡され、ページレイアウトを構成します。
  *
- * @returns A JSX element representing the page layout.
+ * @returns ページレイアウトを表す JSX 要素。
  */
 export default async function Page() {
   return (

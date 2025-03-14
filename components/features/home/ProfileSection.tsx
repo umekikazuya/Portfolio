@@ -101,6 +101,16 @@ type ProfileProps = {
   profile: Profile;
 };
 
+/**
+ * ユーザーのプロフィール情報を表示するコンポーネント。
+ *
+ * このコンポーネントは、ユーザーの名前、ユーザー名、職種、出身地および住所を含むプロフィール情報と、
+ * ソーシャルメディアリンク (GitHub、Qiita、Zenn、Drupal) を表示します。フレームモーションを使用して、
+ * 情報と画像にフェードイン、スライドイン、スケールアップのアニメーション効果を適用しています。
+ * GitHub、Qiita、Zenn のリンクは、該当する情報が存在する場合にのみレンダリングされます。
+ *
+ * @param profile - ユーザーのプロフィール情報を含むオブジェクト。
+ */
 export function ProfileSection({ profile }: ProfileProps) {
 
   return (
