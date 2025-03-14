@@ -1,9 +1,10 @@
+import { Profile } from "@/domain/entities/profile";
 import { GetProfileInteractor } from "@/domain/interactors/GetProfileInteractor";
 import { ProfileApiRepository } from "@/infrastructure/api/ProfileApiRepository";
 import { ReactNode } from "react";
 
 type BaseProfileContainerProps = {
-  renderProfile: (profile: any) => ReactNode;
+  renderProfile: (profile: Profile) => ReactNode;
   renderEmptyState?: () => ReactNode;
 };
 

@@ -12,9 +12,7 @@ export async function ProfileContainer() {
   return (
     <BaseProfileContainer
       renderProfile={(profile) => <ProfileSection profile={profile} />}
-      renderEmptyState={() => (
-        <div className="about-error">Aboutページのエラー表示</div>
-      )}
+      renderEmptyState={() => <div className="about-error"></div>}
     />
   );
 }
