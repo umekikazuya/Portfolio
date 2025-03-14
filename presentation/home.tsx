@@ -1,21 +1,22 @@
 "use client";
 
 import { HeroSection } from "@/components/features/home/hero";
-import { Profile } from "@/components/features/home/profile";
 import styled from "styled-components";
 
 /**
- * Renders the home page layout with a hero section, profile, and provided article content.
+ * ホームページのレイアウトをレンダリングします。
  *
- * The layout begins with a hero section, followed by a styled main content area that encapsulates
- * a profile component and the custom article content passed to the component.
+ * このコンポーネントは、ヒーローセクションに続いて、スタイル付きのメインコンテンツ領域内で、指定されたプロフィールコンポーネントと記事コンテンツを表示します。
  *
- * @param articleComponent - The custom content to render within the content section.
- * @returns A React element representing the home page layout.
+ * @param profileComponent - コンテンツセクション内に配置するプロフィールコンポーネント。
+ * @param articleComponent - コンテンツセクション内に配置する記事コンテンツ。
+ * @returns ホームページのレイアウトを表す React 要素。
  */
 export function HomeLayout({
+  profileComponent,
   articleComponent,
 }: {
+  profileComponent: React.ReactNode;
   articleComponent: React.ReactNode;
 }) {
   return (
@@ -23,7 +24,7 @@ export function HomeLayout({
       <HeroSection />
       <MainContent>
         <ContentSection>
-          <Profile />
+          {profileComponent}
           {/* <SelectedWorks /> */}
           {articleComponent}
         </ContentSection>

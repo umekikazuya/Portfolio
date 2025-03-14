@@ -33,6 +33,7 @@ test("fetchAll should return articles", async () => {
 
   const repo = new ArticleApiRepository(); // ✅ テスト対象はモックしない
   const result = await repo.fetchAll();
+  
 
   // ✅ fetchMock の呼び出し回数をチェック
   expect(fetchMock).toHaveBeenCalledTimes(1);

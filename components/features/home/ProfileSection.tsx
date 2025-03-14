@@ -3,14 +3,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { MapPin, Building2, Github, Globe, Link2, Twitter } from "lucide-react";
-import { fetchData } from "@/utils/api";
-import { useEffect, useState } from "react";
-import { User } from "@/model/user.model";
-import { JsonApi } from "@/model/jsonApi.model";
 import { SiDrupal, SiQiita, SiZenn } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
+import type { Profile } from "@/domain/entities/profile";
 
-const ProfileSection = styled.section`
+const ProfileArea = styled.section`
   margin-bottom: 120px;
 `;
 
@@ -100,46 +97,24 @@ const ProfileImage = styled.div`
   }
 `;
 
-type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
-
-const fetchProfileData = async (): Promise<Result<JsonApi<User>, Error>> => {
-  try {
-    const data = await fetchData<JsonApi<User> | null>("/api/profile");
-    if (data === null) {
-      throw new Error("Profile data is null");
-    }
-    return { ok: true, value: data };
-  } catch (error) {
-    return { ok: false, error: error as Error };
-  }
+type ProfileProps = {
+  profile: Profile;
 };
 
 /**
- * Renders the Profile component that displays user profile information.
+ * ユーザーのプロフィール情報を表示するコンポーネント。
  *
- * This component fetches profile data asynchronously on mount using `fetchProfileData`. If the data is fetched successfully,
- * it displays an animated profile section featuring the user's display name, username, job, location, and social media links.
- * If no profile data is available, the component renders an empty fragment.
+ * このコンポーネントは、ユーザーの名前、ユーザー名、職種、出身地および住所を含むプロフィール情報と、
+ * ソーシャルメディアリンク (GitHub、Qiita、Zenn、Drupal) を表示します。フレームモーションを使用して、
+ * 情報と画像にフェードイン、スライドイン、スケールアップのアニメーション効果を適用しています。
+ * GitHub、Qiita、Zenn のリンクは、該当する情報が存在する場合にのみレンダリングされます。
+ *
+ * @param profile - ユーザーのプロフィール情報を含むオブジェクト。
  */
-export function Profile() {
-  const [profile, setProfile] = useState<null | JsonApi<User>>(null);
-
-  useEffect(() => {
-    const getProfileData = async () => {
-      const result = await fetchProfileData();
-      if (result.ok) {
-        setProfile(result.value);
-      } else {
-        console.error(result.error);
-      }
-    };
-    getProfileData();
-  }, []);
-
-  if (!profile) return <></>;
+export function ProfileSection({ profile }: ProfileProps) {
 
   return (
-    <ProfileSection>
+    <ProfileArea>
       <ProfileGrid>
         <ProfileInfo>
           <motion.div
@@ -147,26 +122,26 @@ export function Profile() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Name>{profile.data.display_name}</Name>
-            <Username>@{profile.data.display_short_name}</Username>
+            <Name>{profile.display_name}</Name>
+            <Username>@{profile.display_short_name}</Username>
 
             <InfoList>
               <InfoItem>
                 <Building2 size={20} />
-                <span>{profile.data.job}</span>
+                <span>{profile.job}</span>
               </InfoItem>
               <InfoItem>
                 <MapPin size={20} />
                 <span>
-                  From: {profile.data.from} / Address: {profile.data.address}
+                  From: {profile.from} / Address: {profile.address}
                 </span>
               </InfoItem>
             </InfoList>
 
             <SocialLinks>
-              {profile.data.github && (
+              {profile.github && (
                 <SocialLink
-                  href={`https://github.com/${profile.data.github}`}
+                  href={`https://github.com/${profile.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -174,9 +149,9 @@ export function Profile() {
                   GitHub
                 </SocialLink>
               )}
-              {profile.data.qiita && (
+              {profile.qiita && (
                 <SocialLink
-                  href={`https://qiita.com/${profile.data.qiita}`}
+                  href={`https://qiita.com/${profile.qiita}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -184,9 +159,9 @@ export function Profile() {
                   Qiita
                 </SocialLink>
               )}
-              {profile.data.zenn && (
+              {profile.zenn && (
                 <SocialLink
-                  href={`https://zenn.dev/${profile.data.zenn}`}
+                  href={`https://zenn.dev/${profile.zenn}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -214,6 +189,6 @@ export function Profile() {
           <ProfileImage />
         </motion.div>
       </ProfileGrid>
-    </ProfileSection>
+    </ProfileArea>
   );
 }
