@@ -1,6 +1,5 @@
-import { GetProfileInteractor } from "@/domain/interactors/GetProfileInteractor";
-import { ProfileApiRepository } from "@/infrastructure/api/ProfileApiRepository";
 import { ProfileSection } from "./ProfileSection";
+import { BaseProfileContainer } from "../common/BaseProfileContainer";
 
 /**
  * ユーザーのプロフィールを取得し、その情報を表示するコンポーネントを返します。
@@ -10,13 +9,12 @@ import { ProfileSection } from "./ProfileSection";
  * 取得中にエラーが発生した場合は、空の JSX フラグメントを返すことで安全にフォールバックします。
  */
 export async function ProfileContainer() {
-  const repository = new ProfileApiRepository();
-  const interactor = new GetProfileInteractor(repository);
-  try {
-    const profile = await interactor.handle();
-    return <ProfileSection profile={profile} />;
-  } catch (error) {
-    return <></>;
-  }
-
+  return (
+    <BaseProfileContainer
+      renderProfile={(profile) => <ProfileSection profile={profile} />}
+      renderEmptyState={() => (
+        <div className="about-error">Aboutページのエラー表示</div>
+      )}
+    />
+  );
 }

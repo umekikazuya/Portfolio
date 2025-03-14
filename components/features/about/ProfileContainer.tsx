@@ -1,6 +1,5 @@
-import { GetProfileInteractor } from "@/domain/interactors/GetProfileInteractor";
-import { ProfileApiRepository } from "@/infrastructure/api/ProfileApiRepository";
 import { ProfileSection } from "./ProfileSection";
+import { BaseProfileContainer } from "../common/BaseProfileContainer";
 
 /**
  * ユーザープロフィールを取得し、ProfileSection コンポーネントを返す非同期関数。
@@ -12,12 +11,12 @@ import { ProfileSection } from "./ProfileSection";
  * @returns プロフィール取得に成功した場合は ProfileSection コンポーネント、失敗した場合は空の React フラグメント。
  */
 export async function ProfileContainer() {
-  const repository = new ProfileApiRepository();
-  const interactor = new GetProfileInteractor(repository);
-  try {
-    const profile = await interactor.handle();
-    return <ProfileSection profile={profile} />;
-  } catch (error) {
-    return <></>;
-  }
+  return (
+    <BaseProfileContainer
+      renderProfile={(profile) => <ProfileSection profile={profile} />}
+      renderEmptyState={() => (
+        <div className="about-error"></div>
+      )}
+    />
+  );
 }

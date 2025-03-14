@@ -44,3 +44,33 @@ test("fetch should return a profile", async () => {
     expect(result.value.id).toBeGreaterThan(0);
   }
 });
+
+test("API URLが設定されていない場合、エラーを返す", async () => {
+  // 環境変数をモック
+  const originalEnv = process.env;
+  process.env = { ...originalEnv };
+  delete process.env.NEXT_DRUPAL_API;
+
+  const repo = new ProfileApiRepository();
+  const result = await repo.fetch();
+
+  expect(result.ok).toBe(false);
+  if (!result.ok) {
+    expect(result.error.message).toBe("API URLが設定されていません。");
+  }
+
+  // 環境変数を元に戻す
+  process.env = originalEnv;
+});
+
+test("APIがエラーレスポンスを返す場合、エラーを返す", async () => {
+  fetchMock.mockResponseOnce("", { status: 500 });
+
+  const repo = new ProfileApiRepository();
+  const result = await repo.fetch();
+
+  expect(result.ok).toBe(false);
+  if (!result.ok) {
+    expect(result.error.message).toBe("APIエラーが発生しました。");
+  }
+});

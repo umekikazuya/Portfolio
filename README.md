@@ -45,9 +45,8 @@ app/
 │   │   └── articles/
 │   │       └── route.ts (Next.js API Route)
 │   ├── articles/
-│   │   ├── page.tsx (記事一覧ページ)
-│   │   └── [slug]/
-│   │       └── page.tsx (記事詳細ページ)
+│   │   └── page.tsx (記事一覧ページ)
+│   ├── page.tsx
 │   └── layout.tsx
 components/
 │   ├── ui/ (再利用可能なUIコンポーネント)
@@ -55,18 +54,23 @@ components/
 │   │   └── Heading/
 │   └── features/ (機能単位コンポーネント)
 │       └── articles/
-│           ├── ArticleList.tsx
-│           └── ArticleDetail.tsx
+│           ├── ArticleSection.tsx
+│           └── ArticleContainer.tsx
 domain/
 │   ├── entities/
-│   │   └── Article.ts
+│   │   ├── Article.ts
+│   │   └── Profile.ts
 │   ├── valueObjects/
-│   │   └── Article.ts
+│   │   ├── Article.ts
+│   │   └── Profile.ts
 │   └── repositories/
-│       └── ArticleRepository.ts (interface定義)
+│   │   ├── ArticleRepository.ts
+│   │   └── ProfileRepository.ts
 infrastructure/
 │   └── api/
-│       └── ArticleApiRepository.ts (API呼び出しの具体実装)
+│       ├── ArticleApiRepository.ts(API呼び出しの具体実装)
+│       └── ProfileApiRepository.ts(API呼び出しの具体実装)
+│
 lib/
 │   └── services/
 │       └── parseArticle.ts (純粋関数)
@@ -78,12 +82,6 @@ styles/
 │   ├── reset.css
 │   └── base.css
 tests/
-│   ├── domain/
-│   │   └── entities/
-│   │       └── Article.test.ts
-│   └── lib/
-│       └── services/
-│           └── parseArticle.test.ts
 ```
 
 ## License
