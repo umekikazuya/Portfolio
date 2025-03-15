@@ -7,6 +7,16 @@ type ENDPOINT_TYPE = {
   service: { name: string; link: string };
 };
 
+/**
+ * Next.jsのGETリクエストを処理し、QiitaおよびZennサービスからデータを取得、マージ後にJSONレスポンスを返します。
+ *
+ * リクエストのクエリパラメータから"category"を取得し、必要に応じてQiitaまたはZennのエンドポイントにフィルタリングします。
+ * 各エンドポイントのデータを並行処理で取得し、取得に成功したデータをマージ、公開日付の降順にソートした結果を返します。
+ * 正常な場合はステータス200のレスポンス、エラー発生時はエラーメッセージを含むステータス500のレスポンスを返します.
+ *
+ * @param request - クエリパラメータなどの情報を含むNext.jsのHTTPリクエストオブジェクト。
+ * @returns マージされたデータまたはエラーメッセージを含むNextResponseオブジェクト。
+ */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const category = searchParams.get("category");

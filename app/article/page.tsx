@@ -126,6 +126,13 @@ const ArticlePlatform = styled.span`
   color: #666;
 `;
 
+/**
+ * 記事一覧ページをレンダリングするReactコンポーネント。
+ *
+ * カテゴリに基づいた記事データをAPIから非同期に取得し、ローディング状態では「Loading...」と表示します。
+ * 記事が取得できた場合、ヘッダー、カテゴリフィルタ、およびアニメーション付きの記事カードグリッドを描画します。
+ * 記事が存在しない場合は何も表示しません。
+ */
 export default function Page() {
   const [articles, setArticles] = useState<null | FeedElement[]>(null);
   const [loading, setLoading] = useState<boolean>(true);
