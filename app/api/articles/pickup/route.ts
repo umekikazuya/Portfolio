@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 
 export async function GET(request: Request) {
-  const ENDPOINT = process.env.NEXT_DRUPAL_API + "/backend/article?is_pickup=1";
+  const ENDPOINT = process.env.NEXT_BACKEND_API + "/backend/article?is_pickup=1";
   if (!ENDPOINT) {
     return new NextResponse(
       JSON.stringify({ error: "API endpoint is not defined" }),

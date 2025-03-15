@@ -142,7 +142,6 @@ export default function Page() {
       setArticles(data);
       setLoading(false);
     };
-
     fetchArticles();
   }, [category]);
 
@@ -162,7 +161,7 @@ export default function Page() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <PageTitle>Articles</PageTitle>
+          <PageTitle>Article</PageTitle>
           <PageDescription>
             技術記事や日々の学びについて発信しています。
           </PageDescription>

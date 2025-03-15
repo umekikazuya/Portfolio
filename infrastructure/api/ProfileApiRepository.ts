@@ -6,7 +6,7 @@ import { Result } from "@/types/result";
 export class ProfileApiRepository implements ProfileRepository {
   async fetch(): Promise<Result<Profile, Error>> {
     try {
-      const apiUrl = process.env.NEXT_DRUPAL_API;
+      const apiUrl = process.env.NEXT_BACKEND_API;
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }

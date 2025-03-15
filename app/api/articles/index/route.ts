@@ -13,14 +13,14 @@ export async function GET(request: NextRequest) {
 
   const ENDPOINTS: ENDPOINT_TYPE[] = [
     {
-      url: `${process.env.NEXT_DRUPAL_API}/backend/qiita/${process.env.NEXT_PUBLIC_QITIA_ID}`,
+      url: `${process.env.NEXT_BACKEND_API}/backend/qiita/${process.env.NEXT_PUBLIC_QITIA_ID}`,
       service: {
         name: "Qiita",
         link: `https://qiita.com/${process.env.NEXT_PUBLIC_QITIA_ID}`,
       },
     },
     {
-      url: `${process.env.NEXT_DRUPAL_API}/backend/zenn/${process.env.NEXT_PUBLIC_ZENN_ID}`,
+      url: `${process.env.NEXT_BACKEND_API}/backend/zenn/${process.env.NEXT_PUBLIC_ZENN_ID}`,
       service: {
         name: "Zenn",
         link: `https://zenn.dev/${process.env.NEXT_PUBLIC_QITIA_ID}`,
