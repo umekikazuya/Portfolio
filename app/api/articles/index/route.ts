@@ -7,6 +7,16 @@ type ENDPOINT_TYPE = {
   service: { name: string; link: string };
 };
 
+/**
+ * QiitaおよびZennからフィードデータを取得して統合するGETリクエストハンドラー。
+ *
+ * リクエストの検索パラメータに基づいて、"category"が指定されている場合は該当するサービスのエンドポイントのみを対象にデータを取得します。
+ * 各エンドポイントから取得したフィードデータを統合し、発行日時に基づいて降順にソートした結果をJSON形式で返します。
+ * データの取得や統合に失敗した場合、エラーメッセージを含むJSONレスポンス（HTTPステータス500）を返します。
+ *
+ * @param request - Next.jsのリクエストオブジェクト。検索パラメータに"category"が含まれている場合、その値に応じて取得するサービス（"Qiita"または"Zenn"）が決定される。
+ * @returns 統合されたフィードデータを返すJSONレスポンス（成功時はHTTPステータス200）。
+ */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const category = searchParams.get("category");
