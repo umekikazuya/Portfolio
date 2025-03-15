@@ -97,7 +97,7 @@ export function Header() {
           <NavLink href="/about" $isActive={pathname === "/about"}>
             About
           </NavLink>
-          <NavLink href="/article" $isActive={pathname === "/articles"}>
+          <NavLink href="/articles" $isActive={pathname === "/articles"}>
             Article
           </NavLink>
           <NavLink href="/about-site" $isActive={pathname === "/about-site"}>

@@ -161,7 +161,7 @@ export default function Page() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <PageTitle>Article</PageTitle>
+          <PageTitle>Articles</PageTitle>
           <PageDescription>
             技術記事や日々の学びについて発信しています。
           </PageDescription>
