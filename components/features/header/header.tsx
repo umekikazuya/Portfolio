@@ -84,6 +84,17 @@ const ThemeToggle = styled.button`
   }
 `;
 
+/**
+ * ヘッダーコンポーネントをレンダリングします。
+ *
+ * このコンポーネントは、固定ヘッダー内に配置されたナビゲーションリンクを表示し、
+ * Next.js の usePathname フックを利用して現在のページに応じたリンクのアクティブ状態を設定します。
+ * また、styled-components によるスタイリングとレスポンシブデザインにも対応しています。
+ *
+ * @returns ヘッダーの JSX エレメント。
+ *
+ * @remark 現在、テーマ切替機能はコメントアウトされており、将来的な拡張が予定されています。
+ */
 export function Header() {
   const pathname = usePathname();
 
@@ -97,7 +108,7 @@ export function Header() {
           <NavLink href="/about" $isActive={pathname === "/about"}>
             About
           </NavLink>
-          <NavLink href="/article" $isActive={pathname === "/articles"}>
+          <NavLink href="/articles" $isActive={pathname === "/articles"}>
             Article
           </NavLink>
           <NavLink href="/about-site" $isActive={pathname === "/about-site"}>

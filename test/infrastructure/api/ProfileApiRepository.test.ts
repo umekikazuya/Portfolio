@@ -45,7 +45,7 @@ test("fetch should return a profile", async () => {
 
   expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(fetchMock).toHaveBeenCalledWith(
-    expect.stringContaining(process.env.NEXT_DRUPAL_API || "")
+    expect.stringContaining(process.env.NEXT_BACKEND_API || "")
   );
   expect(result.ok).toBe(true);
 
@@ -62,7 +62,7 @@ test("API URLが設定されていない場合、エラーを返す", async () =
   // 環境変数をモック
   const originalEnv = process.env;
   process.env = { ...originalEnv };
-  process.env.NEXT_DRUPAL_API = undefined;
+  process.env.NEXT_BACKEND_API = undefined;
   const repo = new ProfileApiRepository();
   const result = await repo.fetch();
   expect(result.ok).toBe(false);
@@ -84,7 +84,7 @@ test("APIがエラーレスポンスを返す場合、エラーを返す", async
   // APIが正しく呼び出されたことを確認
   expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(fetchMock).toHaveBeenCalledWith(
-    expect.stringContaining(process.env.NEXT_DRUPAL_API || "")
+    expect.stringContaining(process.env.NEXT_BACKEND_API || "")
   );
 
   expect(result.ok).toBe(false);

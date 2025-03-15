@@ -1,14 +1,28 @@
-
-import { Article } from '@/domain/entities/article';
-import { createArticleContent, createArticleId, createArticleLink, createArticleTitle, createArticlePublished } from '@/domain/valueObjects/article';
-import { Result } from '@/types/result';
+import { Article } from "@/domain/entities/article";
+import {
+  createArticleContent,
+  createArticleId,
+  createArticleLink,
+  createArticleTitle,
+  createArticlePublished,
+} from "@/domain/valueObjects/article";
+import { Result } from "@/types/result";
 
 export const parseArticle = (raw: unknown): Result<Article, Error> => {
-  if (typeof raw !== 'object' || raw === null) {
-    return { ok: false, error: new Error(`記事データが無効です。受け取った型: ${raw === null ? 'null' : typeof raw}`) };
+  if (typeof raw !== "object" || raw === null) {
+    return {
+      ok: false,
+      error: new Error(
+        `記事データが無効です。受け取った型: ${raw === null ? "null" : typeof raw
+        }`
+      ),
+    };
   }
 
-  const { id, title, content, link, published } = raw as Record<string, unknown>;
+  const { id, title, content, link, published } = raw as Record<
+    string,
+    unknown
+  >;
 
   // ArticleIdを生成
   const articleId = createArticleId(id);
@@ -40,4 +54,4 @@ export const parseArticle = (raw: unknown): Result<Article, Error> => {
   };
 
   return { ok: true, value: article };
-}
+};

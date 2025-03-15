@@ -126,6 +126,13 @@ const ArticlePlatform = styled.span`
   color: #666;
 `;
 
+/**
+ * 記事一覧を表示するページコンポーネント。
+ *
+ * このコンポーネントは、選択された記事カテゴリに応じてAPIから記事データを非同期に取得し、
+ * 取得中は「Loading...」を表示します。記事データが正常に取得できた場合は、ページヘッダー、フィルタタブ、
+ * および記事カードのグリッドをアニメーション付きでレンダリングします.
+ */
 export default function Page() {
   const [articles, setArticles] = useState<null | FeedElement[]>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -142,7 +149,6 @@ export default function Page() {
       setArticles(data);
       setLoading(false);
     };
-
     fetchArticles();
   }, [category]);
 

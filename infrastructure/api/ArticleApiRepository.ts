@@ -6,7 +6,7 @@ import { Result } from "@/types/result";
 export class ArticleApiRepository implements ArticleRepository {
   async fetchAll(): Promise<Result<Article[], Error>> {
     try {
-      const apiUrl = process.env.NEXT_DRUPAL_API;
+      const apiUrl = process.env.NEXT_BACKEND_API;
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
