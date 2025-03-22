@@ -2,10 +2,11 @@
 
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { fetchData } from "@/utils/api";
-import { Article } from "@/domain/entities/article";
-import { Service } from "@/domain/entities/service";
+import { useCallback, useMemo, useState } from "react";
+import { Search } from "lucide-react";
+import { useServicesQuery } from "@/lib/hooks/useServicesQuery";
+import { createSearchQuery } from "@/lib/services/createSearchQuery";
+import { useArticlesQuery } from "@/lib/hooks/useArticlesQuery";
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -149,7 +150,6 @@ export default function Page() {
           </PageDescription>
         </motion.div>
       </PageHeader>
-
       <Contents />
     </PageContainer>
   );
@@ -157,54 +157,39 @@ export default function Page() {
 
 // フィルターとコンテンツエリアコンポーネント
 const Contents = () => {
-  const [articles, setArticles] = useState<null | Article[]>(null);
-  const [services, setServices] = useState<null | Service[]>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [category, setCategory] = useState<null | number>(null);
+  const [category, setCategory] = useState<number | null>(null);
+  const [searchText, setSearchText] = useState("");
+  const [keyword, setKeyword] = useState("");
 
-  useEffect(() => {
-    setLoading(true);
+  const { services } = useServicesQuery();
+  const searchQuery = useMemo(
+    () => createSearchQuery(category, keyword),
+    [category, keyword]
+  );
+  const { articles, loading } = useArticlesQuery(searchQuery);
 
-    const fetchServices = async () => {
-      const data = await fetchData<Service[]>("/api/services");
-      setServices(data);
-    };
-    fetchServices();
-  }, []);
-
-  useEffect(() => {
-    setLoading(true);
-
-    const fetchArticles = async () => {
-      const query = category === null ? "" : `?service_id=${category}`;
-      const data = await fetchData<Article[]>(`/api/articles/search${query}`);
-      setArticles(data);
-      setLoading(false);
-    };
-    fetchArticles();
-  }, [category]);
-
-  if (loading) {
-    return <PageContainer>Loading...</PageContainer>;
-  }
-
-  if (!services) {
-    return <></>;
-  }
-
-  if (!articles) {
-    return <></>;
-  }
+  const handleSearch = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") setKeyword(searchText);
+    },
+    [searchText]
+  );
 
   return (
     <>
       <FilterSection>
-        {/* <SearchContainer>
-            <SearchInput placeholder="記事を検索..." />
-            <SearchIcon>
-              <Search size={20} />
-            </SearchIcon>
-          </SearchContainer> */}
+        <SearchContainer>
+          <SearchInput
+            placeholder="検索..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={handleSearch}
+            aria-label="記事を検索"
+          />
+          <SearchIcon>
+            <Search size={20} />
+          </SearchIcon>
+        </SearchContainer>
 
         <FilterTabs>
           <FilterTab
@@ -226,23 +211,29 @@ const Contents = () => {
       </FilterSection>
 
       <ArticleGrid>
-        {articles.map((article, index) => (
-          <ArticleCard
-            key={article.title}
-            href={article.link}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <ArticleTitle>{article.title}</ArticleTitle>
-            <ArticleMeta>
-              <ArticleDate>
-                {new Date(article.publishedAt).toLocaleDateString()}
-              </ArticleDate>
-              <ArticlePlatform>{article.service.name}</ArticlePlatform>
-            </ArticleMeta>
-          </ArticleCard>
-        ))}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            {articles.map((article, index) => (
+              <ArticleCard
+                key={article.title}
+                href={article.link}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <ArticleTitle>{article.title}</ArticleTitle>
+                <ArticleMeta>
+                  <ArticleDate>
+                    {new Date(article.publishedAt).toLocaleDateString()}
+                  </ArticleDate>
+                  <ArticlePlatform>{article.service.name}</ArticlePlatform>
+                </ArticleMeta>
+              </ArticleCard>
+            ))}
+          </>
+        )}
       </ArticleGrid>
     </>
   );

@@ -5,15 +5,25 @@ import { Result } from "@/types/result";
 
 export class ArticleApiRepository implements ArticleRepository {
   async fetchAll(
-    serviceId: null | number,
+    keyword: null | string,
+    serviceId: null | number
   ): Promise<Result<Article[], Error>> {
     try {
       const apiUrl = process.env.NEXT_BACKEND_API;
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      
-      const res = await fetch(`${apiUrl}/backend/articles?status=published` + (serviceId ? `&service_id=${serviceId}` : ""));
+
+      const queryParams = new URLSearchParams();
+      if (keyword) queryParams.append("keyword", keyword);
+      if (serviceId) queryParams.append("service_id", serviceId.toString());
+
+      const url = new URL("/backend/articles", apiUrl);
+      if (queryParams.toString()) {
+        url.search = queryParams.toString();
+      }
+
+      const res = await fetch(url.toString());
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
@@ -30,8 +40,12 @@ export class ArticleApiRepository implements ArticleRepository {
 
       return { ok: true, value: articles };
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      return { ok: false, error: new Error(`通信エラーが発生しました。詳細: ${errorMessage}`) };
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+      return {
+        ok: false,
+        error: new Error(`通信エラーが発生しました。詳細: ${errorMessage}`),
+      };
     }
   }
 }

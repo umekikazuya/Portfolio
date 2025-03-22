@@ -9,10 +9,23 @@ export async function GET(request: NextRequest) {
   const repository = new ArticleApiRepository();
   const interactor = new GetArticlesInteractor(repository);
 
+  const keyword = request.nextUrl.searchParams.get("keyword");
   const serviceId = request.nextUrl.searchParams.get("service_id");
   try {
     const parsedServiceId = serviceId ? parseInt(serviceId) : null;
-    const articles = await interactor.handle(parsedServiceId);
+    // キーワードが存在する場合、基本的なバリデーションを行う
+    if (keyword && (keyword.length > 100 || /[<>]/.test(keyword))) {
+      return new NextResponse(
+        JSON.stringify({ error: "無効なキーワードが指定されました" }),
+        {
+          status: 400,
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+    }
+    const articles = await interactor.handle(keyword, parsedServiceId);
     return new NextResponse(JSON.stringify(articles), {
       status: 200,
       headers: {

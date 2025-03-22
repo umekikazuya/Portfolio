@@ -1,20 +1,21 @@
-import { ArticleRepository } from '@/domain/repositories/ArticleRepository';
-import { Article } from '../entities/article';
+import { ArticleRepository } from "@/domain/repositories/ArticleRepository";
+import { Article } from "../entities/article";
 
 export class GetArticlesInteractor {
-  constructor(private repository: ArticleRepository) { }
+  constructor(private repository: ArticleRepository) {}
 
   /**
    * 検索を実行
-   * @returns 
+   * @param keyword - 検索キーワード
+   * @param serviceId - サービスID
+   * @returns
    */
   async handle(
-    serviceId: null | number,
+    keyword: null | string,
+    serviceId: null | number
   ): Promise<Article[]> {
-    console.log(serviceId);
-    
-    const result = await this.repository.fetchAll(serviceId);
-    
+    const result = await this.repository.fetchAll(keyword, serviceId);
+
     if (!result.ok) {
       throw result.error;
     }
