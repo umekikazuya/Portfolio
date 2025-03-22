@@ -15,8 +15,9 @@ export async function ArticleContainer() {
   const interactor = new GetArticlesInteractor(repository);
 
   try {
-    const articles = await interactor.handle();
-    return <ArticleList articles={articles} />;
+    // const articles = await interactor.handle();
+    // return <ArticleList articles={articles} />;
+    return <></>;
   } catch (error) {
     return <></>;
   }

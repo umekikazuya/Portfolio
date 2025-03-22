@@ -44,7 +44,7 @@ export default async function RootLayout({ children }: Props) {
             jobTitle: "Web Creator",
           })}
         </Script>
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

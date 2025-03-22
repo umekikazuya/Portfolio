@@ -5,8 +5,10 @@ import {
   createArticleLink,
   createArticleTitle,
   createArticlePublished,
+  createArticleStatus,
 } from "@/domain/valueObjects/article";
 import { Result } from "@/types/result";
+import { parseService } from "./parseService";
 
 export const parseArticle = (raw: unknown): Result<Article, Error> => {
   if (typeof raw !== "object" || raw === null) {
@@ -19,7 +21,7 @@ export const parseArticle = (raw: unknown): Result<Article, Error> => {
     };
   }
 
-  const { id, title, content, link, published } = raw as Record<
+  const { id, title, content, link, created_at, status, service } = raw as Record<
     string,
     unknown
   >;
@@ -41,8 +43,16 @@ export const parseArticle = (raw: unknown): Result<Article, Error> => {
   if (!articleLink.ok) return articleLink;
 
   // PublishDateを生成
-  const articleDate = createArticlePublished(published);
+  const articleDate = createArticlePublished(created_at);
   if (!articleDate.ok) return articleDate;
+  
+  // ArticleStatusを生成
+  const articleStatus = createArticleStatus(status);
+  if (!articleStatus.ok) return articleStatus;
+  
+  // Serviceを生成
+  const serviceResult = parseService(service);
+  if (!serviceResult.ok) return serviceResult;
 
   // エンティティを返却
   const article: Article = {
@@ -51,6 +61,8 @@ export const parseArticle = (raw: unknown): Result<Article, Error> => {
     content: articleContent.value,
     link: articleLink.value,
     publishedAt: articleDate.value,
+    status: articleStatus.value,
+    service: serviceResult.value,
   };
 
   return { ok: true, value: article };

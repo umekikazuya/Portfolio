@@ -4,7 +4,9 @@ import {
   ArticleTitle,
   ArticleLink,
   ArticlePublished,
+  ArticleStatus,
 } from "../valueObjects/article";
+import { Service } from "./service";
 
 export interface Article {
   id: ArticleId;
@@ -12,4 +14,6 @@ export interface Article {
   content: ArticleContent;
   link: ArticleLink;
   publishedAt: ArticlePublished;
+  status: ArticleStatus;
+  service: Service
 }
