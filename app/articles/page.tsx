@@ -184,6 +184,7 @@ const Contents = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={handleSearch}
+            aria-label="記事を検索"
           />
           <SearchIcon>
             <Search size={20} />

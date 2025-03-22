@@ -10,12 +10,24 @@ export const useArticlesQuery = (query: SearchQuery) => {
     const params = new URLSearchParams();
     if (query.serviceId) params.append("service_id", String(query.serviceId));
     if (query.keyword) params.append("keyword", query.keyword);
-
     setLoading(true);
-    fetchData<Article[]>(`/api/articles/search?${params}`).then((res) => {
-      if (res) setArticles(res);
-      setLoading(false);
-    });
+    let isMounted = true;
+    fetchData<Article[]>(`/api/articles/search?${params}`)
+      .then((res) => {
+        if (isMounted) {
+          if (res) setArticles(res);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        if (isMounted) {
+          console.error("記事の取得中にエラーが発生しました:", error);
+          setLoading(false);
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
   }, [query]);
 
   return { articles, loading };

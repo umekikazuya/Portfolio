@@ -13,15 +13,17 @@ export class ArticleApiRepository implements ArticleRepository {
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      
+
       const queryParams = new URLSearchParams();
       if (keyword) queryParams.append("keyword", keyword);
       if (serviceId) queryParams.append("service_id", serviceId.toString());
-      console.log(new URL(`/backend/articles?${queryParams.toString()}`, apiUrl).toString());
-      
-      const res = await fetch(
-        new URL(`/backend/articles?${queryParams.toString()}`, apiUrl).toString()
-      );
+
+      const url = new URL("/backend/articles", apiUrl);
+      if (queryParams.toString()) {
+        url.search = queryParams.toString();
+      }
+
+      const res = await fetch(url.toString());
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
