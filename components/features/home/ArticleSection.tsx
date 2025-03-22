@@ -79,7 +79,7 @@ export const ArticleSection = ({ articles }: ArticlesProps) => {
     <Section>
       <SectionHeader>
         <Title>Articles</Title>
-        <ViewAll href="/article">
+        <ViewAll href="/articles">
           View all
           <ArrowUpRight size={16} />
         </ViewAll>
