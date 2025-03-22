@@ -4,13 +4,16 @@ import { parseArticle } from "@/lib/services/parseArticle";
 import { Result } from "@/types/result";
 
 export class ArticleApiRepository implements ArticleRepository {
-  async fetchAll(): Promise<Result<Article[], Error>> {
+  async fetchAll(
+    serviceId: null | number,
+  ): Promise<Result<Article[], Error>> {
     try {
       const apiUrl = process.env.NEXT_BACKEND_API;
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      const res = await fetch(`${apiUrl}/backend/article?is_pickup=1`);
+      
+      const res = await fetch(`${apiUrl}/backend/articles?status=published` + (serviceId ? `&service_id=${serviceId}` : ""));
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }

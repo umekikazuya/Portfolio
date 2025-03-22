@@ -1,32 +1,31 @@
-import { Profile } from "@/domain/entities/profile";
-import { ProfileRepository } from "@/domain/repositories/ProfileRepository";
-import { parseProfile } from "@/lib/services/parseProfile";
+import { Service } from "@/domain/entities/service";
+import { ServiceRepository } from "@/domain/repositories/ServiceRepository";
+import { parseService } from "@/lib/services/parseService";
 import { Result } from "@/types/result";
 
-export class ProfileApiRepository implements ProfileRepository {
-  async fetch(): Promise<Result<Profile, Error>> {
+export class ServiceApiRepository implements ServiceRepository {
+  async fetchAll(): Promise<Result<Service[], Error>> {
     try {
       const apiUrl = process.env.NEXT_BACKEND_API;
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      const res = await fetch(`${apiUrl}/backend/profile`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        cache: "no-cache",
-      });
+      const res = await fetch(`${apiUrl}/backend/article-services`);
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
-      const { data }: { data: unknown } = await res.json();
+      const { data }: { data: unknown[] } = await res.json();
 
-      const profile = parseProfile(data);
-      if (!profile.ok) {
+      if (!Array.isArray(data)) {
         return { ok: false, error: new Error("APIレスポンスが不正です。") };
       }
-      return { ok: true, value: profile.value };
+
+      const featuredArticles = data
+        .map(parseService)
+        .filter((r): r is { ok: true; value: Service } => r.ok)
+        .map((r) => r.value);
+
+      return { ok: true, value: featuredArticles };
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : String(error);

@@ -1,6 +1,6 @@
-import { GetArticlesInteractor } from "@/domain/interactors/GetArticlesInteractor";
-import { ArticleApiRepository } from "@/infrastructure/api/ArticleApiRepository";
 import { ArticleSection } from "./ArticleSection";
+import { GetFeaturedArticlesInteractor } from "@/domain/interactors/GetFeaturedArticlesInteractor";
+import { FeaturedArticleApiRepository } from "@/infrastructure/api/FeaturedArticleApiRepository";
 
 /**
  * Asynchronously loads articles and renders the ArticleSection component.
@@ -11,10 +11,11 @@ import { ArticleSection } from "./ArticleSection";
  * @returns A JSX element rendering the article section with the retrieved articles.
  */
 export async function ArticleContainer() {
-  const repository = new ArticleApiRepository();
-  const interactor = new GetArticlesInteractor(repository);
+  const repository = new FeaturedArticleApiRepository();
+  const interactor = new GetFeaturedArticlesInteractor(repository);
   try {
     const articles = await interactor.handle();
+    
     return <ArticleSection articles={articles} />;
   } catch (error) {
     return <></>;

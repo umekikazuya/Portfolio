@@ -6,8 +6,8 @@ export type ArticleId = Branded<number, "ArticleId">;
 export type ArticleContent = Branded<string | null, "ArticleContent">;
 export type ArticleTitle = Branded<string, "ArticleTitle">;
 export type ArticleLink = Branded<string, "ArticleLink">;
-export type ArticleService = Branded<string, "ArticleService">;
 export type ArticlePublished = Branded<Date, "ArticlePublished">;
+export type ArticleStatus = Branded<'draft' | 'published', "ArticleStatus">;
 
 /**
  * Validates and constructs a branded ArticleId from the provided input.
@@ -87,25 +87,6 @@ export function createArticleLink(link: unknown): Result<ArticleLink, Error> {
 }
 
 /**
- * Validates and transforms an input into an ArticleService.
- *
- * The function interprets the provided value as a string and trims any surrounding whitespace.
- * It returns a successful result with the branded ArticleService if the trimmed string is non-empty.
- * If the input is not a non-empty string, it returns an error result with the message "無効なサービス名".
- *
- * @param service - The input value to be validated as an article service name.
- * @returns A result containing a valid ArticleService or an Error if the input is invalid.
- */
-export function createArticleService(
-  service: unknown
-): Result<ArticleService, Error> {
-  const parsed = typeof service === "string" ? service : "";
-  return parsed.trim().length > 0
-    ? { ok: true, value: parsed as ArticleService }
-    : { ok: false, error: new Error("無効なサービス名") };
-}
-
-/**
  * Parses a date string, converts it to a UTC Date, and returns it as a branded ArticlePublished.
  *
  * This function expects the publication date to be provided as a string. It first replaces any space with "T" to form an ISO-compliant date string,
@@ -155,3 +136,15 @@ export function createArticlePublished(
 
   return { ok: true, value: utcDate as ArticlePublished };
 }
+
+/**
+ * Article status
+ */
+export const createArticleStatus = (
+  status: unknown
+): Result<ArticleStatus, Error> => {
+  const parsed = typeof status === "string" ? status : null;
+  return parsed === 'draft' || parsed === 'published'
+    ? { ok: true, value: parsed as ArticleStatus }
+    : { ok: false, error: new Error("無効なステータス") };
+};

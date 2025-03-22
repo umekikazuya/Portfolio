@@ -3,8 +3,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FeedElement } from "@/model/feed.model";
 import { fetchData } from "@/utils/api";
+import { Article } from "@/domain/entities/article";
+import { Service } from "@/domain/entities/service";
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -134,32 +135,6 @@ const ArticlePlatform = styled.span`
  * および記事カードのグリッドをアニメーション付きでレンダリングします.
  */
 export default function Page() {
-  const [articles, setArticles] = useState<null | FeedElement[]>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [category, setCategory] = useState<string>("all");
-
-  useEffect(() => {
-    setLoading(true);
-
-    const fetchArticles = async () => {
-      const query = category === "all" ? "" : `?category=${category}`;
-      const data = await fetchData<FeedElement[]>(
-        `/api/articles/index${query}`
-      );
-      setArticles(data);
-      setLoading(false);
-    };
-    fetchArticles();
-  }, [category]);
-
-  if (loading) {
-    return <PageContainer>Loading...</PageContainer>;
-  }
-
-  if (!articles) {
-    return <></>;
-  }
-
   return (
     <PageContainer>
       <PageHeader>
@@ -175,33 +150,78 @@ export default function Page() {
         </motion.div>
       </PageHeader>
 
+      <Contents />
+    </PageContainer>
+  );
+}
+
+// フィルターとコンテンツエリアコンポーネント
+const Contents = () => {
+  const [articles, setArticles] = useState<null | Article[]>(null);
+  const [services, setServices] = useState<null | Service[]>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [category, setCategory] = useState<null | number>(null);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const fetchServices = async () => {
+      const data = await fetchData<Service[]>("/api/services");
+      setServices(data);
+    };
+    fetchServices();
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const fetchArticles = async () => {
+      const query = category === null ? "" : `?service_id=${category}`;
+      const data = await fetchData<Article[]>(`/api/articles/search${query}`);
+      setArticles(data);
+      setLoading(false);
+    };
+    fetchArticles();
+  }, [category]);
+
+  if (loading) {
+    return <PageContainer>Loading...</PageContainer>;
+  }
+
+  if (!services) {
+    return <></>;
+  }
+
+  if (!articles) {
+    return <></>;
+  }
+
+  return (
+    <>
       <FilterSection>
         {/* <SearchContainer>
-          <SearchInput placeholder="記事を検索..." />
-          <SearchIcon>
-            <Search size={20} />
-          </SearchIcon>
-        </SearchContainer> */}
+            <SearchInput placeholder="記事を検索..." />
+            <SearchIcon>
+              <Search size={20} />
+            </SearchIcon>
+          </SearchContainer> */}
 
         <FilterTabs>
           <FilterTab
-            $isActive={category === "all"}
-            onClick={() => setCategory("all")}
+            $isActive={category === null}
+            onClick={() => setCategory(null)}
           >
             All
           </FilterTab>
-          <FilterTab
-            $isActive={category === "qiita"}
-            onClick={() => setCategory("qiita")}
-          >
-            Qiita
-          </FilterTab>
-          <FilterTab
-            $isActive={category === "zenn"}
-            onClick={() => setCategory("zenn")}
-          >
-            Zenn
-          </FilterTab>
+          {services.map((service) => (
+            <FilterTab
+              key={service.id}
+              $isActive={category === service.id}
+              onClick={() => setCategory(service.id)}
+            >
+              {service.name}
+            </FilterTab>
+          ))}
         </FilterTabs>
       </FilterSection>
 
@@ -216,12 +236,14 @@ export default function Page() {
           >
             <ArticleTitle>{article.title}</ArticleTitle>
             <ArticleMeta>
-              <ArticleDate>{article.published}</ArticleDate>
+              <ArticleDate>
+                {new Date(article.publishedAt).toLocaleDateString()}
+              </ArticleDate>
               <ArticlePlatform>{article.service.name}</ArticlePlatform>
             </ArticleMeta>
           </ArticleCard>
         ))}
       </ArticleGrid>
-    </PageContainer>
+    </>
   );
-}
+};
