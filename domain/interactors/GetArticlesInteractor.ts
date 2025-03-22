@@ -9,11 +9,10 @@ export class GetArticlesInteractor {
    * @returns 
    */
   async handle(
+    keyword: null | string,
     serviceId: null | number,
   ): Promise<Article[]> {
-    console.log(serviceId);
-    
-    const result = await this.repository.fetchAll(serviceId);
+    const result = await this.repository.fetchAll(keyword, serviceId);
     
     if (!result.ok) {
       throw result.error;
