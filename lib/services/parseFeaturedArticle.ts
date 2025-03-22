@@ -8,7 +8,7 @@ export const parseFeaturedArticle = (raw: unknown): Result<FeaturedArticle, Erro
     return {
       ok: false,
       error: new Error(
-        `サービスデータが無効です。受け取った型: ${raw === null ? "null" : typeof raw
+        `注目記事データが無効です。受け取った型: ${raw === null ? "null" : typeof raw
         }`
       ),
     };

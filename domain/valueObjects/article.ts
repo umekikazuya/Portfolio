@@ -1,6 +1,5 @@
+import { Branded } from "@/types/branded";
 import { Result } from "@/types/result";
-
-export type Branded<T, B> = T & { _brand: B };
 
 export type ArticleId = Branded<number, "ArticleId">;
 export type ArticleContent = Branded<string | null, "ArticleContent">;
