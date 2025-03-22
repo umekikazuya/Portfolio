@@ -7,26 +7,28 @@ export const useArticlesQuery = (query: SearchQuery) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const params = new URLSearchParams();
     if (query.serviceId) params.append("service_id", String(query.serviceId));
     if (query.keyword) params.append("keyword", query.keyword);
-    setLoading(true);
-    let isMounted = true;
-    fetchData<Article[]>(`/api/articles/search?${params}`)
+    const controller = new AbortController();
+    fetchData<Article[]>(`/api/articles/search?${params}`, {
+      signal: controller.signal,
+    })
       .then((res) => {
-        if (isMounted) {
-          if (res) setArticles(res);
+        if (!controller.signal.aborted && res) {
+          setArticles(res);
           setLoading(false);
         }
       })
       .catch((error) => {
-        if (isMounted) {
+        if (!controller.signal.aborted) {
           console.error("記事の取得中にエラーが発生しました:", error);
           setLoading(false);
         }
       });
     return () => {
-      isMounted = false;
+      controller.abort();
     };
   }, [query]);
 
