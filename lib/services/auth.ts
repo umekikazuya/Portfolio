@@ -4,5 +4,5 @@ export function createBasicAuthHeader(): string | null {
   if (!authUser || !authPassword) {
     return null;
   }
-  return `Basic ${btoa(`${authUser}:${authPassword}`)}`;
+  return `Basic ${Buffer.from(`${authUser}:${authPassword}`).toString('base64')}`;
 }
