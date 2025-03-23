@@ -1,6 +1,7 @@
 import { Article } from "@/domain/entities/article";
 import { FeaturedArticle } from "@/domain/entities/featuredArticle";
 import { FeaturedArticleRepository } from "@/domain/repositories/FeaturedArticleRepository";
+import { createBasicAuthHeader } from "@/lib/services/auth";
 import { parseFeaturedArticle } from "@/lib/services/parseFeaturedArticle";
 import { Result } from "@/types/result";
 
@@ -11,7 +12,12 @@ export class FeaturedArticleApiRepository implements FeaturedArticleRepository {
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      const res = await fetch(`${apiUrl}/backend/featured-articles`);
+      const res = await fetch(`${apiUrl}/backend/featured-articles`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: createBasicAuthHeader() || "",
+        },
+      });
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }

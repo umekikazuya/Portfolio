@@ -1,5 +1,6 @@
 import { Profile } from "@/domain/entities/profile";
 import { ProfileRepository } from "@/domain/repositories/ProfileRepository";
+import { createBasicAuthHeader } from "@/lib/services/auth";
 import { parseProfile } from "@/lib/services/parseProfile";
 import { Result } from "@/types/result";
 
@@ -14,6 +15,7 @@ export class ProfileApiRepository implements ProfileRepository {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: createBasicAuthHeader() || "",
         },
         cache: "no-cache",
       });
@@ -21,7 +23,6 @@ export class ProfileApiRepository implements ProfileRepository {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
       const { data }: { data: unknown } = await res.json();
-
       const profile = parseProfile(data);
       if (!profile.ok) {
         return { ok: false, error: new Error("APIレスポンスが不正です。") };
