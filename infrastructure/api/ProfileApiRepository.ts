@@ -10,13 +10,18 @@ export class ProfileApiRepository implements ProfileRepository {
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
+
       const res = await fetch(`${apiUrl}/backend/profile`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Basic ${btoa(
+            `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
+          )}`,
         },
         cache: "no-cache",
       });
+
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }

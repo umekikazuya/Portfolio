@@ -23,7 +23,16 @@ export class ArticleApiRepository implements ArticleRepository {
         url.search = queryParams.toString();
       }
 
-      const res = await fetch(url.toString());
+      const res = await fetch(
+        url.toString(),
+        {
+          headers: {
+            Authorization: `Basic ${btoa(
+              `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
+            )}`,
+          },
+        }
+      );
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
