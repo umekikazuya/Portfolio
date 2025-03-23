@@ -1,5 +1,6 @@
 import { Service } from "@/domain/entities/service";
 import { ServiceRepository } from "@/domain/repositories/ServiceRepository";
+import { createBasicAuthHeader } from "@/lib/services/auth";
 import { parseService } from "@/lib/services/parseService";
 import { Result } from "@/types/result";
 
@@ -12,9 +13,8 @@ export class ServiceApiRepository implements ServiceRepository {
       }
       const res = await fetch(`${apiUrl}/backend/article-services`, {
         headers: {
-          Authorization: `Basic ${btoa(
-            `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
-          )}`,
+          "Content-Type": "application/json",
+          Authorization: createBasicAuthHeader() || "",
         },
       });
       if (!res.ok) {

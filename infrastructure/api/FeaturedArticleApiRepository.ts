@@ -1,6 +1,7 @@
 import { Article } from "@/domain/entities/article";
 import { FeaturedArticle } from "@/domain/entities/featuredArticle";
 import { FeaturedArticleRepository } from "@/domain/repositories/FeaturedArticleRepository";
+import { createBasicAuthHeader } from "@/lib/services/auth";
 import { parseFeaturedArticle } from "@/lib/services/parseFeaturedArticle";
 import { Result } from "@/types/result";
 
@@ -13,9 +14,8 @@ export class FeaturedArticleApiRepository implements FeaturedArticleRepository {
       }
       const res = await fetch(`${apiUrl}/backend/featured-articles`, {
         headers: {
-          Authorization: `Basic ${btoa(
-            `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
-          )}`,
+          "Content-Type": "application/json",
+          Authorization: createBasicAuthHeader() || "",
         },
       });
       if (!res.ok) {

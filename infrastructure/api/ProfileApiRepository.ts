@@ -1,5 +1,6 @@
 import { Profile } from "@/domain/entities/profile";
 import { ProfileRepository } from "@/domain/repositories/ProfileRepository";
+import { createBasicAuthHeader } from "@/lib/services/auth";
 import { parseProfile } from "@/lib/services/parseProfile";
 import { Result } from "@/types/result";
 
@@ -10,23 +11,18 @@ export class ProfileApiRepository implements ProfileRepository {
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-
       const res = await fetch(`${apiUrl}/backend/profile`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Basic ${btoa(
-            `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
-          )}`,
+          Authorization: createBasicAuthHeader() || "",
         },
         cache: "no-cache",
       });
-
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
       const { data }: { data: unknown } = await res.json();
-
       const profile = parseProfile(data);
       if (!profile.ok) {
         return { ok: false, error: new Error("APIレスポンスが不正です。") };

@@ -1,3 +1,5 @@
+import { createBasicAuthHeader } from "@/lib/services/auth";
+
 export async function fetchData<T>(
   url: string,
   options?: RequestInit
@@ -7,9 +9,7 @@ export async function fetchData<T>(
       cache: "no-store",
       headers: {
         ...options?.headers,
-        Authorization: `Basic ${btoa(
-          `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
-        )}`,
+        Authorization: createBasicAuthHeader() || "",
       },
       ...options,
     });

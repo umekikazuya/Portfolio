@@ -1,5 +1,6 @@
 import { Article } from "@/domain/entities/article";
 import { ArticleRepository } from "@/domain/repositories/ArticleRepository";
+import { createBasicAuthHeader } from "@/lib/services/auth";
 import { parseArticle } from "@/lib/services/parseArticle";
 import { Result } from "@/types/result";
 
@@ -23,16 +24,12 @@ export class ArticleApiRepository implements ArticleRepository {
         url.search = queryParams.toString();
       }
 
-      const res = await fetch(
-        url.toString(),
-        {
-          headers: {
-            Authorization: `Basic ${btoa(
-              `${process.env.NEXT_BASIC_AUTH_USER}:${process.env.NEXT_BASIC_AUTH_PASSWORD}`
-            )}`,
-          },
-        }
-      );
+      const res = await fetch(url.toString(), {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: createBasicAuthHeader() || "",
+        },
+      });
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
       }
