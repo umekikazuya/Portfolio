@@ -2,6 +2,8 @@ import { ArticleContainer } from "@/components/features/home/ArticleContainer";
 import { ProfileContainer } from "@/components/features/home/ProfileContainer";
 import { HomeLayout } from "@/presentation/home";
 
+export const dynamic = "force-dynamic";
+
 /**
  * ページレイアウトをレンダリングする非同期コンポーネントです。
  *

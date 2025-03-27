@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Code, Layers, Palette, Server, Globe, Github } from "lucide-react";
+import { Code, Server, Globe, Github } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 
 const PageContainer = styled.div`
