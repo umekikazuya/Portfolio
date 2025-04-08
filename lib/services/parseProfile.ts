@@ -36,7 +36,7 @@ export const parseProfile = (raw: unknown): Result<Profile, Error> => {
     job,
     likes,
     qiita,
-    skill,
+    skills,
     summary_introduction,
     zenn,
   } = raw as Record<string, unknown>;
@@ -82,7 +82,7 @@ export const parseProfile = (raw: unknown): Result<Profile, Error> => {
   if (!profileShortName.ok) return profileShortName;
 
   // ProfileSkillを生成
-  const profileSkill = createProfileSkill(skill);
+  const profileSkill = createProfileSkill(skills);
   if (!profileSkill.ok) return profileSkill;
 
   // ProfileZennを生成
