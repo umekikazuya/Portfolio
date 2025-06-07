@@ -12,7 +12,7 @@ export class FeaturedArticleApiRepository implements FeaturedArticleRepository {
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      const res = await fetch(`${apiUrl}/backend/featured-articles`, {
+      const res = await fetch(`${apiUrl}/api/featured-articles`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: createBasicAuthHeader() || "",

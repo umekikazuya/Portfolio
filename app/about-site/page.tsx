@@ -124,18 +124,18 @@ const techStack = [
   {
     icon: <Code size={24} />,
     title: "フロントエンド",
-
     items: [
       "Next.js 15 (App Router)",
       "TypeScript",
       "Styled Components",
       "Framer Motion",
+      "Vercel",
     ],
   },
   {
     icon: <Server size={24} />,
     title: "バックエンド",
-    items: ["Laravel", "Vercel", "PostgreSQL", "REST API"],
+    items: ["Laravel", "Cloud Run", "Cloud Build", "PostgreSQL", "DynamoDB", "REST API"],
   },
   // {
   //   icon: <Layers size={24} />,
@@ -155,12 +155,6 @@ const techStack = [
   //     "ダークモード対応",
   //   ],
   // },
-  {
-    icon: <Globe size={24} />,
-    title: "デプロイ",
-    description: "Vercelを利用しています。",
-    items: ["Vercel", "継続的デプロイ", "エッジネットワーク"],
-  },
 ];
 
 export default function AboutSitePage() {

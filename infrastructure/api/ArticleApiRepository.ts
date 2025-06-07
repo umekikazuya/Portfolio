@@ -19,7 +19,7 @@ export class ArticleApiRepository implements ArticleRepository {
       if (keyword) queryParams.append("keyword", keyword);
       if (serviceId) queryParams.append("service_id", serviceId.toString());
 
-      const url = new URL("/backend/articles", apiUrl);
+      const url = new URL("/api/articles", apiUrl);
       if (queryParams.toString()) {
         url.search = queryParams.toString();
       }
