@@ -19,7 +19,6 @@ export class ProfileApiRepository implements ProfileRepository {
         },
         cache: "no-cache",
       });
-      console.log(res);
       
       if (!res.ok) {
         return { ok: false, error: new Error("APIエラーが発生しました。") };
