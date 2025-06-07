@@ -11,7 +11,7 @@ export class ServiceApiRepository implements ServiceRepository {
       if (!apiUrl) {
         return { ok: false, error: new Error("API URLが設定されていません。") };
       }
-      const res = await fetch(`${apiUrl}/backend/article-services`, {
+      const res = await fetch(`${apiUrl}/api/article-services`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: createBasicAuthHeader() || "",
